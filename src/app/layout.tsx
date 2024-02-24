@@ -1,7 +1,10 @@
 import "./globals.scss";
 
+import { ConfigProvider } from "antd";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+
+import theme from "@/theme";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ConfigProvider theme={theme}>{children}</ConfigProvider>
+      </body>
     </html>
   );
 }
