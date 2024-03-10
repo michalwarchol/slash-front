@@ -8,12 +8,15 @@ import React, {
 
 import isEmpty from "@/utils/isEmpty";
 
+import styles from "./styles.module.scss";
+
 interface IProps {
   children: ReactElement<any, string | JSXElementConstructor<any>>; // eslint-disable-line @typescript-eslint/no-explicit-any
   field: FieldInputProps<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
   form: FormikProps<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
   label?: string;
   omitHelperText?: boolean;
+  disabled?: boolean;
   changeCallback?: (
     value: any, // eslint-disable-line @typescript-eslint/no-explicit-any
     setFieldValue: (field: string, value: any) => void, // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -28,11 +31,12 @@ export default function FormField({
   form,
   label,
   omitHelperText = false,
+  disabled = false,
   changeCallback,
   props,
 }: IProps) {
   const { name, onChange, onBlur, value } = field;
-  const { touched, errors, submitCount, setFieldValue } = form;
+  const { touched, errors, submitCount, setFieldValue, isSubmitting } = form;
 
   const isTouched = touched[name] || getIn(touched, name);
   const errorObj = errors[name] || getIn(errors, name);
@@ -46,6 +50,7 @@ export default function FormField({
     id: name,
     label,
     error: !!isError,
+    disabled: disabled || isSubmitting,
     onBlur: (event: React.FocusEvent<HTMLInputElement>) => {
       onBlur(event);
     },
@@ -60,10 +65,18 @@ export default function FormField({
 
   return (
     <div>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && (
+        <label htmlFor={name} className={styles.inputLabel}>
+          {label}
+        </label>
+      )}
       {cloneElement(children, newChildrenProps)}
-      {!isEmpty({ a: "a" }) && !omitHelperText && (
-        <ErrorMessage component="div" name={name} />
+      {!isEmpty(isError) && !omitHelperText && (
+        <ErrorMessage
+          component="div"
+          name={name}
+          className={styles.errorMessage}
+        />
       )}
     </div>
   );

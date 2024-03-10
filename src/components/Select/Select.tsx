@@ -16,12 +16,23 @@ interface IProps {
   onBlur: () => void;
   error: object;
   options: ISelectOption[];
+  placeholder?: string;
+  disabled?: boolean;
 }
 
-function Select({ name, value, error, onBlur, onChange, options }: IProps) {
+function Select({
+  name,
+  value,
+  error,
+  onBlur,
+  onChange,
+  options,
+  placeholder,
+  disabled = false,
+}: IProps) {
   return (
     <AntdSelect
-      className={styles.select}
+      rootClassName={styles.select}
       value={value}
       onChange={(newValue) =>
         onChange({
@@ -33,6 +44,8 @@ function Select({ name, value, error, onBlur, onChange, options }: IProps) {
       }
       onBlur={onBlur}
       status={error ? "error" : undefined}
+      placeholder={placeholder}
+      disabled={disabled}
     >
       {options.map((option) => (
         <AntdSelect.Option key={option.id} value={option.value || option.id}>
