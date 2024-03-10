@@ -1,8 +1,8 @@
 "use client";
+import { setToken } from "@/app/actions";
 import Button from "@/components/Button";
 import axios from "@/utils/axios";
 
-import { setToken } from "../actions";
 import styles from "./styles.module.scss";
 
 export default function Login() {

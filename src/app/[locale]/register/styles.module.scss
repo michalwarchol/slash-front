@@ -1,0 +1,82 @@
+@import "../../colors.scss";
+
+.registerContainer {
+  min-height: 100vh;
+  height: 100vh;
+  position: relative;
+}
+
+.contentContainer {
+  display: flex;
+  width: 100%;
+
+  @media screen and (min-width: 992px) {
+    width: 720px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 1000px;
+  }
+
+  .divider {
+    height: auto;
+    border-inline-start-width: 2px;
+  }
+
+  .titleContainer {
+    width: 100%;
+    padding: 10px;
+
+    .title {
+      font-size: 52px;
+      color: $secondary;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      font-weight: 600;
+    }
+
+    .list {
+      margin-top: 8px;
+      color: white;
+    }
+    .listElement {
+      margin-bottom: 10px;
+
+      .listText {
+        margin-left: 14px;
+        color: white;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .formContainer {
+    width: 100%;
+    padding: 10px;
+
+    .formTitle {
+      text-align: center;
+      margin-bottom: 20px;
+      color: $secondary;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .inputWrapper {
+      margin-bottom: 16px;
+    }
+
+    .submitButton {
+      width: 100%;
+    }
+
+    .buttonsText {
+      color: white;
+      display: flex;
+      justify-content: center;
+
+      .link {
+        padding-left: 6px;
+        color: $primary;
+      }
+    }
+  }
+}

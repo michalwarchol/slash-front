@@ -8,16 +8,33 @@ interface IProps {
   onChange: () => void;
   onBlur: () => void;
   error: object;
+  placeholder?: string;
+  htmlType?: "text" | "password";
+  disabled?: boolean;
 }
 
-function Input({ name, value, onChange, onBlur, error }: IProps) {
+function Input({
+  name,
+  value,
+  onChange,
+  onBlur,
+  error,
+  placeholder,
+  htmlType,
+  disabled = false,
+}: IProps) {
+  const Component = htmlType === "password" ? AntdInput.Password : AntdInput;
+
   return (
-    <AntdInput
+    <Component
       name={name}
       value={value}
       onChange={onChange}
       onBlur={onBlur}
       status={error ? "error" : undefined}
+      style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }}
+      placeholder={placeholder}
+      disabled={disabled}
     />
   );
 }

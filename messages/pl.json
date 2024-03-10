@@ -1,0 +1,30 @@
+{
+  "Register": {
+    "title": "S/ash",
+    "videoCourses": "Kursy wideo na życzenie",
+    "live": "Spotkania na żywo z prowadzącymi",
+    "exams": "Egzaminowanie kursów",
+    "notes": "Udostępnianie notatek między studentami",
+    "formTitle": "Utwórz nowe konto",
+    "firstName": "Imię",
+    "lastName": "Nazwisko",
+    "email": "Email",
+    "password": "Hasło",
+    "confirmPassword": "Powtórz hasło",
+    "role": "Rola",
+    "submit": "Zarejestruj",
+    "haveAccount": "Masz już konto?",
+    "login": "Zaloguj"
+  },
+  "errors": {
+    "required": "To pole jest wymagane",
+    "email": "Niepoprawny adres email",
+    "password": "Hasło powinno zawierać conajmniej 8 znaków, 1 cyfrę, 1 małą literę i 1 dużą",
+    "confirmPasswordDoesNotMatch": "Nieprawidłowe potwierdzenie hasła",
+    "min": "To pole powinno mieć conajmniej {min} znaków"
+  },
+  "apiErrors": {
+    "default": "Coś poszło nie tak",
+    "emailExists": "Podany adres email jest już zajęty"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "Register": {
+    "title": "S/ash",
+    "videoCourses": "Video courses at will",
+    "live": "Live meetings with tutors",
+    "exams": "Making exams for your courses",
+    "notes": "Sharing notes among students",
+    "formTitle": "Create a new account",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "role": "Role",
+    "submit": "Sign Up",
+    "haveAccount": "Already have an account?",
+    "login": "Sign In"
+  },
+  "errors": {
+    "required": "This field is required",
+    "email": "This is not a valid email",
+    "password": "Password should be at least 6 characters long, and have at least 1 number, 1 big and 1 small letter",
+    "confirmPasswordDoesNotMatch": "Invalid password confirmation",
+    "min": "This field should have at least {min} characters"
+  },
+  "apiErrors": {
+    "default": "Something went wrong",
+    "emailExists": "Given email is already in use"
+  }
+}
