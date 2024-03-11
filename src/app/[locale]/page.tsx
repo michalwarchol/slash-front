@@ -1,7 +1,7 @@
 import { me } from "@/app/actions";
 
 export default async function Home() {
-  const meData = await me();
+  const data = await me();
 
-  return <div>{JSON.stringify(meData.data)}</div>;
+  return <div>{JSON.stringify(data)}</div>;
 }

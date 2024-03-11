@@ -17,7 +17,12 @@ export default async function Login() {
 
   return (
     <div className={styles.loginContainer}>
-      <Image src={backgroundPic} alt="background" fill />
+      <Image
+        src={backgroundPic}
+        alt="background"
+        fill
+        style={{ objectFit: "cover" }}
+      />
       <StaticModal>
         <View
           messages={getMessages(t)}

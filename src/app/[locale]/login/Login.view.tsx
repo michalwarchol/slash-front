@@ -64,7 +64,11 @@ export default function RegisterView({
     <div className={styles.contentContainer}>
       {contextHolder}
       <div className={styles.titleContainer}>
-        <div className={styles.title}>{messages.title}</div>
+        <div className={styles.title}>
+          <Link href="/">
+            <span className={styles.link}>{messages.title}</span>
+          </Link>
+        </div>
         <div className={styles.content}>
           <Paragraph className={styles.contentParagraph}>
             {messages.titleContentP1}

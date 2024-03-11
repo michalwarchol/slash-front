@@ -23,7 +23,12 @@ export default async function Register() {
 
   return (
     <div className={styles.registerContainer}>
-      <Image src={backgroundPic} alt="background" fill />
+      <Image
+        src={backgroundPic}
+        alt="background"
+        fill
+        style={{ objectFit: "cover" }}
+      />
       <StaticModal>
         <View
           messages={getMessages(t)}

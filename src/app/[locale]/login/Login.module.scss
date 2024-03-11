@@ -8,19 +8,27 @@
 
 .contentContainer {
   display: flex;
+  flex-direction: column;
   width: 100%;
 
-  @media screen and (min-width: 992px) {
+  @media screen and (min-width: $tabletVertical) {
     width: 720px;
+    flex-direction: row;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: $tablet) {
     width: 1000px;
   }
 
   .divider {
     height: auto;
     border-inline-start-width: 2px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    @media screen and (min-width: $tabletVertical) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 
   .titleContainer {
@@ -29,9 +37,16 @@
 
     .title {
       font-size: 52px;
-      color: $secondary;
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
       font-weight: 600;
+
+      a {
+        text-decoration: none;
+
+        .link {
+          color: $secondary;
+        }
+      }
     }
 
     .content {

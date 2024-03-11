@@ -77,7 +77,11 @@ export default function RegisterView({
     <div className={styles.contentContainer}>
       {contextHolder}
       <div className={styles.titleContainer}>
-        <div className={styles.title}>{messages.title}</div>
+        <div className={styles.title}>
+          <Link href="/">
+            <span className={styles.link}>{messages.title}</span>
+          </Link>
+        </div>
         <div className={styles.list}>
           {listItems.map((item) => (
             <div className={styles.listElement} key={item.key}>
