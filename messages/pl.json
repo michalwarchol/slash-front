@@ -16,6 +16,17 @@
     "haveAccount": "Masz już konto?",
     "login": "Zaloguj"
   },
+  "Login": {
+    "title": "S/ash",
+    "titleContentP1": "Witaj w świecie wiedzy bez granic! Zaloguj się, aby odkrywać, uczyć się i rozwijać z naszymi kursami. Jesteśmy tutaj, aby poszerzać Twoje umiejętności i posunąć Twoją karierę do przodu.",
+    "titleContentP2": "Jeśli jeszcze nie masz konta, zarejestruj się już dziś i zacznij swoją podróż z nami. Twoja przyszłość czeka na Ciebie!",
+    "formTitle": "Zaloguj się",
+    "email": "Email",
+    "password": "Password",
+    "dontHaveAccount": "Nie masz konta?",
+    "register": "Zarejestruj",
+    "login": "Zaloguj"
+  },
   "errors": {
     "required": "To pole jest wymagane",
     "email": "Niepoprawny adres email",
@@ -25,6 +36,7 @@
   },
   "apiErrors": {
     "default": "Coś poszło nie tak",
-    "emailExists": "Podany adres email jest już zajęty"
+    "emailExists": "Podany adres email jest już zajęty",
+    "credentialsInvalid": "Niepoprawne dane logowania"
   }
 }

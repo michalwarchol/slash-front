@@ -16,6 +16,17 @@
     "haveAccount": "Already have an account?",
     "login": "Sign In"
   },
+  "Login": {
+    "title": "S/ash",
+    "titleContentP1": "Welcome to a world of limitless knowledge! Sign in to discover, learn, and grow with our courses. We are here to expand your skills and advance your career.",
+    "titleContentP2": "If you don't have an account yet, sign up today and start your journey with us. Your future awaits!",
+    "formTitle": "Sign In",
+    "email": "Email",
+    "password": "Password",
+    "dontHaveAccount": "Don't have account?",
+    "register": "Sign Up",
+    "login": "Sign In"
+  },
   "errors": {
     "required": "This field is required",
     "email": "This is not a valid email",
@@ -25,6 +36,7 @@
   },
   "apiErrors": {
     "default": "Something went wrong",
-    "emailExists": "Given email is already in use"
+    "emailExists": "Given email is already in use",
+    "credentialsInvalid": "Invalid credentials"
   }
 }
