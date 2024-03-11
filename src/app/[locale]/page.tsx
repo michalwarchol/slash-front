@@ -1,7 +1,7 @@
-import axios from "@/utils/axios";
+import { me } from "@/app/actions";
 
 export default async function Home() {
-  const me = await axios.get("/users/me");
+  const data = await me();
 
-  return <div>{JSON.stringify(me.data)}</div>;
+  return <div>{JSON.stringify(data)}</div>;
 }

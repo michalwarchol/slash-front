@@ -1,6 +1,6 @@
 @import "../../colors.scss";
 
-.registerContainer {
+.loginContainer {
   min-height: 100vh;
   height: 100vh;
   position: relative;
@@ -37,7 +37,6 @@
 
     .title {
       font-size: 52px;
-      color: $secondary;
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
       font-weight: 600;
 
@@ -50,17 +49,12 @@
       }
     }
 
-    .list {
+    .content {
       margin-top: 8px;
-      color: white;
-    }
-    .listElement {
-      margin-bottom: 10px;
 
-      .listText {
-        margin-left: 14px;
+      .contentParagraph {
+        text-align: justify;
         color: white;
-        font-size: 18px;
       }
     }
   }

@@ -1,5 +1,4 @@
 "use client";
-import { CheckCircleOutlined } from "@ant-design/icons";
 import { Divider, message, Typography } from "antd";
 import { Form, Formik } from "formik";
 import Cookies from "js-cookie";
@@ -9,38 +8,29 @@ import { Link } from "@/app/navigation";
 import { useRouter } from "@/app/navigation";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
-import Select from "@/components/Select";
 import axios from "@/utils/axios";
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
 
-import { initialValues } from "./register.consts";
+import { initialValues } from "./Login.consts";
+import styles from "./Login.module.scss";
 import {
   TApiErrorMessages,
   TErrorMessages,
   TInitialValues,
   TMessages,
-  UserRoles,
-} from "./register.types";
-import validation from "./register.validation";
-import styles from "./styles.module.scss";
+} from "./Login.types";
+import validation from "./Login.validation";
 
-const { Text } = Typography;
+const { Paragraph, Text } = Typography;
 
 type IProps = {
-  roles: UserRoles;
   messages: TMessages;
   errorMessages: TErrorMessages;
   apiErrorMessages: TApiErrorMessages;
-  listItems: {
-    key: string;
-    text: string;
-  }[];
 };
 
 export default function RegisterView({
   messages,
-  listItems,
-  roles,
   errorMessages,
   apiErrorMessages,
 }: IProps) {
@@ -49,12 +39,9 @@ export default function RegisterView({
   const { push } = useRouter();
   const onSubmit = async (values: TInitialValues) => {
     setLoading(true);
-    const { data } = await axios.post("users/signup", {
-      first_name: values.firstName,
-      last_name: values.lastName,
+    const { data } = await axios.post("users/signin", {
       email: values.email,
       password: values.password,
-      type: values.role,
     });
 
     setLoading(false);
@@ -82,13 +69,13 @@ export default function RegisterView({
             <span className={styles.link}>{messages.title}</span>
           </Link>
         </div>
-        <div className={styles.list}>
-          {listItems.map((item) => (
-            <div className={styles.listElement} key={item.key}>
-              <CheckCircleOutlined />
-              <Text className={styles.listText}>{item.text}</Text>
-            </div>
-          ))}
+        <div className={styles.content}>
+          <Paragraph className={styles.contentParagraph}>
+            {messages.titleContentP1}
+          </Paragraph>
+          <Paragraph className={styles.contentParagraph}>
+            {messages.titleContentP2}
+          </Paragraph>
         </div>
       </div>
       <Divider type="vertical" className={styles.divider} />
@@ -102,12 +89,6 @@ export default function RegisterView({
           {() => (
             <Form>
               <div className={styles.inputWrapper}>
-                <Input name="firstName" placeholder={messages.firstName} />
-              </div>
-              <div className={styles.inputWrapper}>
-                <Input name="lastName" placeholder={messages.lastName} />
-              </div>
-              <div className={styles.inputWrapper}>
                 <Input name="email" placeholder={messages.email} />
               </div>
               <div className={styles.inputWrapper}>
@@ -117,35 +98,18 @@ export default function RegisterView({
                   htmlType="password"
                 />
               </div>
-              <div className={styles.inputWrapper}>
-                <Input
-                  name="confirmPassword"
-                  placeholder={messages.confirmPassword}
-                  htmlType="password"
-                />
-              </div>
-              <div className={styles.inputWrapper}>
-                <Select
-                  name="role"
-                  placeholder={messages.role}
-                  options={roles.map((role) => ({
-                    id: role.name,
-                    name: role.value,
-                  }))}
-                />
-              </div>
               <div className={styles.buttons}>
                 <Button
                   type="submit"
                   className={styles.submitButton}
                   loading={loading}
                 >
-                  {messages.submit}
+                  {messages.login}
                 </Button>
                 <Text className={styles.buttonsText}>
-                  <span>{messages.haveAccount}</span>
-                  <Link href="/login">
-                    <span className={styles.link}>{messages.login}</span>
+                  <span>{messages.dontHaveAccount}</span>
+                  <Link href="/register">
+                    <span className={styles.link}>{messages.register}</span>
                   </Link>
                 </Text>
               </div>

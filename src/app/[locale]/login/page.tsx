@@ -1,24 +1,35 @@
-"use client";
-import { setToken } from "@/app/actions";
-import Button from "@/components/Button";
-import axios from "@/utils/axios";
+import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
-import styles from "./styles.module.scss";
+import StaticModal from "@/components/StaticModal";
+import backgroundPic from "@/public/images/unauthorized-background-original.jpg";
 
-export default function Login() {
-  const onToken = async () => {
-    setToken("token example");
-  };
+import styles from "./Login.module.scss";
+import {
+  getApiErrorMessages,
+  getErrorMessages,
+  getMessages,
+} from "./Login.utils";
+import View from "./Login.view";
 
-  const onLogin = () => {
-    axios.get("/users/me");
-  };
+export default async function Login() {
+  const t = await getTranslations();
 
   return (
     <div className={styles.loginContainer}>
-      <Button onClick={onToken}>Set token</Button>
-
-      <Button onClick={onLogin}>Login</Button>
+      <Image
+        src={backgroundPic}
+        alt="background"
+        fill
+        style={{ objectFit: "cover" }}
+      />
+      <StaticModal>
+        <View
+          messages={getMessages(t)}
+          errorMessages={getErrorMessages(t)}
+          apiErrorMessages={getApiErrorMessages(t)}
+        />
+      </StaticModal>
     </div>
   );
 }
