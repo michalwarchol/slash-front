@@ -50,8 +50,8 @@ export default function RegisterView({
   const onSubmit = async (values: TInitialValues) => {
     setLoading(true);
     const { data } = await axios.post("users/signup", {
-      first_name: values.firstName,
-      last_name: values.lastName,
+      firstName: values.firstName,
+      lastName: values.lastName,
       email: values.email,
       password: values.password,
       type: values.role,
@@ -64,7 +64,7 @@ export default function RegisterView({
       return;
     }
 
-    Cookies.set("token", data.result.access_token, { expires: 1, path: "/" });
+    Cookies.set("token", data.result.accessToken, { expires: 1, path: "/" });
     Cookies.set("user", JSON.stringify(data.result.user), {
       expires: 1,
       path: "/",
