@@ -51,7 +51,7 @@ export default function RegisterView({
       return;
     }
 
-    Cookies.set("token", data.result.access_token, { expires: 1, path: "/" });
+    Cookies.set("token", data.result.accessToken, { expires: 1, path: "/" });
     Cookies.set("user", JSON.stringify(data.result.user), {
       expires: 1,
       path: "/",
