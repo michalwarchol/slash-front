@@ -1,0 +1,36 @@
+@import "../../app/colors.scss";
+
+.searchbar {
+  margin-left: 8px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+
+  .form {
+    width: 100%;
+
+    .input {
+      width: 100%;
+    }
+  }
+
+  .iconWrapper {
+    display: block;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out;
+    color: white;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    @media screen and (min-width: $phoneHorizontal) {
+      display: none;
+    }
+  }
+}

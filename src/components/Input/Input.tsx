@@ -8,6 +8,7 @@ interface IProps {
   onChange: () => void;
   onBlur: () => void;
   error: object;
+  className?: string;
   placeholder?: string;
   htmlType?: "text" | "password";
   disabled?: boolean;
@@ -21,6 +22,7 @@ function Input({
   error,
   placeholder,
   htmlType,
+  className,
   disabled = false,
 }: IProps) {
   const Component = htmlType === "password" ? AntdInput.Password : AntdInput;
@@ -35,6 +37,7 @@ function Input({
       style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }}
       placeholder={placeholder}
       disabled={disabled}
+      className={className}
     />
   );
 }

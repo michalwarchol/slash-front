@@ -38,5 +38,11 @@
     "default": "Coś poszło nie tak",
     "emailExists": "Podany adres email jest już zajęty",
     "credentialsInvalid": "Niepoprawne dane logowania"
+  },
+  "header": {
+    "title": "S/ash",
+    "login": "Zaloguj",
+    "register": "Zarejestruj",
+    "search": "Szukaj"
   }
 }
