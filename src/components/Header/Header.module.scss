@@ -1,0 +1,116 @@
+@import "../../app/colors.scss";
+
+.header {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 20px;
+
+  .headerInner {
+    padding: 20px;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    @media screen and (min-width: $phoneHorizontal) {
+    }
+
+    @media screen and (min-width: $monitor) {
+      max-width: $monitor;
+    }
+
+    .logo {
+      max-width: 20%;
+      font-size: 32px;
+      display: flex;
+      align-items: center;
+
+      @media screen and (min-width: $phoneHorizontal) {
+        font-size: 46px;
+      }
+
+      @media screen and (min-width: $monitor) {
+        font-size: 52px;
+      }
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      font-weight: 600;
+
+      a {
+        text-decoration: none;
+
+        .link {
+          color: $secondary;
+        }
+      }
+    }
+
+    .searchbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .menuLink {
+      a {
+        color: black;
+      }
+    }
+
+    .userAvatarWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.25);
+      border-radius: 18px;
+      padding: 4px;
+      cursor: pointer;
+
+      .userName {
+        color: white;
+        width: 100%;
+        max-width: 100px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .avatar {
+        width: 32px;
+        background-color: transparent;
+      }
+    }
+
+    .userbuttons {
+      display: none;
+      max-width: 30%;
+
+      @media screen and (min-width: $phoneHorizontal) {
+        display: flex;
+      }
+
+      .button {
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .outerUserbuttons {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+
+    @media screen and (min-width: $phoneHorizontal) {
+      display: none;
+    }
+
+    .button {
+      margin-right: 4px;
+    }
+  }
+}
