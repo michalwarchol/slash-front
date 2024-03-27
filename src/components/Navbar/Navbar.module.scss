@@ -1,0 +1,31 @@
+@import "../../app/colors.scss";
+
+.navbar {
+  padding: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid $secondary;
+
+  .navbarInner {
+    padding: 4px;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    @media screen and (min-width: $monitor) {
+      max-width: $monitor;
+    }
+
+    .buttonContainer {
+      display: flex;
+      flex-wrap: wrap;
+
+      .button {
+        margin-right: 6px;
+      }
+    }
+  }
+}

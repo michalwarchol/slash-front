@@ -5,7 +5,6 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 
 import { Link } from "@/app/navigation";
-import { useRouter } from "@/app/navigation";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import axios from "@/utils/axios";
@@ -36,7 +35,6 @@ export default function RegisterView({
 }: IProps) {
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
-  const { push } = useRouter();
   const onSubmit = async (values: TInitialValues) => {
     setLoading(true);
     const { data } = await axios.post("users/signin", {
@@ -57,7 +55,7 @@ export default function RegisterView({
       path: "/",
     });
 
-    push("/");
+    window.location.href = '/';
   };
 
   return (
