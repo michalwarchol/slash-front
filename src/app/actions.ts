@@ -19,3 +19,9 @@ export async function getUserRoles() {
 
   return data;
 }
+
+export async function getCourseTypes() {
+  const { data } = await axios.get("/courses/types");
+
+  return data;
+}
