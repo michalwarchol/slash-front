@@ -10,9 +10,15 @@ interface IProps {
   error: object;
   className?: string;
   placeholder?: string;
-  htmlType?: "text" | "password";
+  htmlType?: "text" | "password" | "textarea";
   disabled?: boolean;
 }
+
+const component = {
+  text: AntdInput,
+  password: AntdInput.Password,
+  textarea: AntdInput.TextArea,
+};
 
 function Input({
   name,
@@ -21,11 +27,11 @@ function Input({
   onBlur,
   error,
   placeholder,
-  htmlType,
+  htmlType = "text",
   className,
   disabled = false,
 }: IProps) {
-  const Component = htmlType === "password" ? AntdInput.Password : AntdInput;
+  const Component = component[htmlType];
 
   return (
     <Component

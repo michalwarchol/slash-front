@@ -27,6 +27,14 @@
     "register": "Sign Up",
     "login": "Sign In"
   },
+  "CourseAdd": {
+    "title": "Add a new course",
+    "name": "Course name",
+    "description": "Description",
+    "type": "Category",
+    "subType": "Subcategory",
+    "submit": "Save"
+  },
   "errors": {
     "required": "This field is required",
     "email": "This is not a valid email",

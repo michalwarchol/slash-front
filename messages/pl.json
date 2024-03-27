@@ -27,6 +27,14 @@
     "register": "Zarejestruj",
     "login": "Zaloguj"
   },
+  "CourseAdd": {
+    "title": "Dodaj nowy kurs",
+    "name": "Nazwa kursu",
+    "description": "Opis",
+    "type": "Kategoria",
+    "subType": "Podkategoria",
+    "submit": "Zapisz"
+  },
   "errors": {
     "required": "To pole jest wymagane",
     "email": "Niepoprawny adres email",
