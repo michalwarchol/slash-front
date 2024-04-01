@@ -33,7 +33,11 @@
     "description": "Description",
     "type": "Category",
     "subType": "Subcategory",
-    "submit": "Save"
+    "submit": "Save",
+    "cancel": "Cancel"
+  },
+  "CourseEdit": {
+    "title": "Edit course"
   },
   "Course": {
     "description": "Description",

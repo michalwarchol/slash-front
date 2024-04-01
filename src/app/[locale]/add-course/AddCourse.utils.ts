@@ -10,6 +10,7 @@ export const getMessages = (t: (key: string) => string): TMessages => {
     type: t("CourseAdd.type"),
     subType: t("CourseAdd.subType"),
     submit: t("CourseAdd.submit"),
+    cancel: t("CourseAdd.cancel"),
   };
 };
 
