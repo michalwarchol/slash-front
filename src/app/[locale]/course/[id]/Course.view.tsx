@@ -51,7 +51,7 @@ export default function CourseView({
       .delete(`/courses/${course.id}`)
       .then(() => {
         setDeleteLoading(false);
-        router.refresh();
+        router.push("/");
       })
       .catch(() => {
         setDeleteLoading(false);
