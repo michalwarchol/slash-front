@@ -1,0 +1,26 @@
+@import "../../app/colors.scss";
+
+.courseTitle {
+  margin-bottom: 20px;
+
+  .title {
+    font-size: 24px;
+
+    @media screen and (min-width: $monitor) {
+      font-size: 38px;
+    }
+  }
+
+  .likeText {
+    margin-right: 10px;
+  }
+
+  .authorButtons {
+    display: flex;
+    margin-bottom: 20px;
+
+    .authorButtonWrapper {
+      margin-right: 10px;
+    }
+  }
+}

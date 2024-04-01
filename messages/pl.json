@@ -35,6 +35,13 @@
     "subType": "Podkategoria",
     "submit": "Zapisz"
   },
+  "Course": {
+    "description": "Opis",
+    "videos": "Filmy",
+    "materials": "Materiały",
+    "deleteWarning": "Czy na pewno chcesz usunąć ten kurs?",
+    "deleteError": "Wystąpił błąd podczas usuwania kursu"
+  },
   "errors": {
     "required": "To pole jest wymagane",
     "email": "Niepoprawny adres email",
@@ -52,5 +59,25 @@
     "login": "Zaloguj",
     "register": "Zarejestruj",
     "search": "Szukaj"
+  },
+  "CourseTitle": {
+    "author": "Autor: {author}",
+    "upload": "Dodaj wideo",
+    "uploadMaterial": "Dodaj materiał",
+    "edit": "Edytuj kurs",
+    "delete": "Usuń kurs",
+    "likes": "Polubienia: {likes}",
+    "like": "Polub",
+    "dislike": "Cofnij polubienie"
+  },
+  "VideoCarouselItem": {
+    "views": "Wyświetlenia: {views}"
+  },
+  "MaterialCarouselItem": {
+    "download": "Pobierz"
+  },
+  "Carousel": {
+    "loadMore": "Załaduj więcej",
+    "noData": "Brak danych"
   }
 }

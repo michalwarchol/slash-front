@@ -1,0 +1,36 @@
+.materialCarouselItem {
+  max-width: 200px;
+  width: 100%;
+  padding: 20px;
+
+  .materialCarouselItemInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+      .download {
+        text-decoration: underline;
+      }
+    }
+
+    .iconWrapper {
+      .icon {
+        font-size: 28px;
+      }
+    }
+    .name {
+      font-size: 20px;
+    }
+
+    .size {
+      font-size: 12px;
+    }
+
+    .download {
+      font-size: 14px;
+    }
+  }
+}
