@@ -1,7 +1,7 @@
 "use client";
 
 import { Form, Formik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useRouter } from "@/app/navigation";
 import Button from "@/components/Button";
@@ -19,6 +19,7 @@ import AddCourseValidation from "./AddCourse.validation";
 import styles from "./page.module.scss";
 
 interface IProps {
+  id?: string;
   initialValues: TInitialValues;
   courseTypes: CourseTypes;
   messages: TMessages;
@@ -26,20 +27,42 @@ interface IProps {
 }
 
 export default function RegisterView({
+  id,
   initialValues,
   courseTypes,
   messages,
   errorMessages,
 }: IProps) {
-  const { push } = useRouter();
+  const { push, back } = useRouter();
   const [loading, setLoading] = useState(false);
   const [subTypes, setSubTypes] = useState<
     { id: string; name: string; value: string }[]
   >([]);
 
+  useEffect(() => {
+    const type = courseTypes.find(
+      (courseType) => courseType.name === initialValues.type
+    );
+    if (!type) {
+      return;
+    }
+
+    const newSubTypes = type.subTypes.map((subType) => ({
+      id: subType.name,
+      name: subType.value,
+      value: subType.id,
+    }));
+
+    setSubTypes(newSubTypes);
+  }, []);
+
   const onSubmit = async (values: TInitialValues) => {
     setLoading(true);
-    const { data } = await axios.post("courses/create", {
+
+    const query = id ? "courses/edit" : "courses/create";
+    const method = id ? axios.put : axios.post;
+    const { data } = await method(query, {
+      id,
       name: values.name,
       description: values.description,
       subTypeId: values.subType,
@@ -50,6 +73,10 @@ export default function RegisterView({
     if (data.success) {
       push(`/course/${data.result.id}`);
     }
+  };
+
+  const onCancel = () => {
+    back();
   };
 
   return (
@@ -128,6 +155,14 @@ export default function RegisterView({
               <div className={styles.buttons}>
                 <Button type="submit" loading={loading}>
                   {messages.submit}
+                </Button>
+                <Button
+                  type="button"
+                  onClick={onCancel}
+                  variant="text"
+                  className={styles.cancelButton}
+                >
+                  {messages.cancel}
                 </Button>
               </div>
             </Form>

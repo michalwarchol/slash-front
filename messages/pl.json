@@ -33,7 +33,11 @@
     "description": "Opis",
     "type": "Kategoria",
     "subType": "Podkategoria",
-    "submit": "Zapisz"
+    "submit": "Zapisz",
+    "cancel": "Anuluj"
+  },
+  "CourseEdit": {
+    "title": "Edytuj kurs"
   },
   "Course": {
     "description": "Opis",
