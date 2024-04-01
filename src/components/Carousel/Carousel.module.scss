@@ -1,0 +1,34 @@
+.carouselWrapper {
+  margin-top: 20px;
+
+  .carouselTitle {
+    font-size: 32px;
+    font-weight: 600;
+  }
+  .carousel {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .noItems {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: gray;
+
+    .icon {
+      font-size: 32px;
+    }
+    .noItemsText {
+      color: gray;
+    }
+  }
+  .loadMoreButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

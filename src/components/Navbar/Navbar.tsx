@@ -16,7 +16,9 @@ export default function Navbar({ type }: IProps) {
             <Link href="/add-course">
               <Button className={styles.button}>Add course</Button>
             </Link>
-            <Button className={styles.button}>My courses</Button>
+            <Link href="/course-list">
+              <Button className={styles.button}>My courses</Button>
+            </Link>
             <Button className={styles.button}>Statistics</Button>
           </div>
         )}
