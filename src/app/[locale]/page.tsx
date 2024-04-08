@@ -13,7 +13,7 @@ export default async function Home() {
   return (
     <div className={styles.wrapper}>
       <Header />
-      {user && <Navbar type={user.type} />}
+      {user && <Navbar id={user.id} type={user.type} />}
       {JSON.stringify(user)}
     </div>
   );

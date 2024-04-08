@@ -39,3 +39,24 @@ export type TCourse = {
   courseMaterials: TCourseMaterial[];
   likesCount: number;
 };
+
+export type TCourseResponse = {
+  id: string;
+  name: string;
+  description: string;
+  creator: TUser;
+  type: {
+    id: string;
+    name: string;
+    valueEn: string;
+    valuePl: string;
+    mainType: {
+      id: string;
+      name: string;
+      valueEn: string;
+      valuePl: string;
+    };
+  };
+  numberOfVideos: number;
+  numberOfLikes: number;
+};

@@ -46,6 +46,21 @@
     "deleteWarning": "Are you sure, you want to delete this course?",
     "deleteError": "An error occured during course deletion"
   },
+  "CourseList": {
+    "title": "Courses of user {name}",
+    "name": "Course name",
+    "mainType": "Category",
+    "type": "Subcategory",
+    "numberOfVideos": "Number of videos",
+    "numberOfLikes": "Number of likes",
+    "actions": "Actions",
+    "deleteWarning": "Are you sure, you want to delete this course?",
+    "deleteError": "An error occured during course deletion",
+    "asc": "Ascending",
+    "desc": "Descending",
+    "orderBy": "Order by: ",
+    "order": "Direction: "
+  },
   "errors": {
     "required": "This field is required",
     "email": "This is not a valid email",

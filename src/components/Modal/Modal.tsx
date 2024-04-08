@@ -7,7 +7,7 @@ interface IProps {
   open: boolean;
   title: string;
   confirmLoading?: boolean;
-  onConfirm: () => void;
+  onConfirm: (id?: string) => void;
   onCancel: () => void;
   content?: ReactNode;
 }
@@ -24,7 +24,7 @@ export default function Modal({
     <AntdModal
       title={title}
       open={open}
-      onOk={onConfirm}
+      onOk={() => onConfirm()}
       onCancel={onCancel}
       confirmLoading={confirmLoading}
     >
