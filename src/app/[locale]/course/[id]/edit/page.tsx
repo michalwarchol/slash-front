@@ -35,7 +35,7 @@ export default async function Home({ params: { id, locale } }: TProps) {
   return (
     <div className={styles.wrapper}>
       <Header />
-      {user && <Navbar type={user.type} />}
+      {user && <Navbar id={user.id} type={user.type} />}
       <Container
         id={id}
         userId={user.id}

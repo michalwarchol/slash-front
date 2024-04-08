@@ -5,9 +5,10 @@ import styles from "./Navbar.module.scss";
 
 interface IProps {
   type: "EDUCATOR" | "STUDENT";
+  id: string;
 }
 
-export default function Navbar({ type }: IProps) {
+export default function Navbar({ type, id }: IProps) {
   return (
     <div className={styles.navbar}>
       <div className={styles.navbarInner}>
@@ -16,7 +17,7 @@ export default function Navbar({ type }: IProps) {
             <Link href="/add-course">
               <Button className={styles.button}>Add course</Button>
             </Link>
-            <Link href="/course-list">
+            <Link href={`/course-list/${id}`}>
               <Button className={styles.button}>My courses</Button>
             </Link>
             <Button className={styles.button}>Statistics</Button>

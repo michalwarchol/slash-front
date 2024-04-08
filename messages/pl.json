@@ -46,6 +46,21 @@
     "deleteWarning": "Czy na pewno chcesz usunąć ten kurs?",
     "deleteError": "Wystąpił błąd podczas usuwania kursu"
   },
+  "CourseList": {
+    "title": "Kursy użytkownika {name}",
+    "name": "Nazwa kursu",
+    "mainType": "Kategoria",
+    "type": "Podkategoria",
+    "numberOfVideos": "Liczba wideo",
+    "numberOfLikes": "Liczba polubień",
+    "actions": "Akcje",
+    "deleteWarning": "Czy na pewno chcesz usunąć ten kurs?",
+    "deleteError": "Wystąpił błąd podczas usuwania kursu",
+    "asc": "Rosnąco",
+    "desc": "Malejąco",
+    "orderBy": "Sortuj: ",
+    "order": "Kierunek: "
+  },
   "errors": {
     "required": "To pole jest wymagane",
     "email": "Niepoprawny adres email",
