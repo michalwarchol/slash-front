@@ -22,7 +22,13 @@
       }
     }
     .name {
+      width: 160px;
       font-size: 20px;
+      text-align: center;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     .size {

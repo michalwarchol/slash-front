@@ -28,6 +28,7 @@ interface IProps {
   likes: number;
   onLikeClick: (isLike: boolean) => void;
   onDeleteClick: () => void;
+  onUploadMaterialClick: () => void;
 }
 
 export default function CourseTitle({
@@ -40,6 +41,7 @@ export default function CourseTitle({
   creator,
   onLikeClick,
   onDeleteClick,
+  onUploadMaterialClick,
 }: IProps) {
   const [isCourseLiked, setIsCourseLiked] = useState(isLiked);
   const router = useRouter();
@@ -62,7 +64,7 @@ export default function CourseTitle({
           </Link>
           <Tooltip title={t("CourseTitle.uploadMaterial")}>
             <div className={styles.authorButtonWrapper}>
-              <Button>
+              <Button onClick={onUploadMaterialClick}>
                 <FileAddOutlined />
               </Button>
             </div>

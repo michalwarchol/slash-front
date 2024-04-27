@@ -29,10 +29,16 @@ export default function Carousel({
     <div className={styles.carouselWrapper}>
       <div className={styles.carouselTitle}>{title}</div>
       <div className={styles.carousel}>{items}</div>
-      <div className={styles.noItems}>
-        <FileExclamationOutlined className={styles.icon} />
-        <Paragraph className={styles.noItemsText}>{t("Carousel.noData")}</Paragraph>
-      </div>
+      {items.length === 0 && (
+        <>
+          <div className={styles.noItems}>
+            <FileExclamationOutlined className={styles.icon} />
+            <Paragraph className={styles.noItemsText}>
+              {t("Carousel.noData")}
+            </Paragraph>
+          </div>
+        </>
+      )}
       {isLoadMore && (
         <div className={styles.loadMoreButton}>
           <Button onClick={onLoadMore}>{t("Carousel.loadMore")}</Button>

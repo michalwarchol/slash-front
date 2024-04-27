@@ -44,7 +44,11 @@
     "videos": "Videos",
     "materials": "Materials",
     "deleteWarning": "Are you sure, you want to delete this course?",
-    "deleteError": "An error occured during course deletion"
+    "deleteError": "An error occured during course deletion",
+    "materialUploadedSuccessFully": "Material uploaded successfully",
+    "deleteMaterialWarning": "Are you sure, you want to delete this material?",
+    "deleteMaterialError": "An error occured during material deletion",
+    "materialDeletedSuccessFully": "Material deleted successfully"
   },
   "CourseList": {
     "title": "Courses of user {name}",
@@ -98,5 +102,9 @@
   "Carousel": {
     "loadMore": "Load more",
     "noData": "No data"
+  },
+  "DropzoneModal": {
+    "uploadText": "Click or drag file to this area to upload",
+    "uploadHint": "Support for a single file."
   }
 }

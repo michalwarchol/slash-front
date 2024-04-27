@@ -44,7 +44,11 @@
     "videos": "Filmy",
     "materials": "Materiały",
     "deleteWarning": "Czy na pewno chcesz usunąć ten kurs?",
-    "deleteError": "Wystąpił błąd podczas usuwania kursu"
+    "deleteError": "Wystąpił błąd podczas usuwania kursu",
+    "materialUploadedSuccessFully": "Materiał dodany pomyślnie",
+    "deleteMaterialWarning": "Czy na pewno chcesz usunąć ten materiał?",
+    "deleteMaterialError": "Wystąpił błąd podczas usuwania materiału",
+    "materialDeletedSuccessFully": "Materiał usunięty pomyślnie"
   },
   "CourseList": {
     "title": "Kursy użytkownika {name}",
@@ -98,5 +102,9 @@
   "Carousel": {
     "loadMore": "Załaduj więcej",
     "noData": "Brak danych"
+  },
+  "DropzoneModal": {
+    "uploadText": "Kliknij lub przeciągnij plik do tego obszaru, aby go przesłać",
+    "uploadHint": "Wsparcie dla jednego pliku."
   }
 }
