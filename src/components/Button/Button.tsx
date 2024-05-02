@@ -10,6 +10,7 @@ interface IProps {
   variant?: "default" | "primary" | "dashed" | "link" | "text";
   className?: string;
   loading?: boolean;
+  disabled?: boolean;
 }
 
 export default function Button({
@@ -19,6 +20,7 @@ export default function Button({
   variant = "primary",
   loading = false,
   className,
+  disabled = false,
 }: IProps) {
   return (
     <AntdButton
@@ -28,7 +30,7 @@ export default function Button({
       className={cls(className, {
         [styles.buttonDisabled]: loading,
       })}
-      disabled={loading}
+      disabled={loading || disabled}
     >
       {loading ? <Spin /> : children}
     </AntdButton>
