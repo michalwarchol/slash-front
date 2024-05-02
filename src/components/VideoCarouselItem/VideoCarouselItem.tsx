@@ -42,7 +42,7 @@ export default function VideoCarouselItem({
                   height="189px"
                   preview={false}
                 />
-                {duration && (
+                {duration !== undefined && (
                   <div className={styles.duration}>
                     {secondsToTime(duration)}
                   </div>
@@ -50,7 +50,7 @@ export default function VideoCarouselItem({
               </div>
               <div className={styles.info}>
                 <div className={styles.videoTitle}>{name}</div>
-                {views && (
+                {views !== undefined && (
                   <Text>
                     {t("VideoCarouselItem.views", {
                       views: views.toLocaleString(),
