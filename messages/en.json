@@ -65,6 +65,16 @@
     "orderBy": "Order by: ",
     "order": "Direction: "
   },
+  "CourseUpload": {
+    "title": "Upload new video",
+    "name": "Video title",
+    "description": "Description",
+    "thumbnail": "Thumbnail",
+    "video": "Video",
+    "uploadButton": "Click to upload",
+    "submit": "Upload",
+    "cancel": "Cancel"
+  },
   "errors": {
     "required": "This field is required",
     "email": "This is not a valid email",
