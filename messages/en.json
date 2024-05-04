@@ -75,6 +75,11 @@
     "submit": "Upload",
     "cancel": "Cancel"
   },
+  "CourseWatch": {
+    "views": "Views: {views}",
+    "description": "Description",
+    "rates": "Rates:"
+  },
   "errors": {
     "required": "This field is required",
     "email": "This is not a valid email",

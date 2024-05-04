@@ -75,6 +75,11 @@
     "submit": "Prześlij",
     "cancel": "Anuluj"
   },
+  "CourseWatch": {
+    "views": "Wyświetlenia: {views}",
+    "description": "Opis",
+    "rates": "Oceny:"
+  },
   "errors": {
     "required": "To pole jest wymagane",
     "email": "Niepoprawny adres email",

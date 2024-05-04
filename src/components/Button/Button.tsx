@@ -28,7 +28,7 @@ export default function Button({
       onClick={onClick}
       htmlType={type}
       className={cls(className, {
-        [styles.buttonDisabled]: loading,
+        [styles.buttonDisabled]: loading || disabled,
       })}
       disabled={loading || disabled}
     >

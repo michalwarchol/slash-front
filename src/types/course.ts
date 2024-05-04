@@ -40,23 +40,37 @@ export type TCourse = {
   likesCount: number;
 };
 
+type TFullType = {
+  id: string;
+  name: string;
+  valueEn: string;
+  valuePl: string;
+  mainType: {
+    id: string;
+    name: string;
+    valueEn: string;
+    valuePl: string;
+  };
+};
+
 export type TCourseResponse = {
   id: string;
   name: string;
   description: string;
   creator: TUser;
-  type: {
-    id: string;
-    name: string;
-    valueEn: string;
-    valuePl: string;
-    mainType: {
-      id: string;
-      name: string;
-      valueEn: string;
-      valuePl: string;
-    };
-  };
+  type: TFullType;
   numberOfVideos: number;
   numberOfLikes: number;
+};
+
+export type TVideoResponse = TCourseVideo & {
+  course: {
+    id: string;
+    name: string;
+    description: string;
+    creator: TUser;
+    type: TFullType;
+  };
+  previousVideoId: string | null;
+  nextVideoId: string | null;
 };

@@ -1,5 +1,5 @@
 import "../globals.scss";
-import "../colors.scss";
+import "../colors.module.scss";
 
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider } from "antd";

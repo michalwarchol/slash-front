@@ -1,0 +1,64 @@
+@import "../../../../../colors.module.scss";
+
+.wrapper {
+  min-height: 100vh;
+
+  .contentContainer {
+    padding: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .contentContainerInner {
+      width: 100%;
+
+      @media screen and (min-width: $monitor) {
+        max-width: $monitor;
+      }
+    }
+
+    .videoInfo {
+      .videoTitleWrapper {
+        margin-top: 10px;
+      }
+
+      .authorAndViews {
+        display: flex;
+        align-items: center;
+
+        a {
+          text-decoration: none;
+        }
+
+        .author {
+          display: flex;
+          align-items: center;
+          margin-right: 10px;
+          padding: 6px;
+          border-radius: 10px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+          }
+
+          .authorName {
+            margin-left: 10px;
+            font-weight: 600;
+            text-decoration: none;
+          }
+        }
+
+        .videoViews {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .divider {
+      border-inline-start-width: 2px;
+      background-color: $primary;
+      height: 2px;
+    }
+  }
+}
