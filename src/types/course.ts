@@ -40,23 +40,25 @@ export type TCourse = {
   likesCount: number;
 };
 
+export type TFullType = {
+  id: string;
+  name: string;
+  valueEn: string;
+  valuePl: string;
+  mainType: {
+    id: string;
+    name: string;
+    valueEn: string;
+    valuePl: string;
+  };
+};
+
 export type TCourseResponse = {
   id: string;
   name: string;
   description: string;
   creator: TUser;
-  type: {
-    id: string;
-    name: string;
-    valueEn: string;
-    valuePl: string;
-    mainType: {
-      id: string;
-      name: string;
-      valueEn: string;
-      valuePl: string;
-    };
-  };
+  type: TFullType;
   numberOfVideos: number;
   numberOfLikes: number;
 };

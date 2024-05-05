@@ -35,7 +35,7 @@ export default function CourseUploadContainer({
     formData.append("description", values.description);
 
     try {
-      const { data } = await axios.post(`/courses/video/${id}`, formData, {
+      const { data } = await axios.post(`/video/${id}`, formData, {
         headers: {
           "Content-Type": `multipart/form-data;`,
         },

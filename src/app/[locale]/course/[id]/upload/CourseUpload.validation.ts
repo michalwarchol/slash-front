@@ -7,5 +7,5 @@ export default (errorMessages: TErrorMessages) =>
     name: string().required(errorMessages.required),
     description: string().required(errorMessages.required),
     thumbnail: mixed().required(errorMessages.required),
-    //video: mixed().required(errorMessages.required),
+    video: mixed().required(errorMessages.required),
   });

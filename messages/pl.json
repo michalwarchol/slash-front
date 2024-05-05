@@ -75,6 +75,18 @@
     "submit": "Prześlij",
     "cancel": "Anuluj"
   },
+  "CourseWatch": {
+    "views": "Wyświetlenia: {views}",
+    "description": "Opis",
+    "rates": "Oceny:",
+    "comments": "Komentarze",
+    "createdAt": "Data dodania",
+    "asc": "Rosnąco",
+    "desc": "Malejąco",
+    "addComment": "Dodaj komentarz",
+    "comment": "Skomentuj",
+    "loadMoreComments": "Załaduj więcej komentarzy"
+  },
   "errors": {
     "required": "To pole jest wymagane",
     "email": "Niepoprawny adres email",
