@@ -1,5 +1,7 @@
-import { TVideoResponse } from "@/types/course";
+import { TVideoResponse } from "@/types/video";
 import axios from "@/utils/axios";
+
+import { TAddCommentInput } from "./VideoWatch.types";
 
 export async function getVideo(
   id: string,
@@ -30,4 +32,24 @@ export async function getVideo(
       },
     },
   };
+}
+
+export async function getComments(
+  id: string,
+  page: number,
+  perPage: number,
+  orderBy: string,
+  order: string
+) {
+  const { data } = await axios.get(
+    `/video/${id}/comments?page=${page}&perPage=${perPage}&orderBy=${orderBy}&order=${order}`
+  );
+
+  return data;
+}
+
+export async function addComment({ videoId, text }: TAddCommentInput) {
+  return axios.post(`/video/${videoId}/comments`, {
+    text,
+  });
 }

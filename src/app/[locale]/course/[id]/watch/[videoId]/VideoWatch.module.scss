@@ -60,5 +60,47 @@
       background-color: $primary;
       height: 2px;
     }
+
+    .commentsWrapper {
+      .commentsHeaders {
+        display: flex;
+
+        .commentsTitle {
+          margin-right: 20px;
+        }
+
+        .commentsSettings {
+          width: 50%;
+
+          .settingsWrapper {
+            display: flex;
+
+            .inputWrapper {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+
+      .commentAddWrapper {
+        .commentAddForm {
+          display: flex;
+
+          .input {
+            width: 100%;
+            margin-right: 10px;
+          }
+        }
+      }
+
+      .comments {
+        .loadMoreComments {
+          margin-top: 10px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
   }
 }

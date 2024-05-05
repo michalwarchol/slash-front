@@ -78,7 +78,14 @@
   "CourseWatch": {
     "views": "Wyświetlenia: {views}",
     "description": "Opis",
-    "rates": "Oceny:"
+    "rates": "Oceny:",
+    "comments": "Komentarze",
+    "createdAt": "Data dodania",
+    "asc": "Rosnąco",
+    "desc": "Malejąco",
+    "addComment": "Dodaj komentarz",
+    "comment": "Skomentuj",
+    "loadMoreComments": "Załaduj więcej komentarzy"
   },
   "errors": {
     "required": "To pole jest wymagane",

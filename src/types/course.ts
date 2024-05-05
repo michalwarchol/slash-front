@@ -40,7 +40,7 @@ export type TCourse = {
   likesCount: number;
 };
 
-type TFullType = {
+export type TFullType = {
   id: string;
   name: string;
   valueEn: string;
@@ -61,16 +61,4 @@ export type TCourseResponse = {
   type: TFullType;
   numberOfVideos: number;
   numberOfLikes: number;
-};
-
-export type TVideoResponse = TCourseVideo & {
-  course: {
-    id: string;
-    name: string;
-    description: string;
-    creator: TUser;
-    type: TFullType;
-  };
-  previousVideoId: string | null;
-  nextVideoId: string | null;
 };
