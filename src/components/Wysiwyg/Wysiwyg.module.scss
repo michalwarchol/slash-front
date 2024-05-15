@@ -1,0 +1,46 @@
+@import "../../app/colors.module.scss";
+
+.wysiwyg {
+  width: 100%;
+
+  .edit {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    outline: 0;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.4);
+    min-height: 200px;
+    font-size: 16px;
+
+    ul,
+    ol {
+      margin-left: 32px;
+    }
+  }
+
+  .editError {
+    border: 1px solid $error;
+  }
+
+  .options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .optionsSecondRow {
+    display: flex;
+  }
+
+  .selectWrapper {
+    width: 200px;
+    margin-right: 20px;
+  }
+
+  .errorMessage {
+    color: $error;
+    font-size: 12px;
+    margin-top: 4px;
+    padding-left: 4px;
+  }
+}

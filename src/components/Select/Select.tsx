@@ -1,4 +1,5 @@
 import { Select as AntdSelect } from "antd";
+import { FocusEventHandler } from "react";
 
 import withFormField from "../withFormField";
 import styles from "./Select.module.scss";
@@ -13,6 +14,7 @@ interface IProps {
   name: string;
   value: string;
   onChange: (value: { currentTarget: { name: string; value: string } }) => void;
+  onFocus: FocusEventHandler<HTMLElement> | undefined;
   onBlur: () => void;
   error: object;
   options: ISelectOption[];
@@ -25,6 +27,7 @@ function Select({
   value,
   error,
   onBlur,
+  onFocus,
   onChange,
   options,
   placeholder,
@@ -34,6 +37,7 @@ function Select({
     <AntdSelect
       rootClassName={styles.select}
       value={value}
+      onFocus={onFocus}
       onChange={(newValue) =>
         onChange({
           currentTarget: {

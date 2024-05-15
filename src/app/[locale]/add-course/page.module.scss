@@ -20,11 +20,6 @@
 
       .contentWrapper {
         width: 100%;
-
-        @media screen and (min-width: $monitor) {
-          width: 50%;
-        }
-
         .titleWrapper {
           color: $primary;
           font-size: 20px;
@@ -58,6 +53,13 @@
             .input {
               width: 100%;
 
+              @media screen and (min-width: $monitor) {
+                width: 50%;
+              }
+            }
+
+            .inputWide {
+              width: 100%;
               @media screen and (min-width: $monitor) {
                 width: 50%;
               }

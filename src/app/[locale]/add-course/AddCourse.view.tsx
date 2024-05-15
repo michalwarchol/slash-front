@@ -7,6 +7,7 @@ import { useRouter } from "@/app/navigation";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Select from "@/components/Select";
+import Wysiwyg from "@/components/Wysiwyg";
 import axios from "@/utils/axios";
 
 import {
@@ -144,11 +145,10 @@ export default function RegisterView({
               </div>
               <div className={styles.inputWrapper}>
                 <div className={styles.label}>{messages.description}</div>
-                <div className={styles.input}>
-                  <Input
+                <div className={styles.inputWide}>
+                  <Wysiwyg
                     name="description"
-                    htmlType="textarea"
-                    placeholder={messages.description}
+                    initialValue={initialValues.description}
                   />
                 </div>
               </div>
