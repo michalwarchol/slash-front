@@ -20,5 +20,12 @@
         display: flex;
       }
     }
+
+    .description {
+      ul,
+      ol {
+        margin-left: 32px;
+      }
+    }
   }
 }

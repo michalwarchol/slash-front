@@ -149,7 +149,12 @@ export default function CourseView({
             {
               key: "1",
               label: t("Course.description"),
-              children: <p>{course.description}</p>,
+              children: (
+                <div
+                  className={styles.description}
+                  dangerouslySetInnerHTML={{ __html: course.description }}
+                ></div>
+              ),
             },
           ]}
         />

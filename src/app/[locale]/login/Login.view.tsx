@@ -55,7 +55,7 @@ export default function RegisterView({
       path: "/",
     });
 
-    window.location.href = '/';
+    window.location.href = "/";
   };
 
   return (
