@@ -11,3 +11,7 @@ export type TAddCommentInput = {
 export type TAddCommentValues = {
   text: string;
 };
+
+export type TIncreaseViewsInput = {
+  id: string;
+};

@@ -27,6 +27,7 @@ interface IProps {
   courseId: string;
   previousVideoId: string | null;
   nextVideoId: string | null;
+  timeUpdateCallback?: (e: SyntheticEvent<HTMLVideoElement>) => void;
 }
 
 function VideoPlayer({
@@ -36,6 +37,7 @@ function VideoPlayer({
   courseId,
   previousVideoId,
   nextVideoId,
+  timeUpdateCallback,
 }: IProps) {
   const { push } = useRouter();
   const [currentTime, setCurrentTime] = useState(0);
@@ -78,6 +80,10 @@ function VideoPlayer({
   };
 
   const onTimeUpdate = (e: SyntheticEvent<HTMLVideoElement>) => {
+    if (timeUpdateCallback) {
+      timeUpdateCallback(e);
+    }
+
     if (e.currentTarget.currentTime > duration) {
       setCurrentTime(duration);
       setPaused(true);
