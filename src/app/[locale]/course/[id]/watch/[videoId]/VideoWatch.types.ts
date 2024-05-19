@@ -1,7 +1,7 @@
 export type TCommentsSettings = {
   orderBy: string;
-  order: 'ASC' | 'DESC';
-}
+  order: "ASC" | "DESC";
+};
 
 export type TAddCommentInput = {
   videoId: string;
@@ -14,4 +14,10 @@ export type TAddCommentValues = {
 
 export type TIncreaseViewsInput = {
   id: string;
+};
+
+export type TAddEditRatingInput = {
+  videoId: string;
+  rating: number;
+  id?: string;
 };

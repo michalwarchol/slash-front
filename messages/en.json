@@ -78,7 +78,8 @@
   "CourseWatch": {
     "views": "Views: {views}",
     "description": "Description",
-    "rates": "Rates:",
+    "avgRating": "Avarage rating: {rating}",
+    "rate": "Rate: ",
     "comments": "Comments",
     "createdAt": "Creation date",
     "asc": "Ascending",

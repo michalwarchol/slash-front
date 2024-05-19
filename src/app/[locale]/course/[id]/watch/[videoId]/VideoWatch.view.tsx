@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar, Divider, Typography } from "antd";
+import { Avatar, Divider, Rate, Typography } from "antd";
 import { Form, Formik, FormikHelpers } from "formik";
 import { SyntheticEvent, useState } from "react";
 import { useTranslations } from "use-intl";
@@ -26,6 +26,7 @@ const { Title, Text } = Typography;
 
 interface IProps {
   data: TVideoResponse;
+  userType?: "STUDENT" | "EDUCATOR";
   comments: TComment[];
   commentsPagination: TPagination;
   addCommentLoading: boolean;
@@ -38,10 +39,12 @@ interface IProps {
     formikBag: FormikHelpers<TAddCommentValues>
   ) => Promise<void>;
   onIncreaseViews: () => void;
+  onRate: (rating: number, id?: string) => Promise<void>;
 }
 
 export default function VideoWatchView({
   data,
+  userType,
   comments,
   commentsPagination,
   addCommentLoading,
@@ -51,6 +54,7 @@ export default function VideoWatchView({
   onFetchMoreComments,
   onAddComment,
   onIncreaseViews,
+  onRate,
 }: IProps) {
   const t = useTranslations();
   const [viewIncreased, setViewIncreased] = useState(false);
@@ -90,6 +94,27 @@ export default function VideoWatchView({
             <Text className={styles.videoViews}>
               {t("CourseWatch.views", { views: data.views })}
             </Text>
+            {userType === "STUDENT" && (
+              <div className={styles.rate}>
+                <Text className={styles.videoRating}>
+                  {t("CourseWatch.rate")}
+                </Text>
+                <Rate
+                  allowHalf
+                  defaultValue={data.myRating ? data.myRating.rating / 2 : 0}
+                  onChange={(value) => {
+                    onRate(value * 2, data.myRating?.id);
+                  }}
+                />
+              </div>
+            )}
+            <div className={styles.rate}>
+              <Text className={styles.videoRating}>
+                {t("CourseWatch.avgRating", {
+                  rating: data.rating.toFixed(2),
+                })}
+              </Text>
+            </div>
           </div>
         </div>
         <Divider type="horizontal" className={styles.divider} />

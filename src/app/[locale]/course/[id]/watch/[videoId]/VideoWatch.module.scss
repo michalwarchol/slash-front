@@ -52,6 +52,16 @@
         .videoViews {
           font-size: 14px;
         }
+
+        .rate {
+          display: flex;
+          align-items: center;
+          margin-left: 10px;
+
+          .videoRating {
+            margin-right: 4px;
+          }
+        }
       }
     }
 

@@ -1,7 +1,7 @@
-import { TVideoResponse } from "@/types/video";
+import { TVideoRating, TVideoResponse } from "@/types/video";
 import axios from "@/utils/axios";
 
-import { TAddCommentInput, TIncreaseViewsInput } from "./VideoWatch.types";
+import { TAddCommentInput, TAddEditRatingInput, TIncreaseViewsInput } from "./VideoWatch.types";
 
 export async function getVideo(
   id: string,
@@ -12,6 +12,8 @@ export async function getVideo(
   if (!data) {
     return null;
   }
+
+  const { data: ratingData } = await axios.get(`/video/${id}/rating`);
 
   const type = data.course.type;
   const mainType = data.course.type.mainType;
@@ -31,6 +33,7 @@ export async function getVideo(
         },
       },
     },
+    myRating: ratingData || null,
   };
 }
 
@@ -56,4 +59,11 @@ export async function addComment({ videoId, text }: TAddCommentInput) {
 
 export async function increaseViews({ id }: TIncreaseViewsInput) {
   return axios.put(`/video/${id}/views`);
+}
+
+export async function addEditRating({ videoId, rating, id }: TAddEditRatingInput) {
+  return axios.post<{success: boolean, result: TVideoRating}>(`/video/${videoId}/rate`, {
+    id,
+    rating,
+  });
 }

@@ -11,6 +11,7 @@ import { TComment, TVideoResponse } from "@/types/video";
 import { TAddCommentValues } from "./VideoWatch.types";
 import {
   addComment,
+  addEditRating,
   getComments,
   getVideo,
   increaseViews,
@@ -22,9 +23,14 @@ interface IProps {
   locale: string;
   videoId: string;
   userId?: string;
+  userType?: "STUDENT" | "EDUCATOR";
 }
 
-export default function VideoWatchContainer({ videoId, locale }: IProps) {
+export default function VideoWatchContainer({
+  videoId,
+  locale,
+  userType,
+}: IProps) {
   const { back } = useRouter();
   const [firstLoad, setFirstLoad] = useState<boolean>(true);
 
@@ -120,6 +126,16 @@ export default function VideoWatchContainer({ videoId, locale }: IProps) {
     increaseViews({ id: videoId });
   };
 
+  const onRate = async (rating: number, id?: string) => {
+    const result = await addEditRating({ videoId, rating, id });
+    if (result.data.success && data) {
+      setData({
+        ...data,
+        myRating: result.data.result,
+      });
+    }
+  };
+
   if (!data) {
     return null;
   }
@@ -129,6 +145,7 @@ export default function VideoWatchContainer({ videoId, locale }: IProps) {
   ) : (
     <View
       data={data}
+      userType={userType}
       comments={comments}
       commentsPagination={commentsPagination}
       loadingComments={loadingComments}
@@ -138,6 +155,7 @@ export default function VideoWatchContainer({ videoId, locale }: IProps) {
       onSetOrderBy={onSetOrderBy}
       onAddComment={onAddComment}
       onIncreaseViews={onIncreaseViews}
+      onRate={onRate}
     />
   );
 }
