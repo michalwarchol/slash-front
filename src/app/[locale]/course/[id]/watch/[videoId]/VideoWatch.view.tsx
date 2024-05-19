@@ -158,21 +158,23 @@ export default function VideoWatchView({
               </Formik>
             </div>
           </div>
-          <div className={styles.commentAddWrapper}>
-            <Formik onSubmit={onAddComment} initialValues={{ text: "" }}>
-              <Form>
-                <Title level={5}>{t("CourseWatch.addComment")}</Title>
-                <div className={styles.commentAddForm}>
-                  <div className={styles.input}>
-                    <Input name="text" />
+          {userType === "STUDENT" && (
+            <div className={styles.commentAddWrapper}>
+              <Formik onSubmit={onAddComment} initialValues={{ text: "" }}>
+                <Form>
+                  <Title level={5}>{t("CourseWatch.addComment")}</Title>
+                  <div className={styles.commentAddForm}>
+                    <div className={styles.input}>
+                      <Input name="text" />
+                    </div>
+                    <Button loading={addCommentLoading} type="submit">
+                      {t("CourseWatch.comment")}
+                    </Button>
                   </div>
-                  <Button loading={addCommentLoading} type="submit">
-                    {t("CourseWatch.comment")}
-                  </Button>
-                </div>
-              </Form>
-            </Formik>
-          </div>
+                </Form>
+              </Formik>
+            </div>
+          )}
           <div className={styles.comments}>
             <div className={styles.commentList}>
               {comments.map((comment) => (
