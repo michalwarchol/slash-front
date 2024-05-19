@@ -1,7 +1,7 @@
 import { TVideoResponse } from "@/types/video";
 import axios from "@/utils/axios";
 
-import { TAddCommentInput } from "./VideoWatch.types";
+import { TAddCommentInput, TIncreaseViewsInput } from "./VideoWatch.types";
 
 export async function getVideo(
   id: string,
@@ -52,4 +52,8 @@ export async function addComment({ videoId, text }: TAddCommentInput) {
   return axios.post(`/video/${videoId}/comments`, {
     text,
   });
+}
+
+export async function increaseViews({ id }: TIncreaseViewsInput) {
+  return axios.put(`/video/${id}/views`);
 }

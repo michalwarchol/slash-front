@@ -2,6 +2,7 @@
 
 import { Avatar, Divider, Typography } from "antd";
 import { Form, Formik, FormikHelpers } from "formik";
+import { SyntheticEvent, useState } from "react";
 import { useTranslations } from "use-intl";
 
 import { Link } from "@/app/navigation";
@@ -36,6 +37,7 @@ interface IProps {
     values: TAddCommentValues,
     formikBag: FormikHelpers<TAddCommentValues>
   ) => Promise<void>;
+  onIncreaseViews: () => void;
 }
 
 export default function VideoWatchView({
@@ -48,8 +50,10 @@ export default function VideoWatchView({
   onSetOrder,
   onFetchMoreComments,
   onAddComment,
+  onIncreaseViews,
 }: IProps) {
   const t = useTranslations();
+  const [viewIncreased, setViewIncreased] = useState(false);
 
   return (
     <div className={styles.contentContainer}>
@@ -61,6 +65,14 @@ export default function VideoWatchView({
           courseId={data.course.id}
           previousVideoId={data.previousVideoId}
           nextVideoId={data.nextVideoId}
+          timeUpdateCallback={({
+            currentTarget: { duration, currentTime },
+          }: SyntheticEvent<HTMLVideoElement>) => {
+            if (currentTime > duration / 3 && !viewIncreased) {
+              setViewIncreased(true);
+              onIncreaseViews();
+            }
+          }}
         />
         <div className={styles.videoInfo}>
           <div className={styles.videoTitleWrapper}>

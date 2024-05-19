@@ -9,7 +9,12 @@ import { TPagination } from "@/types/pagination";
 import { TComment, TVideoResponse } from "@/types/video";
 
 import { TAddCommentValues } from "./VideoWatch.types";
-import { addComment, getComments, getVideo } from "./VideoWatch.utils";
+import {
+  addComment,
+  getComments,
+  getVideo,
+  increaseViews,
+} from "./VideoWatch.utils";
 import View from "./VideoWatch.view";
 
 interface IProps {
@@ -111,6 +116,10 @@ export default function VideoWatchContainer({ videoId, locale }: IProps) {
     });
   };
 
+  const onIncreaseViews = () => {
+    increaseViews({ id: videoId });
+  };
+
   if (!data) {
     return null;
   }
@@ -128,6 +137,7 @@ export default function VideoWatchContainer({ videoId, locale }: IProps) {
       onSetOrder={onSetOrder}
       onSetOrderBy={onSetOrderBy}
       onAddComment={onAddComment}
+      onIncreaseViews={onIncreaseViews}
     />
   );
 }
