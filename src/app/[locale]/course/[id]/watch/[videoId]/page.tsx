@@ -26,6 +26,7 @@ export default async function VideoWatch({ params }: TProps) {
       <Container
         id={params.id}
         userId={user?.id}
+        userType={user.type}
         locale={params.locale}
         videoId={params.videoId}
       />

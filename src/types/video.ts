@@ -11,6 +11,11 @@ export type TVideoResponse = TCourseVideo & {
   };
   previousVideoId: string | null;
   nextVideoId: string | null;
+  rating: number;
+  myRating: {
+    id: string;
+    rating: number;
+  } | null;
 };
 
 export type TComment = {
@@ -19,4 +24,9 @@ export type TComment = {
   author: TUser;
   createdAt: Date;
   updatedAt: Date;
-}
+};
+
+export type TVideoRating = {
+  id: string;
+  rating: number;
+};

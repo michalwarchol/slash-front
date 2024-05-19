@@ -78,7 +78,8 @@
   "CourseWatch": {
     "views": "Wyświetlenia: {views}",
     "description": "Opis",
-    "rates": "Oceny:",
+    "avgRating": "Ocena średnia: {rating}",
+    "rate": "Oceń: ",
     "comments": "Komentarze",
     "createdAt": "Data dodania",
     "asc": "Rosnąco",
