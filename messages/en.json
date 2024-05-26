@@ -87,7 +87,10 @@
     "desc": "Descending",
     "addComment": "Add a comment",
     "comment": "Comment",
-    "loadMoreComments": "Load more comments"
+    "loadMoreComments": "Load more comments",
+    "delete": "Delete video",
+    "deleteWarning": "Are you sure, you want to delete this video?",
+    "deleteError": "An error occured during video deletion"
   },
   "VideoEdit": {
     "title": "Video data edit",
