@@ -76,6 +76,7 @@
     "cancel": "Cancel"
   },
   "CourseWatch": {
+    "edit": "Edit",
     "views": "Views: {views}",
     "description": "Description",
     "avgRating": "Avarage rating: {rating}",
@@ -87,6 +88,10 @@
     "addComment": "Add a comment",
     "comment": "Comment",
     "loadMoreComments": "Load more comments"
+  },
+  "VideoEdit": {
+    "title": "Video data edit",
+    "save": "Save"
   },
   "errors": {
     "required": "This field is required",

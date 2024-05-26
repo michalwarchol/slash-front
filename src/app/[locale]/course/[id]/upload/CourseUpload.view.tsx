@@ -5,17 +5,18 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Upload from "@/components/Upload";
 
-import { initialValues } from "./CourseUpload.consts";
 import styles from "./CourseUpload.module.scss";
 import { TErrorMessages, TFormValues, TMessages } from "./CourseUpload.types";
 import validationSchema from "./CourseUpload.validation";
 
 interface IProps {
+  isEdit?: boolean;
   messages: TMessages;
   errorMessages: TErrorMessages;
   loading: boolean;
   onSubmit: (values: TFormValues) => void;
   onCancel: () => void;
+  initialValues: TFormValues;
 }
 
 export default function CourseUploadView({
@@ -24,6 +25,8 @@ export default function CourseUploadView({
   loading,
   onSubmit,
   onCancel,
+  initialValues,
+  isEdit = false,
 }: IProps) {
   return (
     <div className={styles.contentContainer}>
@@ -33,7 +36,7 @@ export default function CourseUploadView({
           <Formik
             initialValues={initialValues}
             onSubmit={onSubmit}
-            validationSchema={validationSchema(errorMessages)}
+            validationSchema={validationSchema(errorMessages, isEdit)}
           >
             {({ setFieldValue }) => (
               <Form className={styles.form}>
@@ -53,34 +56,38 @@ export default function CourseUploadView({
                     />
                   </div>
                 </div>
-                <div className={styles.inputWrapper}>
-                  <div className={styles.label}>{messages.thumbnail}</div>
-                  <div className={styles.input}>
-                    <Upload
-                      name="thumbnail"
-                      accept="image/jpeg,image/png"
-                      placeholder={messages.uploadButton}
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      handleChange={(file: UploadFile<any> | null) => {
-                        setFieldValue("thumbnail", file);
-                      }}
-                    />
-                  </div>
-                </div>
-                <div className={styles.inputWrapper}>
-                  <div className={styles.label}>{messages.video}</div>
-                  <div className={styles.input}>
-                    <Upload
-                      name="video"
-                      accept="video/mp4,video/mpeg,video/x-msvideo,video/ogg"
-                      placeholder={messages.uploadButton}
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      handleChange={(file: UploadFile<any> | null) => {
-                        setFieldValue("video", file);
-                      }}
-                    />
-                  </div>
-                </div>
+                {!isEdit && (
+                  <>
+                    <div className={styles.inputWrapper}>
+                      <div className={styles.label}>{messages.thumbnail}</div>
+                      <div className={styles.input}>
+                        <Upload
+                          name="thumbnail"
+                          accept="image/jpeg,image/png"
+                          placeholder={messages.uploadButton}
+                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                          handleChange={(file: UploadFile<any> | null) => {
+                            setFieldValue("thumbnail", file);
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className={styles.inputWrapper}>
+                      <div className={styles.label}>{messages.video}</div>
+                      <div className={styles.input}>
+                        <Upload
+                          name="video"
+                          accept="video/mp4,video/mpeg,video/x-msvideo,video/ogg"
+                          placeholder={messages.uploadButton}
+                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                          handleChange={(file: UploadFile<any> | null) => {
+                            setFieldValue("video", file);
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </>
+                )}
                 <div className={styles.buttons}>
                   <Button type="submit" loading={loading}>
                     {messages.submit}
