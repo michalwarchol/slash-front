@@ -1,18 +1,22 @@
 "use client";
 
-import { Avatar, Divider, Rate, Typography } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
+import { Avatar, Divider, message, Rate, Tooltip, Typography } from "antd";
 import { Form, Formik, FormikHelpers } from "formik";
 import { SyntheticEvent, useState } from "react";
 import { useTranslations } from "use-intl";
 
+import { useRouter } from "@/app/navigation";
 import { Link } from "@/app/navigation";
 import Button from "@/components/Button";
 import Comment from "@/components/Comment";
 import Input from "@/components/Input";
+import Modal from "@/components/Modal";
 import Select from "@/components/Select";
 import VideoPlayer from "@/components/VideoPlayer";
 import { TPagination } from "@/types/pagination";
 import { TComment, TVideoResponse } from "@/types/video";
+import axios from "@/utils/axios";
 
 import {
   commentsSettingsInitialValues,
@@ -58,9 +62,28 @@ export default function VideoWatchView({
 }: IProps) {
   const t = useTranslations();
   const [viewIncreased, setViewIncreased] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [messageApi, contextHolder] = message.useMessage();
+  const { push } = useRouter();
+
+  const deleteVideo = async () => {
+    setDeleteLoading(true);
+    await axios
+      .delete(`/video/${data.id}`)
+      .then(() => {
+        setDeleteLoading(false);
+        push(`/course/${data.course.id}`);
+      })
+      .catch(() => {
+        setDeleteLoading(false);
+        messageApi.error(t("CourseWatch.deleteError"));
+      });
+  };
 
   return (
     <div className={styles.contentContainer}>
+      {contextHolder}
       <div className={styles.contentContainerInner}>
         <VideoPlayer
           src={data.link}
@@ -82,6 +105,13 @@ export default function VideoWatchView({
           <Link href={`/course/${data.course.id}/watch/${data.id}/edit`}>
             <Button type="button">{t("CourseWatch.edit")}</Button>
           </Link>
+          <Tooltip title={t("CourseWatch.delete")}>
+            <div className={styles.deleteButton}>
+              <Button onClick={() => setDeleteModalOpen(true)}>
+                <DeleteOutlined />
+              </Button>
+            </div>
+          </Tooltip>
         </div>
         <div className={styles.videoInfo}>
           <div className={styles.videoTitleWrapper}>
@@ -198,6 +228,13 @@ export default function VideoWatchView({
           </div>
         </div>
       </div>
+      <Modal
+        open={deleteModalOpen}
+        title={t("CourseWatch.deleteWarning")}
+        onConfirm={deleteVideo}
+        onCancel={() => setDeleteModalOpen(false)}
+        confirmLoading={deleteLoading}
+      />
     </div>
   );
 }

@@ -19,6 +19,11 @@
 
     .authorActions {
       margin-top: 10px;
+      display: flex;
+
+      .deleteButton {
+        margin-left: 10px;
+      }
     }
 
     .videoInfo {

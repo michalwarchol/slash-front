@@ -87,7 +87,10 @@
     "desc": "Malejąco",
     "addComment": "Dodaj komentarz",
     "comment": "Skomentuj",
-    "loadMoreComments": "Załaduj więcej komentarzy"
+    "loadMoreComments": "Załaduj więcej komentarzy",
+    "delete": "Usuń film",
+    "deleteWarning": "Czy na pewno chcesz usunąć ten film?",
+    "deleteError": "Wystąpił błąd podczas usuwania filmu"
   },
   "VideoEdit": {
     "title": "Edycja danych filmu",
