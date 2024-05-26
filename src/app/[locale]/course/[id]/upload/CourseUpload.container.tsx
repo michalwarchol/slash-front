@@ -7,6 +7,7 @@ import { useRouter } from "@/app/navigation";
 import axios from "@/utils/axios";
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
 
+import { initialValues } from "./CourseUpload.consts";
 import { TErrorMessages, TFormValues, TMessages } from "./CourseUpload.types";
 import View from "./CourseUpload.view";
 
@@ -68,6 +69,7 @@ export default function CourseUploadContainer({
         onSubmit={onSubmit}
         onCancel={onCancel}
         loading={loading}
+        initialValues={initialValues}
       />
     </>
   );

@@ -76,6 +76,7 @@
     "cancel": "Anuluj"
   },
   "CourseWatch": {
+    "edit": "Edytuj",
     "views": "Wyświetlenia: {views}",
     "description": "Opis",
     "avgRating": "Ocena średnia: {rating}",
@@ -87,6 +88,10 @@
     "addComment": "Dodaj komentarz",
     "comment": "Skomentuj",
     "loadMoreComments": "Załaduj więcej komentarzy"
+  },
+  "VideoEdit": {
+    "title": "Edycja danych filmu",
+    "save": "Zapisz"
   },
   "errors": {
     "required": "To pole jest wymagane",

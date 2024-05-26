@@ -30,3 +30,9 @@ export type TVideoRating = {
   id: string;
   rating: number;
 };
+
+export type TVideoEdit = {
+  name: string;
+  description: string;
+  creatorId: string;
+}

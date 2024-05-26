@@ -78,6 +78,11 @@ export default function VideoWatchView({
             }
           }}
         />
+        <div className={styles.authorActions}>
+          <Link href={`/course/${data.course.id}/watch/${data.id}/edit`}>
+            <Button type="button">{t("CourseWatch.edit")}</Button>
+          </Link>
+        </div>
         <div className={styles.videoInfo}>
           <div className={styles.videoTitleWrapper}>
             <Title level={2}>{data.name}</Title>
