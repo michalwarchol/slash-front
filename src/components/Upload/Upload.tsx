@@ -28,6 +28,7 @@ function Upload({
     <AntdUpload
       name={name}
       multiple={false}
+      maxCount={1}
       disabled={disabled}
       accept={accept}
       onChange={(info) => {
