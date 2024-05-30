@@ -77,8 +77,12 @@
       }
 
       .avatar {
-        width: 32px;
+        width: 45px;
         background-color: transparent;
+        img {
+          width: 32px;
+          height: 32px;
+        }
       }
     }
 

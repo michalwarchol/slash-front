@@ -60,7 +60,11 @@ export default async function Header() {
           >
             <div className={styles.userAvatarWrapper}>
               <div className={styles.userName}>{user.firstName}</div>
-              <Avatar icon={<UserOutlined />} className={styles.avatar} />
+              <Avatar
+                icon={<UserOutlined />}
+                src={user.avatar}
+                className={styles.avatar}
+              />
             </div>
           </Dropdown>
         )}
