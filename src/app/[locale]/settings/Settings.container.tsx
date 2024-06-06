@@ -1,12 +1,19 @@
 "use client";
 import { message } from "antd";
+import { FormikHelpers } from "formik";
 import Cookies from "js-cookie";
 import { useState } from "react";
 
 import axios from "@/utils/axios";
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
 
-import { TErrorMessages, TFormValues, TMessages } from "./Settings.types";
+import {
+  TApiErrorMessages,
+  TChangePasswordFormValues,
+  TErrorMessages,
+  TFormValues,
+  TMessages,
+} from "./Settings.types";
 import View from "./Settings.view";
 
 interface IProps {
@@ -14,6 +21,7 @@ interface IProps {
   initialValues: TFormValues;
   messages: TMessages;
   errorMessages: TErrorMessages;
+  apiErrorMessages: TApiErrorMessages;
 }
 
 export default function SettingsContainer({
@@ -21,8 +29,10 @@ export default function SettingsContainer({
   initialValues,
   messages,
   errorMessages,
+  apiErrorMessages,
 }: IProps) {
   const [loading, setLoading] = useState(false);
+  const [loadingPasswordChange, setLoadingPasswordChange] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
 
   const onSubmit = async (values: TFormValues) => {
@@ -64,16 +74,41 @@ export default function SettingsContainer({
     }
   };
 
+  const onSubmitPasswordChange = async (
+    values: TChangePasswordFormValues,
+    formikHelpers: FormikHelpers<TChangePasswordFormValues>
+  ) => {
+    setLoadingPasswordChange(true);
+    const { data } = await axios.post("/users/change-password", {
+      oldPassword: values.oldPassword,
+      newPassword: values.newPassword,
+    });
+
+    setLoadingPasswordChange(false);
+
+    if (data.errors) {
+      messageApi.error(getApiErrorMessage(data.errors, apiErrorMessages));
+      return;
+    }
+
+    if (data.result) {
+      messageApi.success(messages.success);
+      formikHelpers.resetForm();
+    }
+  };
+
   return (
     <>
       {contextHolder}
       <View
         avatar={avatar}
         loading={loading}
+        loadingPasswordChange={loadingPasswordChange}
         initialValues={initialValues}
         messages={messages}
         errorMessages={errorMessages}
         onSubmit={onSubmit}
+        onSubmitPasswordChange={onSubmitPasswordChange}
       />
     </>
   );

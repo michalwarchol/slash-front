@@ -21,10 +21,31 @@ export type TMessages = {
   password: string;
   success: string;
   submit: string;
+  oldPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
+};
+
+export type TErrorParams = {
+  passwordMin: number;
 };
 
 export type TErrorMessages = {
   default : string;
   required: string;
   fileTooLarge: string;
+  password: string;
+  confirmPasswordDoesNotMatch: string;
+  min: string;
+};
+
+export type TChangePasswordFormValues = {
+  oldPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
+};
+
+export type TApiErrorMessages = {
+  default: string;
+  credentialsInvalid: string;
 };

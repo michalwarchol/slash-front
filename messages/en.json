@@ -105,9 +105,12 @@
     "role": "Role",
     "uploadProfilePic": "Upload profile picture",
     "maxFileSize": "Max file size is 2MB",
-    "password": "Password",
+    "password": "Change password",
     "success": "Data has been updated successfully",
-    "submit": "Save"
+    "submit": "Save",
+    "oldPassword": "Password",
+    "newPassword": "New password",
+    "confirmNewPassword": "Confirm new password"
   },
   "errors": {
     "required": "This field is required",

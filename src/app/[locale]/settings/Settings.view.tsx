@@ -1,6 +1,6 @@
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Divider, GetProp, Image, UploadFile, UploadProps } from "antd";
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikHelpers } from "formik";
 import { useState } from "react";
 
 import Button from "@/components/Button";
@@ -8,16 +8,29 @@ import Input from "@/components/Input";
 import Upload from "@/components/Upload";
 
 import styles from "./Settings.module.scss";
-import { TErrorMessages, TFormValues, TMessages } from "./Settings.types";
-import validationSchema from "./Settings.validation";
+import {
+  TChangePasswordFormValues,
+  TErrorMessages,
+  TFormValues,
+  TMessages,
+} from "./Settings.types";
+import { initialValuesForPasswordChange } from "./Settings.utils";
+import validationSchema, {
+  passwordChangeValidation,
+} from "./Settings.validation";
 
 interface IProps {
   initialValues: TFormValues;
   loading: boolean;
+  loadingPasswordChange: boolean;
   avatar: string | null;
   messages: TMessages;
   errorMessages: TErrorMessages;
   onSubmit: (values: TFormValues) => Promise<void>;
+  onSubmitPasswordChange: (
+    values: TChangePasswordFormValues,
+    formikHelpers: FormikHelpers<TChangePasswordFormValues>
+  ) => Promise<void>;
 }
 
 type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
@@ -33,10 +46,12 @@ const getBase64 = (file: FileType): Promise<string> =>
 export default function SettingsView({
   avatar,
   loading,
+  loadingPasswordChange,
   initialValues,
   messages,
   errorMessages,
   onSubmit,
+  onSubmitPasswordChange,
 }: IProps) {
   const [previewImage, setPreviewImage] = useState("");
 
@@ -132,6 +147,53 @@ export default function SettingsView({
           </Formik>
           <Divider type="horizontal" className={styles.divider} />
           <div className={styles.sectionTitleWrapper}>{messages.password}</div>
+          <Formik
+            initialValues={initialValuesForPasswordChange}
+            onSubmit={onSubmitPasswordChange}
+            validationSchema={passwordChangeValidation(errorMessages)}
+          >
+            {() => (
+              <Form className={styles.form}>
+                <div className={styles.inputWrapper}>
+                  <div className={styles.label}>{messages.oldPassword}</div>
+                  <div className={styles.input}>
+                    <Input
+                      name="oldPassword"
+                      placeholder={messages.oldPassword}
+                      htmlType="password"
+                    />
+                  </div>
+                </div>
+                <div className={styles.inputWrapper}>
+                  <div className={styles.label}>{messages.newPassword}</div>
+                  <div className={styles.input}>
+                    <Input
+                      name="newPassword"
+                      placeholder={messages.newPassword}
+                      htmlType="password"
+                    />
+                  </div>
+                </div>
+                <div className={styles.inputWrapper}>
+                  <div className={styles.label}>
+                    {messages.confirmNewPassword}
+                  </div>
+                  <div className={styles.input}>
+                    <Input
+                      name="confirmNewPassword"
+                      placeholder={messages.confirmNewPassword}
+                      htmlType="password"
+                    />
+                  </div>
+                </div>
+                <div className={styles.buttons}>
+                  <Button type="submit" loading={loadingPasswordChange}>
+                    {messages.submit}
+                  </Button>
+                </div>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </div>

@@ -1,6 +1,14 @@
+import { TranslationValues } from "next-intl";
+
 import { TUser } from "@/types/user";
 
-import { TErrorMessages, TFormValues, TMessages } from "./Settings.types";
+import {
+  TApiErrorMessages,
+  TErrorMessages,
+  TErrorParams,
+  TFormValues,
+  TMessages,
+} from "./Settings.types";
 
 export const getInitialValues = (user: TUser): TFormValues => ({
   email: user.email,
@@ -9,6 +17,12 @@ export const getInitialValues = (user: TUser): TFormValues => ({
   type: user.type,
   avatar: null,
 });
+
+export const initialValuesForPasswordChange = {
+  oldPassword: "",
+  newPassword: "",
+  confirmNewPassword: "",
+};
 
 export const getMessages = (t: (key: string) => string): TMessages => {
   return {
@@ -23,13 +37,29 @@ export const getMessages = (t: (key: string) => string): TMessages => {
     password: t("Settings.password"),
     success: t("Settings.success"),
     submit: t("Settings.submit"),
+    oldPassword: t("Settings.oldPassword"),
+    newPassword: t("Settings.newPassword"),
+    confirmNewPassword: t("Settings.confirmNewPassword"),
   };
 };
 
 export const getErrorMessages = (
-  t: (key: string) => string
+  t: (key: string, values?: TranslationValues) => string,
+  { passwordMin }: TErrorParams
 ): TErrorMessages => ({
   default: t("apiErrors.default"),
   required: t("errors.required"),
   fileTooLarge: t("errors.fileTooLarge"),
+  password: t("errors.password"),
+  confirmPasswordDoesNotMatch: t("errors.confirmPasswordDoesNotMatch"),
+  min: t("errors.min", { min: passwordMin }),
 });
+
+export const getApiErrorMessages = (
+  t: (key: string) => string
+): TApiErrorMessages => {
+  return {
+    default: t("apiErrors.default"),
+    credentialsInvalid: t("apiErrors.credentialsInvalid"),
+  };
+};

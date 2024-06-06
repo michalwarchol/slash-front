@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import Container from "./Settings.container";
 import styles from "./Settings.module.scss";
 import {
+  getApiErrorMessages,
   getErrorMessages,
   getInitialValues,
   getMessages,
@@ -34,7 +35,8 @@ export default async function Home() {
         avatar={user.avatar}
         initialValues={getInitialValues(user)}
         messages={getMessages(t)}
-        errorMessages={getErrorMessages(t)}
+        errorMessages={getErrorMessages(t, { passwordMin: 8 })}
+        apiErrorMessages={getApiErrorMessages(t)}
       />
     </div>
   );

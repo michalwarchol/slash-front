@@ -105,9 +105,12 @@
     "role": "Rola",
     "uploadProfilePic": "Prześlij zdjęcie profilowe",
     "maxFileSize": "Maksymalny rozmiar pliku to 2MB",
-    "password": "Hasło",
+    "password": "Zmień hasło",
     "success": "Date zostały zaktualizowane pomyślnie",
-    "submit": "Zapisz"
+    "submit": "Zapisz",
+    "oldPassword": "Hasło",
+    "newPassword": "Nowe hasło",
+    "confirmNewPassword": "Potwierdź nowe hasło"
   },
   "errors": {
     "required": "To pole jest wymagane",
