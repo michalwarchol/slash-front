@@ -96,12 +96,29 @@
     "title": "Edycja danych filmu",
     "save": "Zapisz"
   },
+  "Settings": {
+    "title": "Ustawienia",
+    "userData": "Dane użytkownika",
+    "email": "Email",
+    "firstName": "Imię",
+    "lastName": "Nazwisko",
+    "role": "Rola",
+    "uploadProfilePic": "Prześlij zdjęcie profilowe",
+    "maxFileSize": "Maksymalny rozmiar pliku to 2MB",
+    "password": "Zmień hasło",
+    "success": "Date zostały zaktualizowane pomyślnie",
+    "submit": "Zapisz",
+    "oldPassword": "Hasło",
+    "newPassword": "Nowe hasło",
+    "confirmNewPassword": "Potwierdź nowe hasło"
+  },
   "errors": {
     "required": "To pole jest wymagane",
     "email": "Niepoprawny adres email",
     "password": "Hasło powinno zawierać conajmniej 8 znaków, 1 cyfrę, 1 małą literę i 1 dużą",
     "confirmPasswordDoesNotMatch": "Nieprawidłowe potwierdzenie hasła",
-    "min": "To pole powinno mieć conajmniej {min} znaków"
+    "min": "To pole powinno mieć conajmniej {min} znaków",
+    "fileTooLarge": "Plik jest  za duży"
   },
   "apiErrors": {
     "default": "Coś poszło nie tak",
