@@ -11,6 +11,8 @@ import Input from "@/components/Input";
 import { initialValues } from "./RemindPassword.consts";
 import styles from "./RemindPassword.module.scss";
 import { TFormValues } from "./RemindPassword.types";
+import { getErrorMessages } from "./RemindPassword.utils";
+import validation from "./RemindPassword.validation";
 
 const { Text } = Typography;
 
@@ -38,6 +40,9 @@ export default function RemindPassword({
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => onSubmit(values, phase, setPhase)}
+        validationSchema={() =>
+          validation(getErrorMessages(t, { passwordMin: 8 }), phase)
+        }
       >
         {({ values }) => (
           <Form>
