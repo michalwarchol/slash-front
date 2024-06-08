@@ -4,13 +4,13 @@ import { getTranslations } from "next-intl/server";
 import StaticModal from "@/components/StaticModal";
 import backgroundPic from "@/public/images/unauthorized-background-original.jpg";
 
+import Container from "./Login.container";
 import styles from "./Login.module.scss";
 import {
   getApiErrorMessages,
   getErrorMessages,
   getMessages,
 } from "./Login.utils";
-import View from "./Login.view";
 
 export default async function Login() {
   const t = await getTranslations();
@@ -24,7 +24,7 @@ export default async function Login() {
         style={{ objectFit: "cover" }}
       />
       <StaticModal>
-        <View
+        <Container
           messages={getMessages(t)}
           errorMessages={getErrorMessages(t)}
           apiErrorMessages={getApiErrorMessages(t)}

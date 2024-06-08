@@ -1,22 +1,21 @@
 "use client";
-import { Divider, message, Typography } from "antd";
+import { Divider, Typography } from "antd";
+import cls from "classnames";
 import { Form, Formik } from "formik";
-import Cookies from "js-cookie";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 import { Link } from "@/app/navigation";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
-import axios from "@/utils/axios";
-import getApiErrorMessage from "@/utils/getApiErrorMessage";
+import RemindPassword from "@/components/RemindPassword";
 
 import { initialValues } from "./Login.consts";
 import styles from "./Login.module.scss";
 import {
-  TApiErrorMessages,
   TErrorMessages,
   TInitialValues,
   TMessages,
+  TRemindPasswordValues,
 } from "./Login.types";
 import validation from "./Login.validation";
 
@@ -25,42 +24,28 @@ const { Paragraph, Text } = Typography;
 type IProps = {
   messages: TMessages;
   errorMessages: TErrorMessages;
-  apiErrorMessages: TApiErrorMessages;
+  loading: boolean;
+  isRemindPassword: boolean;
+  setIsRemindPassword: Dispatch<SetStateAction<boolean>>;
+  onSubmit: (values: TInitialValues) => void;
+  onRemindPasswordSubmit: (
+    values: TRemindPasswordValues,
+    phase: number,
+    setPhase: Dispatch<SetStateAction<number>>
+  ) => void;
 };
 
-export default function RegisterView({
+export default function LoginView({
   messages,
   errorMessages,
-  apiErrorMessages,
+  loading,
+  onSubmit,
+  onRemindPasswordSubmit,
+  isRemindPassword,
+  setIsRemindPassword,
 }: IProps) {
-  const [loading, setLoading] = useState(false);
-  const [messageApi, contextHolder] = message.useMessage();
-  const onSubmit = async (values: TInitialValues) => {
-    setLoading(true);
-    const { data } = await axios.post("users/signin", {
-      email: values.email,
-      password: values.password,
-    });
-
-    setLoading(false);
-
-    if (data.errors) {
-      messageApi.error(getApiErrorMessage(data.errors, apiErrorMessages));
-      return;
-    }
-
-    Cookies.set("token", data.result.accessToken, { expires: 1, path: "/" });
-    Cookies.set("user", JSON.stringify(data.result.user), {
-      expires: 1,
-      path: "/",
-    });
-
-    window.location.href = "/";
-  };
-
   return (
     <div className={styles.contentContainer}>
-      {contextHolder}
       <div className={styles.titleContainer}>
         <div className={styles.title}>
           <Link href="/">
@@ -77,14 +62,20 @@ export default function RegisterView({
         </div>
       </div>
       <Divider type="vertical" className={styles.divider} />
-      <div className={styles.formContainer}>
-        <h1 className={styles.formTitle}>{messages.formTitle}</h1>
-        <Formik
-          onSubmit={onSubmit}
-          initialValues={initialValues}
-          validationSchema={validation(errorMessages)}
-        >
-          {() => (
+      {isRemindPassword ? (
+        <RemindPassword
+          loading={false}
+          onComeBack={() => setIsRemindPassword(false)}
+          onSubmit={onRemindPasswordSubmit}
+        />
+      ) : (
+        <div className={styles.formContainer}>
+          <h1 className={styles.formTitle}>{messages.formTitle}</h1>
+          <Formik
+            onSubmit={onSubmit}
+            initialValues={initialValues}
+            validationSchema={validation(errorMessages)}
+          >
             <Form>
               <div className={styles.inputWrapper}>
                 <Input name="email" placeholder={messages.email} />
@@ -110,11 +101,17 @@ export default function RegisterView({
                     <span className={styles.link}>{messages.register}</span>
                   </Link>
                 </Text>
+                <Text
+                  className={cls(styles.buttonsText, styles.remindPasswordText)}
+                  onClick={() => setIsRemindPassword(true)}
+                >
+                  {messages.remindPassword}
+                </Text>
               </div>
             </Form>
-          )}
-        </Formik>
-      </div>
+          </Formik>
+        </div>
+      )}
     </div>
   );
 }

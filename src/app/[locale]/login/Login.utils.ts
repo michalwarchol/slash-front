@@ -13,6 +13,9 @@ export const getMessages = (t: (key: string) => string): TMessages => {
     dontHaveAccount: t("Login.dontHaveAccount"),
     register: t("Login.register"),
     login: t("Login.login"),
+    remindPassword: t("Login.remindPassword"),
+    remindPasswordSuccessPhaseOne: t("Login.remindPasswordSuccessPhaseOne"),
+    remindPasswordSuccessPhaseTwo: t("Login.remindPasswordSuccessPhaseTwo"),
   };
 };
 
@@ -29,5 +32,7 @@ export const getApiErrorMessages = (
   return {
     default: t("apiErrors.default"),
     credentialsInvalid: t("apiErrors.credentialsInvalid"),
+    invalid: t("apiErrors.invalid"),
+    expired: t("apiErrors.expired"),
   };
 };
