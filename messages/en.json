@@ -29,7 +29,14 @@
     "remindPassword": "Remind password",
     "remindPasswordSuccessPhaseOne": "If the user with given email exists, a message with authorization code has been sent",
     "remindPasswordSuccessPhaseTwo": "Password has been changed successfully"
-
+  },
+  "Verify": {
+    "title": "S/ash",
+    "content": "We sent an email which contains a code necessary to verify your account. To use all functions of the system you need to verify your email.",
+    "formTitle": "Verify account",
+    "code": "Code",
+    "submit": "Confirm",
+    "logout": "Logout"
   },
   "CourseAdd": {
     "title": "Add a new course",
@@ -129,7 +136,8 @@
     "emailExists": "Given email is already in use",
     "credentialsInvalid": "Invalid credentials",
     "invalid": "Given value is invalid",
-    "expired": "Code has expired"
+    "expired": "Code has expired",
+    "required": "This field is required"
   },
   "header": {
     "title": "S/ash",

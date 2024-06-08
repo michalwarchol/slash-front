@@ -4,6 +4,7 @@ import { message } from "antd";
 import Cookies from "js-cookie";
 import { useState } from "react";
 
+import { useRouter } from "@/app/navigation";
 import axios from "@/utils/axios";
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
 
@@ -36,6 +37,7 @@ export default function RegisterContainer({
 }: IProps) {
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
+  const { push } = useRouter();
   const onSubmit = async (values: TInitialValues) => {
     setLoading(true);
     const { data } = await axios.post("users/signup", {
@@ -59,7 +61,7 @@ export default function RegisterContainer({
       path: "/",
     });
 
-    window.location.href = "/";
+    push("/verify");
   };
 
   return (
