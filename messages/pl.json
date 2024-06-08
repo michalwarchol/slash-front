@@ -30,6 +30,14 @@
     "remindPasswordSuccessPhaseOne": "Jeśli użytkownik z danym emailem istnieje, została wysłana do niego wiadomość z kodem autoryzacyjnym",
     "remindPasswordSuccessPhaseTwo": "Hasło zostało zmienione pomyślnie"
   },
+  "Verify": {
+    "title": "S/ash",
+    "content": "Wysłaliśmy maila w którym znajduje się kod potrzebny do weryfikacji twojego konta. Aby korzystać ze wszystkich funkcji systemu musisz zweryfikować swoje konto.",
+    "formTitle": "Zweryfikuj konto",
+    "code": "Kod",
+    "submit": "Potwierdź",
+    "logout": "Wyloguj"
+  },
   "CourseAdd": {
     "title": "Dodaj nowy kurs",
     "name": "Nazwa kursu",
@@ -128,7 +136,8 @@
     "emailExists": "Podany adres email jest już zajęty",
     "credentialsInvalid": "Niepoprawne dane logowania",
     "invalid": "Podana wartość jest niepoprawna",
-    "expired": "Kod wygasł"
+    "expired": "Kod wygasł",
+    "required": "To pole jest wymagane"
   },
   "header": {
     "title": "S/ash",
