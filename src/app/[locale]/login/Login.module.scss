@@ -88,5 +88,12 @@
         color: $primary;
       }
     }
+
+    .remindPasswordText {
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
   }
 }

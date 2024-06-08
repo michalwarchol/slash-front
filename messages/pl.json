@@ -25,7 +25,10 @@
     "password": "Password",
     "dontHaveAccount": "Nie masz konta?",
     "register": "Zarejestruj",
-    "login": "Zaloguj"
+    "login": "Zaloguj",
+    "remindPassword": "Przypomnij hasło",
+    "remindPasswordSuccessPhaseOne": "Jeśli użytkownik z danym emailem istnieje, została wysłana do niego wiadomość z kodem autoryzacyjnym",
+    "remindPasswordSuccessPhaseTwo": "Hasło zostało zmienione pomyślnie"
   },
   "CourseAdd": {
     "title": "Dodaj nowy kurs",
@@ -123,7 +126,9 @@
   "apiErrors": {
     "default": "Coś poszło nie tak",
     "emailExists": "Podany adres email jest już zajęty",
-    "credentialsInvalid": "Niepoprawne dane logowania"
+    "credentialsInvalid": "Niepoprawne dane logowania",
+    "invalid": "Podana wartość jest niepoprawna",
+    "expired": "Kod wygasł"
   },
   "header": {
     "title": "S/ash",
@@ -154,5 +159,16 @@
   "DropzoneModal": {
     "uploadText": "Kliknij lub przeciągnij plik do tego obszaru, aby go przesłać",
     "uploadHint": "Wsparcie dla jednego pliku."
+  },
+  "RemindPassword": {
+    "title": "Przypomnij hasło",
+    "email": "Email",
+    "code": "Kod",
+    "newPassword": "Nowe hasło",
+    "confirmNewPassword": "Potwierdź nowe hasło",
+    "sendMail": "Wyślij wiadomość z kodem",
+    "changePassword": "Zmień hasło",
+    "comeBackToLogin": "Wróć do logowania",
+    "sendMailAgain": "Wygeneruj kod ponownie"
   }
 }

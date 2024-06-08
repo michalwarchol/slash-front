@@ -25,7 +25,11 @@
     "password": "Password",
     "dontHaveAccount": "Don't have account?",
     "register": "Sign Up",
-    "login": "Sign In"
+    "login": "Sign In",
+    "remindPassword": "Remind password",
+    "remindPasswordSuccessPhaseOne": "If the user with given email exists, a message with authorization code has been sent",
+    "remindPasswordSuccessPhaseTwo": "Password has been changed successfully"
+
   },
   "CourseAdd": {
     "title": "Add a new course",
@@ -123,7 +127,9 @@
   "apiErrors": {
     "default": "Something went wrong",
     "emailExists": "Given email is already in use",
-    "credentialsInvalid": "Invalid credentials"
+    "credentialsInvalid": "Invalid credentials",
+    "invalid": "Given value is invalid",
+    "expired": "Code has expired"
   },
   "header": {
     "title": "S/ash",
@@ -154,5 +160,16 @@
   "DropzoneModal": {
     "uploadText": "Click or drag file to this area to upload",
     "uploadHint": "Support for a single file."
+  },
+  "RemindPassword": {
+    "title": "Remind password",
+    "email": "Email",
+    "code": "Code",
+    "newPassword": "New password",
+    "confirmNewPassword": "Confirm new password",
+    "sendMail": "Send message with a code",
+    "changePassword": "Change password",
+    "comeBackToLogin": "Come back to login",
+    "sendMailAgain": "Generate code again"
   }
 }
