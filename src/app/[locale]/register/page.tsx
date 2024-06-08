@@ -8,13 +8,13 @@ import StaticModal from "@/components/StaticModal";
 import backgroundPic from "@/public/images/unauthorized-background-original.jpg";
 
 import { listItems } from "./register.consts";
+import Container from "./register.container";
 import { UserRoles } from "./register.types";
 import {
   getApiErrorMessages,
   getErrorMessages,
   getMessages,
 } from "./register.utils";
-import View from "./register.view";
 import styles from "./styles.module.scss";
 
 export default async function Register() {
@@ -30,7 +30,7 @@ export default async function Register() {
         style={{ objectFit: "cover" }}
       />
       <StaticModal>
-        <View
+        <Container
           messages={getMessages(t)}
           errorMessages={getErrorMessages(t, { passwordMin: 8 })}
           apiErrorMessages={getApiErrorMessages(t)}

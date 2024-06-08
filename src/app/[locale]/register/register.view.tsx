@@ -1,20 +1,15 @@
 "use client";
 import { CheckCircleOutlined } from "@ant-design/icons";
-import { Divider, message, Typography } from "antd";
+import { Divider, Typography } from "antd";
 import { Form, Formik } from "formik";
-import Cookies from "js-cookie";
-import { useState } from "react";
 
 import { Link } from "@/app/navigation";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Select from "@/components/Select";
-import axios from "@/utils/axios";
-import getApiErrorMessage from "@/utils/getApiErrorMessage";
 
 import { initialValues } from "./register.consts";
 import {
-  TApiErrorMessages,
   TErrorMessages,
   TInitialValues,
   TMessages,
@@ -29,11 +24,12 @@ type IProps = {
   roles: UserRoles;
   messages: TMessages;
   errorMessages: TErrorMessages;
-  apiErrorMessages: TApiErrorMessages;
   listItems: {
     key: string;
     text: string;
   }[];
+  loading: boolean;
+  onSubmit: (values: TInitialValues) => void;
 };
 
 export default function RegisterView({
@@ -41,39 +37,11 @@ export default function RegisterView({
   listItems,
   roles,
   errorMessages,
-  apiErrorMessages,
+  loading,
+  onSubmit,
 }: IProps) {
-  const [loading, setLoading] = useState(false);
-  const [messageApi, contextHolder] = message.useMessage();
-  const onSubmit = async (values: TInitialValues) => {
-    setLoading(true);
-    const { data } = await axios.post("users/signup", {
-      firstName: values.firstName,
-      lastName: values.lastName,
-      email: values.email,
-      password: values.password,
-      type: values.role,
-    });
-
-    setLoading(false);
-
-    if (data.errors) {
-      messageApi.error(getApiErrorMessage(data.errors, apiErrorMessages));
-      return;
-    }
-
-    Cookies.set("token", data.result.accessToken, { expires: 1, path: "/" });
-    Cookies.set("user", JSON.stringify(data.result.user), {
-      expires: 1,
-      path: "/",
-    });
-
-    window.location.href = "/";
-  };
-
   return (
     <div className={styles.contentContainer}>
-      {contextHolder}
       <div className={styles.titleContainer}>
         <div className={styles.title}>
           <Link href="/">
