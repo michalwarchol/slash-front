@@ -5,6 +5,7 @@ import { getCourseTypes } from "@/app/actions";
 import { redirect } from "@/app/navigation";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
+import UserVerifier from "@/components/UserVerifier";
 
 import { initialValues } from "./AddCourse.consts";
 import { getErrorMessages, getMessages } from "./AddCourse.utils";
@@ -26,15 +27,17 @@ export default async function Home() {
   const courseTypes = await getCourseTypes();
 
   return (
-    <div className={styles.wrapper}>
-      <Header />
-      {user && <Navbar id={user.id} type={user.type} />}
-      <View
-        initialValues={initialValues}
-        courseTypes={courseTypes}
-        messages={getMessages(t)}
-        errorMessages={getErrorMessages(t)}
-      />
-    </div>
+    <UserVerifier>
+      <div className={styles.wrapper}>
+        <Header />
+        {user && <Navbar id={user.id} type={user.type} />}
+        <View
+          initialValues={initialValues}
+          courseTypes={courseTypes}
+          messages={getMessages(t)}
+          errorMessages={getErrorMessages(t)}
+        />
+      </div>
+    </UserVerifier>
   );
 }

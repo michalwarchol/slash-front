@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { redirect } from "@/app/navigation";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
+import UserVerifier from "@/components/UserVerifier";
 
 import Container from "./Settings.container";
 import styles from "./Settings.module.scss";
@@ -28,16 +29,18 @@ export default async function Home() {
   const t = await getTranslations();
 
   return (
-    <div className={styles.wrapper}>
-      <Header />
-      <Navbar id={user.id} type={user.type} />
-      <Container
-        avatar={user.avatar}
-        initialValues={getInitialValues(user)}
-        messages={getMessages(t)}
-        errorMessages={getErrorMessages(t, { passwordMin: 8 })}
-        apiErrorMessages={getApiErrorMessages(t)}
-      />
-    </div>
+    <UserVerifier>
+      <div className={styles.wrapper}>
+        <Header />
+        <Navbar id={user.id} type={user.type} />
+        <Container
+          avatar={user.avatar}
+          initialValues={getInitialValues(user)}
+          messages={getMessages(t)}
+          errorMessages={getErrorMessages(t, { passwordMin: 8 })}
+          apiErrorMessages={getApiErrorMessages(t)}
+        />
+      </div>
+    </UserVerifier>
   );
 }

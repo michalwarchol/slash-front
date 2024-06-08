@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
+import UserVerifier from "@/components/UserVerifier";
 import { TUser } from "@/types/user";
 import axios from "@/utils/axios";
 
@@ -29,15 +30,17 @@ export default async function Course({ params }: TProps) {
   const pageUser = await getUserData(params.id);
 
   return (
-    <div className={styles.wrapper}>
-      <Header />
-      {user && <Navbar id={user.id} type={user.type} />}
-      <Container
-        id={params.id}
-        userId={user?.id}
-        locale={params.locale}
-        pageUserName={`${pageUser.firstName} ${pageUser.lastName}`}
-      />
-    </div>
+    <UserVerifier>
+      <div className={styles.wrapper}>
+        <Header />
+        {user && <Navbar id={user.id} type={user.type} />}
+        <Container
+          id={params.id}
+          userId={user?.id}
+          locale={params.locale}
+          pageUserName={`${pageUser.firstName} ${pageUser.lastName}`}
+        />
+      </div>
+    </UserVerifier>
   );
 }
