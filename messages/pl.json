@@ -123,6 +123,18 @@
     "newPassword": "Nowe hasło",
     "confirmNewPassword": "Potwierdź nowe hasło"
   },
+  "Statistics": {
+    "title": "Statystyki",
+    "mostLikedCoursesTitle": "Najbardziej lubiane kursy",
+    "mostPopularCoursesTitle": "Najbardziej popularne kursy",
+    "mostPopularVideoTitle": "Najbardziej popularne wideo",
+    "noData": "Brak danych",
+    "num": "Num.",
+    "courseName": "Kurs",
+    "likes": "Ilość polubień",
+    "views": "Wyświetlenia",
+    "videoName": "Wideo"
+  },
   "errors": {
     "required": "To pole jest wymagane",
     "email": "Niepoprawny adres email",

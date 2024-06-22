@@ -123,6 +123,18 @@
     "newPassword": "New password",
     "confirmNewPassword": "Confirm new password"
   },
+  "Statistics": {
+    "title": "Statistics",
+    "mostLikedCoursesTitle": "Most liked courses",
+    "mostPopularCoursesTitle": "Most popular courses",
+    "mostPopularVideoTitle": "Most popular videos",
+    "noData": "No data",
+    "num": "Num.",
+    "courseName": "Course",
+    "likes": "Likes",
+    "views": "Views",
+    "videoName": "Video"
+  },
   "errors": {
     "required": "This field is required",
     "email": "This is not a valid email",

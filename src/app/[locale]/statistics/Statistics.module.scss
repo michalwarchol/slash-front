@@ -1,0 +1,80 @@
+@import "../../colors.module.scss";
+
+.wrapper {
+  min-height: 100vh;
+
+  .statistics {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+
+    .statisticsInner {
+      width: 100%;
+      @media screen and (min-width: $monitor) {
+        max-width: $monitor;
+      }
+    }
+
+    .titleWrapper {
+      color: $primary;
+      font-size: 32px;
+      font-weight: 600;
+      font-family: Arial;
+      margin-bottom: 20px;
+    }
+
+    .viewWrapper {
+      display: flex;
+      justify-content: center;
+
+      .educatorContent {
+        width: 100%;
+        display: block;
+        @media screen and (min-width: $monitor) {
+          max-width: $monitor;
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+        }
+
+        .tableContent {
+          margin-bottom: 20px;
+          flex: 1;
+          @media screen and (min-width: $monitor) {
+            margin-bottom: 0;
+          }
+
+          .subTitle {
+            font-size: 28px;
+            font-weight: 600;
+            font-family: Arial;
+            margin-bottom: 20px;
+
+            @media screen and (min-width: $monitor) {
+              font-size: 20px;
+            }
+          }
+
+          .noItems {
+            width: 33%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: gray;
+
+            .icon {
+              font-size: 32px;
+            }
+            .noItemsText {
+              color: gray;
+            }
+          }
+        }
+      }
+    }
+  }
+}
