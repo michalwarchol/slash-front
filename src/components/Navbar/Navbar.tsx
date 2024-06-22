@@ -20,7 +20,16 @@ export default function Navbar({ type, id }: IProps) {
             <Link href={`/course-list/${id}`}>
               <Button className={styles.button}>My courses</Button>
             </Link>
-            <Button className={styles.button}>Statistics</Button>
+            <Link href="/statistics">
+              <Button className={styles.button}>Statistics</Button>
+            </Link>
+          </div>
+        )}
+        {type === "STUDENT" && (
+          <div className={styles.buttonContainer}>
+            <Link href="/statistics">
+              <Button className={styles.button}>Statistics</Button>
+            </Link>
           </div>
         )}
       </div>
