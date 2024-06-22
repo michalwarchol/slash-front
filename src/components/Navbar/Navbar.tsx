@@ -25,6 +25,13 @@ export default function Navbar({ type, id }: IProps) {
             </Link>
           </div>
         )}
+        {type === "STUDENT" && (
+          <div className={styles.buttonContainer}>
+            <Link href="/statistics">
+              <Button className={styles.button}>Statistics</Button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

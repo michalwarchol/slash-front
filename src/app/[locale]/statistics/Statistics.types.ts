@@ -9,4 +9,9 @@ export type TMessages = {
   likes: string;
   views: string;
   videoName: string;
+  coursesEnded: string;
+  coursesInProgress: string;
+  watchTime: string;
+  favEducator: string;
+  favCategory: string;
 };

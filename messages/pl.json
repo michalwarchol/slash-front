@@ -133,7 +133,12 @@
     "courseName": "Kurs",
     "likes": "Ilość polubień",
     "views": "Wyświetlenia",
-    "videoName": "Wideo"
+    "videoName": "Wideo",
+    "coursesEnded": "Kursy zakończone",
+    "coursesInProgress": "Kursy trwające",
+    "watchTime": "Czas spędzony na oglądaniu",
+    "favEducator": "Ulubiony prowadzący",
+    "favCategory": "Ulubiona kategoria"
   },
   "errors": {
     "required": "To pole jest wymagane",

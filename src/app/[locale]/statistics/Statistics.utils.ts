@@ -26,6 +26,11 @@ export const getMessages = (t: (key: string) => string): TMessages => {
     likes: t("Statistics.likes"),
     videoName: t("Statistics.videoName"),
     views: t("Statistics.views"),
+    coursesEnded: t("Statistics.coursesEnded"),
+    coursesInProgress: t("Statistics.coursesInProgress"),
+    watchTime: t("Statistics.watchTime"),
+    favEducator: t("Statistics.favEducator"),
+    favCategory: t("Statistics.favCategory"),
   };
 };
 
@@ -112,3 +117,13 @@ export const getMostViewedVideosColumns = (messages: TMessages) => [
     width: 130,
   },
 ];
+
+export const getTimeFromSeconds = (seconds: number): string => {
+  const pad = (num: number) => String(num).padStart(2, "0");
+
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+
+  return `${pad(hours)}:${pad(minutes)}:${pad(remainingSeconds)}`;
+};

@@ -133,7 +133,12 @@
     "courseName": "Course",
     "likes": "Likes",
     "views": "Views",
-    "videoName": "Video"
+    "videoName": "Video",
+    "coursesEnded": "Courses finished",
+    "coursesInProgress": "Courses in progress",
+    "watchTime": "Watch time",
+    "favEducator": "Favourite educator",
+    "favCategory": "Favourite category"
   },
   "errors": {
     "required": "This field is required",
