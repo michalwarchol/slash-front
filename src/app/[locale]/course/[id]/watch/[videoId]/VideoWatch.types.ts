@@ -21,3 +21,17 @@ export type TAddEditRatingInput = {
   rating: number;
   id?: string;
 };
+
+export type TAddEditProgressInput = {
+  id?: string;
+  videoId: string;
+  watchTime: number;
+  hasEnded: boolean;
+};
+
+export type TProgress = {
+  id: string;
+  watchTime: number;
+  hasEnded: boolean;
+  createdAt: Date;
+}

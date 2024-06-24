@@ -95,7 +95,9 @@ async function handleResult(result: Response) {
 }
 
 async function getDefaultHeaders() {
-  const customHeaders: HeadersInit = {};
+  const customHeaders: HeadersInit = {
+    "Content-Type": "application/json",
+  };
   if (isServer) {
     const { cookies } = await import("next/headers");
     const token = cookies().get("token")?.value;

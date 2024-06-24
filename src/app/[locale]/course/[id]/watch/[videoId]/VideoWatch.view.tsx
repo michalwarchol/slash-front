@@ -35,6 +35,7 @@ interface IProps {
   commentsPagination: TPagination;
   addCommentLoading: boolean;
   loadingComments: boolean;
+  defaultTime: number;
   onSetOrder: (order: "ASC" | "DESC") => void;
   onSetOrderBy: (orderBy: string) => void;
   onFetchMoreComments: () => void;
@@ -44,6 +45,7 @@ interface IProps {
   ) => Promise<void>;
   onIncreaseViews: () => void;
   onRate: (rating: number, id?: string) => Promise<void>;
+  onAddEditProgress: (watchTime: number) => Promise<void>;
 }
 
 export default function VideoWatchView({
@@ -59,6 +61,8 @@ export default function VideoWatchView({
   onAddComment,
   onIncreaseViews,
   onRate,
+  onAddEditProgress,
+  defaultTime,
 }: IProps) {
   const t = useTranslations();
   const [viewIncreased, setViewIncreased] = useState(false);
@@ -92,6 +96,8 @@ export default function VideoWatchView({
           courseId={data.course.id}
           previousVideoId={data.previousVideoId}
           nextVideoId={data.nextVideoId}
+          onAddEditProgress={onAddEditProgress}
+          defaultTime={defaultTime}
           timeUpdateCallback={({
             currentTarget: { duration, currentTime },
           }: SyntheticEvent<HTMLVideoElement>) => {

@@ -14,7 +14,7 @@ export default async function UserVerifier({ children }: IProps) {
   const langCookie = cookies().get("NEXT_LOCALE");
   const lang = langCookie ? langCookie.value : "en";
 
-  if (!user.isVerified) {
+  if (user && !user.isVerified) {
     redirect(`/${lang}/verify`);
   }
 
