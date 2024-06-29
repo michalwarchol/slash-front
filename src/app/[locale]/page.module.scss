@@ -2,4 +2,18 @@
 
 .wrapper {
   min-height: 100vh;
+
+  .mainPage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+
+    .mainPageInner {
+      width: 100%;
+      @media screen and (min-width: $monitor) {
+        max-width: $monitor;
+      }
+    }
+  }
 }

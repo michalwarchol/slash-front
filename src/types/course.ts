@@ -62,3 +62,10 @@ export type TCourseResponse = {
   numberOfVideos: number;
   numberOfLikes: number;
 };
+
+export type TCourseFullType = {
+  id: string;
+  name: string;
+  valuePl: string;
+  valueEn: string;
+};
