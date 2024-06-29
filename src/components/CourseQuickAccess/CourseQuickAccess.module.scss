@@ -1,0 +1,115 @@
+@import "../../app/colors.module.scss";
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.courseQuickAccess {
+  padding: 10px;
+
+  .encouragementWrapper {
+    margin-bottom: 10px;
+    span {
+      font-size: 32px;
+      font-weight: bold;
+    }
+  }
+
+  .courseInformation {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 8px;
+
+    @media screen and (min-width: $phoneHorizontal) {
+      flex-direction: row;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .imageWrapper {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-left: auto;
+      margin-right: auto;
+
+      @media screen and (min-width: $phoneHorizontal) {
+        margin-left: 0;
+        margin-right: 10px;
+        max-width: 320px;
+        width: 100%;
+        height: 180px;
+      }
+
+      @media screen and (min-width: $monitor) {
+        max-width: 384px;
+        width: 100%;
+        height: 216px;
+      }
+    }
+
+    .infoWrapper {
+      margin-top: 10px;
+      .courseTitle {
+        font-size: 24px;
+        margin-bottom: 10px;
+
+        @media screen and (min-width: $phoneHorizontal) {
+          font-size: 16px;
+        }
+
+        @media screen and (min-width: $monitor) {
+          font-size: 24px;
+        }
+      }
+      .authorInfo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        .authorAvatar {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-right: 10px;
+        }
+
+        .authorName {
+          font-size: 18px;
+
+          @media screen and (min-width: $phoneHorizontal) {
+            font-size: 14px;
+          }
+
+          @media screen and (min-width: $monitor) {
+            font-size: 18px;
+          }
+        }
+      }
+      .categoryInfo {
+        font-size: 14px;
+        color: $greyText;
+        margin-bottom: 10px;
+        .arrow {
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+      .videoInfo {
+        font-size: 16px;
+
+        @media screen and (min-width: $phoneHorizontal) {
+          font-size: 14px;
+        }
+
+        @media screen and (min-width: $monitor) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

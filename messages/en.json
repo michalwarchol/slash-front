@@ -196,5 +196,10 @@
     "changePassword": "Change password",
     "comeBackToLogin": "Come back to login",
     "sendMailAgain": "Generate code again"
+  },
+  "CourseQuickAccess": {
+    "encouragement": "Continue watching",
+    "category": "Category: ",
+    "video": "Stopped on: {video}"
   }
 }

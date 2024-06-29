@@ -196,5 +196,10 @@
     "changePassword": "Zmień hasło",
     "comeBackToLogin": "Wróć do logowania",
     "sendMailAgain": "Wygeneruj kod ponownie"
+  },
+  "CourseQuickAccess": {
+    "encouragement": "Oglądaj dalej",
+    "category": "Kategoria: ",
+    "video": "Zatrzymano na: {video}"
   }
 }

@@ -10,7 +10,13 @@ import {
   StepForwardOutlined,
 } from "@ant-design/icons";
 import cls from "classnames";
-import { ChangeEvent, SyntheticEvent, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  SyntheticEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import variables from "@/app/colors.module.scss";
 import { useRouter } from "@/app/navigation";
@@ -27,7 +33,9 @@ interface IProps {
   courseId: string;
   previousVideoId: string | null;
   nextVideoId: string | null;
+  defaultTime: number;
   timeUpdateCallback?: (e: SyntheticEvent<HTMLVideoElement>) => void;
+  onAddEditProgress: (watchTime: number) => Promise<void>;
 }
 
 function VideoPlayer({
@@ -38,9 +46,11 @@ function VideoPlayer({
   previousVideoId,
   nextVideoId,
   timeUpdateCallback,
+  onAddEditProgress,
+  defaultTime = 0,
 }: IProps) {
   const { push } = useRouter();
-  const [currentTime, setCurrentTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState(defaultTime);
   const [controlsVisible, setControlsVisible] = useState(false);
   const [muted, setMuted] = useState(false);
   const [paused, setPaused] = useState(true);
@@ -48,6 +58,7 @@ function VideoPlayer({
   const videoRef = useRef<HTMLVideoElement>(null);
   const progressRef = useRef<HTMLInputElement>(null);
   const hideControlsTimeout = useRef<NodeJS.Timeout | undefined>(undefined);
+  const updateProgressInterval = useRef<NodeJS.Timeout | undefined>(undefined);
 
   const play = () => {
     videoRef.current?.play();
@@ -149,6 +160,28 @@ function VideoPlayer({
     push(`/course/${courseId}/watch/${nextVideoId}`);
   };
 
+  useEffect(() => {
+    if (paused) {
+      clearInterval(updateProgressInterval.current);
+    } else {
+      updateProgressInterval.current = setInterval(() => {
+        if (videoRef.current) {
+          onAddEditProgress(Math.floor(videoRef.current.currentTime));
+        }
+      }, 60000); // update once a minute
+    }
+
+    return () => {
+      clearTimeout(updateProgressInterval.current);
+    };
+  }, [paused]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = defaultTime;
+    }
+  }, []);
+
   return (
     <div
       className={styles.videoWrapper}
@@ -162,6 +195,10 @@ function VideoPlayer({
         muted={muted}
         ref={videoRef}
         onTimeUpdate={onTimeUpdate}
+        onEnded={() => {
+          setPaused(true);
+          onAddEditProgress(duration);
+        }}
       />
       <div
         className={styles.controls}

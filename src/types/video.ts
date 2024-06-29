@@ -27,12 +27,14 @@ export type TComment = {
 };
 
 export type TVideoRating = {
-  id: string;
-  rating: number;
+  rating: {
+    id: string;
+    rating: number;
+  };
 };
 
 export type TVideoEdit = {
   name: string;
   description: string;
   creatorId: string;
-}
+};

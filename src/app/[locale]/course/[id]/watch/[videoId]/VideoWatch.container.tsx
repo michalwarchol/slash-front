@@ -1,6 +1,5 @@
 "use client";
 
-import { Spin } from "antd";
 import { FormikHelpers } from "formik";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -8,35 +7,41 @@ import { useEffect, useState } from "react";
 import { TPagination } from "@/types/pagination";
 import { TComment, TVideoResponse } from "@/types/video";
 
-import { TAddCommentValues } from "./VideoWatch.types";
+import { TAddCommentValues, TProgress } from "./VideoWatch.types";
 import {
   addComment,
+  addEditProgress,
   addEditRating,
   getComments,
-  getVideo,
   increaseViews,
 } from "./VideoWatch.utils";
 import View from "./VideoWatch.view";
 
 interface IProps {
-  id: string;
-  locale: string;
   videoId: string;
-  userId?: string;
+  video: TVideoResponse | null;
+  progress: TProgress | null;
   userType?: "STUDENT" | "EDUCATOR";
+  userId?: string;
 }
 
 export default function VideoWatchContainer({
   videoId,
-  locale,
   userType,
+  video,
+  progress,
+  userId,
 }: IProps) {
   const { back } = useRouter();
+  if (video === null) {
+    back();
+    return null;
+  }
+
   const [firstLoad, setFirstLoad] = useState<boolean>(true);
 
   // video state
-  const [data, setData] = useState<TVideoResponse | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [data, setData] = useState<TVideoResponse>(video);
 
   // comments state
   const [comments, setComments] = useState<TComment[]>([]);
@@ -51,6 +56,9 @@ export default function VideoWatchContainer({
     perPage: 1,
     total: 0,
   });
+
+  //progress state
+  const [progressData, setProgressData] = useState<TProgress | null>(progress);
 
   const onSetOrderBy = (newOrderBy: string) => {
     setOrderBy(newOrderBy);
@@ -67,14 +75,6 @@ export default function VideoWatchContainer({
   };
 
   useEffect(() => {
-    getVideo(videoId, locale).then((response) => {
-      setLoading(false);
-      if (response === null) {
-        back();
-        return;
-      }
-      setData(response);
-    });
     setFirstLoad(false);
     setLoadingComments(true);
     getComments(videoId, page, 20, orderBy, order).then((response) => {
@@ -131,7 +131,30 @@ export default function VideoWatchContainer({
     if (result.data.success && data) {
       setData({
         ...data,
-        myRating: result.data.result,
+        myRating: result.data.result.rating,
+      });
+    }
+  };
+
+  const onAddEditProgress = async (watchTime: number) => {
+    if (!userId) {
+      return;
+    }
+
+    const hasEnded = data.nextVideoId === null && watchTime === data.duration;
+    const result = await addEditProgress({
+      id: progressData?.id,
+      videoId,
+      watchTime,
+      hasEnded,
+    });
+
+    if (result.success) {
+      setProgressData({
+        id: result.result.id,
+        watchTime: result.result.watchTime,
+        hasEnded: result.result.hasEnded,
+        createdAt: result.result.createdAt,
       });
     }
   };
@@ -140,9 +163,7 @@ export default function VideoWatchContainer({
     return null;
   }
 
-  return loading ? (
-    <Spin />
-  ) : (
+  return (
     <View
       data={data}
       userType={userType}
@@ -156,6 +177,8 @@ export default function VideoWatchContainer({
       onAddComment={onAddComment}
       onIncreaseViews={onIncreaseViews}
       onRate={onRate}
+      onAddEditProgress={onAddEditProgress}
+      defaultTime={progress?.watchTime || 0}
     />
   );
 }
