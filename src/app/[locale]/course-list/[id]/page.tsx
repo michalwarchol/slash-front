@@ -3,9 +3,8 @@ import { cookies } from "next/headers";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import UserVerifier from "@/components/UserVerifier";
-import { TUser } from "@/types/user";
-import axios from "@/utils/axios";
 
+import { getUserData } from "./CourseList.actions";
 import Container from "./CourseList.container";
 import styles from "./CourseList.module.scss";
 
@@ -15,12 +14,6 @@ type TProps = {
     id: string;
   };
 };
-
-async function getUserData(id: string): Promise<TUser> {
-  const { data } = await axios.get(`/users/user/${id}`);
-
-  return data;
-}
 
 export default async function Course({ params }: TProps) {
   const cookieStore = cookies();

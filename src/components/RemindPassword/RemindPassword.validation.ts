@@ -19,6 +19,9 @@ export default (errorMessages: TErrorMessages, phase: number) =>
         )
         .required(errorMessages.required),
       confirmNewPassword: string()
-        .oneOf([ref("password")], errorMessages.confirmPasswordDoesNotMatch)
+        .oneOf(
+          [ref("newPassword")],
+          errorMessages.confirmPasswordDoesNotMatch
+        )
         .required(errorMessages.required),
     });

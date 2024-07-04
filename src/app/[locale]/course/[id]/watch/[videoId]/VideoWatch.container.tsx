@@ -7,13 +7,13 @@ import { useEffect, useState } from "react";
 import { TPagination } from "@/types/pagination";
 import { TComment, TVideoResponse } from "@/types/video";
 
+import { increaseViews } from "./VideoWatch.actions";
 import { TAddCommentValues, TProgress } from "./VideoWatch.types";
 import {
   addComment,
   addEditProgress,
   addEditRating,
   getComments,
-  increaseViews,
 } from "./VideoWatch.utils";
 import View from "./VideoWatch.view";
 
@@ -111,7 +111,7 @@ export default function VideoWatchContainer({
     formikBag: FormikHelpers<TAddCommentValues>
   ) => {
     setAddCommentLoading(true);
-    const { data } = await addComment({ videoId, text: values.text });
+    const data = await addComment({ videoId, text: values.text });
     setAddCommentLoading(false);
     formikBag.resetForm();
     setComments([data, ...comments]);
@@ -128,10 +128,10 @@ export default function VideoWatchContainer({
 
   const onRate = async (rating: number, id?: string) => {
     const result = await addEditRating({ videoId, rating, id });
-    if (result.data.success && data) {
+    if (result.success && data) {
       setData({
         ...data,
-        myRating: result.data.result.rating,
+        myRating: result.result.rating,
       });
     }
   };
@@ -179,6 +179,7 @@ export default function VideoWatchContainer({
       onRate={onRate}
       onAddEditProgress={onAddEditProgress}
       defaultTime={progress?.watchTime || 0}
+      isAuthor={userId === data.course.creator.id}
     />
   );
 }

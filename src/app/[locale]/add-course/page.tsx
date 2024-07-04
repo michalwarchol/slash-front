@@ -1,12 +1,12 @@
 import { cookies } from "next/headers";
 import { getTranslations } from "next-intl/server";
 
-import { getCourseTypes } from "@/app/actions";
 import { redirect } from "@/app/navigation";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import UserVerifier from "@/components/UserVerifier";
 
+import { getCourseTypes } from "./AddCourse.actions";
 import { initialValues } from "./AddCourse.consts";
 import { getErrorMessages, getMessages } from "./AddCourse.utils";
 import View from "./AddCourse.view";

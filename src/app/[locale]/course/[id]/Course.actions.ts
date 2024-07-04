@@ -1,4 +1,6 @@
-import axios from '@/utils/axios';
+"use server";
+
+import Fetch from "@/utils/requestHandler";
 
 export async function getCourse(
   lang: string,
@@ -9,7 +11,13 @@ export async function getCourse(
     return {};
   }
 
-  const { data } = await axios.get(`/courses/course/${id}`);
+  const data = await Fetch.get(`/courses/course/${id}`, { cache: "no-store" });
+  if (data.statusCode === 404) {
+    return {
+      course: null,
+      statistics: null,
+    };
+  }
 
   if (!data) {
     return {
@@ -36,9 +44,9 @@ export async function getCourse(
   };
 
   if (userId) {
-    const { data: statistics } = await axios.get(
-      `/courses/user_statistics/${id}`
-    );
+    const statistics = await Fetch.get(`/courses/user_statistics/${id}`, {
+      cache: "no-store",
+    });
 
     return {
       course,

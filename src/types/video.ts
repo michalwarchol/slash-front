@@ -26,13 +26,6 @@ export type TComment = {
   updatedAt: Date;
 };
 
-export type TVideoRating = {
-  rating: {
-    id: string;
-    rating: number;
-  };
-};
-
 export type TVideoEdit = {
   name: string;
   description: string;

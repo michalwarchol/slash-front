@@ -4,7 +4,7 @@ import { message } from "antd";
 import { useState } from "react";
 
 import { useRouter } from "@/app/navigation";
-import axios from "@/utils/axios";
+import Fetch from "@/utils/requestHandler";
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
 
 import { initialValues } from "./CourseUpload.consts";
@@ -36,11 +36,13 @@ export default function CourseUploadContainer({
     formData.append("description", values.description);
 
     try {
-      const { data } = await axios.post(`/video/${id}`, formData, {
-        headers: {
-          "Content-Type": `multipart/form-data;`,
+      const data = await Fetch.post(
+        `/video/${id}`,
+        {
+          body: formData,
         },
-      });
+        true
+      );
 
       setLoading(false);
       if (data.success) {

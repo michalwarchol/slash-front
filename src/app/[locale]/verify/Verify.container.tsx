@@ -4,8 +4,9 @@ import { message } from "antd";
 import Cookies from "js-cookie";
 import { useState } from "react";
 
-import axios from "@/utils/axios";
+import { useRouter } from "@/app/navigation";
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
+import Fetch from "@/utils/requestHandler";
 
 import {
   TApiErrorMessages,
@@ -28,11 +29,14 @@ export default function VerifyContainer({
 }: IProps) {
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
+  const router = useRouter();
 
   const onSubmit = async (values: TFormValues) => {
     setLoading(true);
-    const { data } = await axios.post("/users/verify-user", {
-      code: values.code,
+    const data = await Fetch.post("/users/verify-user", {
+      body: JSON.stringify({
+        code: values.code,
+      }),
     });
 
     if (data.errors) {
@@ -47,7 +51,7 @@ export default function VerifyContainer({
         path: "/",
       });
 
-      window.location.href = "/";
+      router.push("/");
     }
   };
 

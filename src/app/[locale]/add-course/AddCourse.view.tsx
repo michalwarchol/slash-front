@@ -8,7 +8,7 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Select from "@/components/Select";
 import Wysiwyg from "@/components/Wysiwyg";
-import axios from "@/utils/axios";
+import Fetch from "@/utils/requestHandler";
 
 import {
   CourseTypes,
@@ -60,13 +60,15 @@ export default function RegisterView({
   const onSubmit = async (values: TInitialValues) => {
     setLoading(true);
 
-    const query = id ? "courses/edit" : "courses/create";
-    const method = id ? axios.put : axios.post;
-    const { data } = await method(query, {
-      id,
-      name: values.name,
-      description: values.description,
-      subTypeId: values.subType,
+    const query = id ? "/courses/edit" : "/courses/create";
+    const method = id ? Fetch.put : Fetch.post;
+    const data = await method(query, {
+      body: JSON.stringify({
+        id,
+        name: values.name,
+        description: values.description,
+        subTypeId: values.subType,
+      }),
     });
 
     setLoading(false);

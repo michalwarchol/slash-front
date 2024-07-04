@@ -5,8 +5,8 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 
 import { useRouter } from "@/app/navigation";
-import axios from "@/utils/axios";
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
+import Fetch from "@/utils/requestHandler";
 
 import {
   TApiErrorMessages,
@@ -40,12 +40,14 @@ export default function RegisterContainer({
   const { push } = useRouter();
   const onSubmit = async (values: TInitialValues) => {
     setLoading(true);
-    const { data } = await axios.post("users/signup", {
-      firstName: values.firstName,
-      lastName: values.lastName,
-      email: values.email,
-      password: values.password,
-      type: values.role,
+    const data = await Fetch.post("/users/signup", {
+      body: JSON.stringify({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        password: values.password,
+        type: values.role,
+      }),
     });
 
     setLoading(false);

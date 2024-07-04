@@ -3,9 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { TCourseResponse } from "@/types/course";
-import axios from "@/utils/axios";
-
+import { getUserCourses } from "./CourseList.actions";
 import { TCourseListItem } from "./CourseList.types";
 import View from "./CourseList.view";
 
@@ -16,52 +14,10 @@ interface IProps {
   pageUserName: string;
 }
 
-interface IGetUserCourses {
-  id: string;
-  page: number;
-  perPage: number;
-  orderBy: string;
-  order: string;
-  locale: string;
-}
-
 type TData = Omit<
   TCourseListItem,
   "courseVideos" | "courseMaterials" | "likesCount"
 >[];
-
-async function getUserCourses({
-  id,
-  page,
-  perPage,
-  orderBy,
-  order,
-  locale,
-}: IGetUserCourses) {
-  const { data } = await axios.get(
-    `/courses/creator_list?id=${id}&page=${page}&perPage=${perPage}&orderBy=${orderBy}&order=${order}`
-  );
-
-  return {
-    ...data,
-    data: data.data.map((course: TCourseResponse) => ({
-      ...course,
-      type: {
-        id: course.type.id,
-        name: course.type.name,
-        value: locale === "pl" ? course.type.valuePl : course.type.valueEn,
-        mainType: {
-          id: course.type.mainType.id,
-          name: course.type.mainType.name,
-          value:
-            locale === "pl"
-              ? course.type.mainType.valuePl
-              : course.type.mainType.valueEn,
-        },
-      },
-    })),
-  };
-}
 
 export default function CourseList({
   id,

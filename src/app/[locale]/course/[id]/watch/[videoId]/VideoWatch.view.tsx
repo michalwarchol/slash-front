@@ -16,7 +16,7 @@ import Select from "@/components/Select";
 import VideoPlayer from "@/components/VideoPlayer";
 import { TPagination } from "@/types/pagination";
 import { TComment, TVideoResponse } from "@/types/video";
-import axios from "@/utils/axios";
+import Fetch from "@/utils/requestHandler";
 
 import {
   commentsSettingsInitialValues,
@@ -46,6 +46,7 @@ interface IProps {
   onIncreaseViews: () => void;
   onRate: (rating: number, id?: string) => Promise<void>;
   onAddEditProgress: (watchTime: number) => Promise<void>;
+  isAuthor: boolean;
 }
 
 export default function VideoWatchView({
@@ -63,6 +64,7 @@ export default function VideoWatchView({
   onRate,
   onAddEditProgress,
   defaultTime,
+  isAuthor,
 }: IProps) {
   const t = useTranslations();
   const [viewIncreased, setViewIncreased] = useState(false);
@@ -73,8 +75,7 @@ export default function VideoWatchView({
 
   const deleteVideo = async () => {
     setDeleteLoading(true);
-    await axios
-      .delete(`/video/${data.id}`)
+    await Fetch.delete(`/video/${data.id}`, {})
       .then(() => {
         setDeleteLoading(false);
         push(`/course/${data.course.id}`);
@@ -107,18 +108,20 @@ export default function VideoWatchView({
             }
           }}
         />
-        <div className={styles.authorActions}>
-          <Link href={`/course/${data.course.id}/watch/${data.id}/edit`}>
-            <Button type="button">{t("CourseWatch.edit")}</Button>
-          </Link>
-          <Tooltip title={t("CourseWatch.delete")}>
-            <div className={styles.deleteButton}>
-              <Button onClick={() => setDeleteModalOpen(true)}>
-                <DeleteOutlined />
-              </Button>
-            </div>
-          </Tooltip>
-        </div>
+        {isAuthor && (
+          <div className={styles.authorActions}>
+            <Link href={`/course/${data.course.id}/watch/${data.id}/edit`}>
+              <Button type="button">{t("CourseWatch.edit")}</Button>
+            </Link>
+            <Tooltip title={t("CourseWatch.delete")}>
+              <div className={styles.deleteButton}>
+                <Button onClick={() => setDeleteModalOpen(true)}>
+                  <DeleteOutlined />
+                </Button>
+              </div>
+            </Tooltip>
+          </div>
+        )}
         <div className={styles.videoInfo}>
           <div className={styles.videoTitleWrapper}>
             <Title level={2}>{data.name}</Title>
