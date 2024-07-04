@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
-import { getUserRoles } from "@/app/actions";
 import StaticModal from "@/components/StaticModal";
 import backgroundPic from "@/public/images/unauthorized-background-original.jpg";
 
+import { getUserRoles } from "./register.actions";
 import { listItems } from "./register.consts";
 import Container from "./register.container";
 import { UserRoles } from "./register.types";

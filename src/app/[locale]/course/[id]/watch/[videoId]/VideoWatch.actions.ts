@@ -1,6 +1,9 @@
 "use server";
+
 import { TVideoResponse } from "@/types/video";
-import { Fetch } from "@/utils/axios";
+import Fetch from "@/utils/requestHandler";
+
+import { TIncreaseViewsInput } from "./VideoWatch.types";
 
 export const getUserCourseProgress = async (courseId: string) => {
   return Fetch.get(`/statistics/progress/${courseId}`, {
@@ -12,13 +15,15 @@ export async function getVideo(
   id: string,
   lang: string
 ): Promise<TVideoResponse | null> {
-  const data = await Fetch.get(`/video/${id}`);
+  const data = await Fetch.get(`/video/${id}`, { cache: "no-store" });
 
-  if (!data) {
+  if (!data || data.statusCode === 404) {
     return null;
   }
 
-  const ratingData = await Fetch.get(`/video/${id}/rating`);
+  const ratingData = await Fetch.get(`/video/${id}/rating`, {
+    cache: "no-store",
+  });
 
   const type = data.course.type;
   const mainType = data.course.type.mainType;
@@ -40,4 +45,8 @@ export async function getVideo(
     },
     myRating: ratingData ? ratingData.rating : null,
   };
+}
+
+export async function increaseViews({ id }: TIncreaseViewsInput) {
+  return Fetch.put(`/video/${id}/views`, {});
 }

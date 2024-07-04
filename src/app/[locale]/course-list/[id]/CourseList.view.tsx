@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import Modal from "@/components/Modal";
 import Select from "@/components/Select";
 import Table from "@/components/Table";
-import axios from "@/utils/axios";
+import Fetch from "@/utils/requestHandler";
 
 import { orderByOptions, orderOptions } from "./CourseList.consts";
 import styles from "./CourseList.module.scss";
@@ -52,8 +52,7 @@ export default function CourseListView({
 
   const deleteCourse = async (id: string) => {
     setDeleteLoading(true);
-    await axios
-      .delete(`/courses/${id}`)
+    await Fetch.delete(`/courses/${id}`, {})
       .then(() => {
         setDeleteLoading(false);
         setDeleteModalOpen(false);

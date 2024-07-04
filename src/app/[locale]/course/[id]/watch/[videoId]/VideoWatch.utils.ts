@@ -1,11 +1,9 @@
-import { TVideoRating } from "@/types/video";
-import axios, { Fetch } from "@/utils/axios";
+import Fetch from "@/utils/requestHandler";
 
 import {
   TAddCommentInput,
   TAddEditProgressInput,
   TAddEditRatingInput,
-  TIncreaseViewsInput,
 } from "./VideoWatch.types";
 
 export async function getComments(
@@ -15,7 +13,7 @@ export async function getComments(
   orderBy: string,
   order: string
 ) {
-  const { data } = await axios.get(
+  const data = await Fetch.get(
     `/video/${id}/comments?page=${page}&perPage=${perPage}&orderBy=${orderBy}&order=${order}`
   );
 
@@ -23,13 +21,11 @@ export async function getComments(
 }
 
 export async function addComment({ videoId, text }: TAddCommentInput) {
-  return axios.post(`/video/${videoId}/comments`, {
-    text,
+  return Fetch.post(`/video/${videoId}/comments`, {
+    body: JSON.stringify({
+      text,
+    }),
   });
-}
-
-export async function increaseViews({ id }: TIncreaseViewsInput) {
-  return axios.put(`/video/${id}/views`);
 }
 
 export async function addEditRating({
@@ -37,13 +33,12 @@ export async function addEditRating({
   rating,
   id,
 }: TAddEditRatingInput) {
-  return axios.post<{ success: boolean; result: TVideoRating }>(
-    `/video/${videoId}/rate`,
-    {
+  return Fetch.post(`/video/${videoId}/rate`, {
+    body: JSON.stringify({
       id,
       rating,
-    }
-  );
+    }),
+  });
 }
 
 export async function addEditProgress({

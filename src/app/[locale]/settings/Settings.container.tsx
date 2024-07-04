@@ -4,8 +4,8 @@ import { FormikHelpers } from "formik";
 import Cookies from "js-cookie";
 import { useState } from "react";
 
-import axios from "@/utils/axios";
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
+import Fetch from "@/utils/requestHandler";
 
 import {
   TApiErrorMessages,
@@ -38,34 +38,34 @@ export default function SettingsContainer({
   const onSubmit = async (values: TFormValues) => {
     setLoading(true);
     const formData = new FormData();
-    formData.append("avatar", values.avatar!.originFileObj!);
+    if (values.avatar) {
+      formData.append("avatar", values.avatar.originFileObj!);
+    }
     formData.append("firstName", values.firstName);
     formData.append("lastName", values.lastName);
 
     try {
-      const response = await axios.put("/users/update", formData, {
-        headers: {
-          "Content-Type": `multipart/form-data;`,
-        },
-      });
+      const response = await Fetch.put(
+        "/users/update",
+        { body: formData },
+        true
+      );
 
       setLoading(false);
-      if (response.data && response.data.success) {
-        Cookies.set("user", JSON.stringify(response.data.result), {
+      if (response && response.success) {
+        Cookies.set("user", JSON.stringify(response.result), {
           expires: 1,
           path: "/",
         });
         messageApi.success(messages.success);
       } else {
-        if (!response.data) {
+        if (!response) {
           messageApi.error(errorMessages.fileTooLarge);
           return;
         }
 
-        if (!response.data.success || response.data.errors) {
-          messageApi.error(
-            getApiErrorMessage(response.data.errors, errorMessages)
-          );
+        if (!response.success || response.errors) {
+          messageApi.error(getApiErrorMessage(response.errors, errorMessages));
           return;
         }
       }
@@ -79,9 +79,11 @@ export default function SettingsContainer({
     formikHelpers: FormikHelpers<TChangePasswordFormValues>
   ) => {
     setLoadingPasswordChange(true);
-    const { data } = await axios.post("/users/change-password", {
-      oldPassword: values.oldPassword,
-      newPassword: values.newPassword,
+    const data = await Fetch.post("/users/change-password", {
+      body: JSON.stringify({
+        oldPassword: values.oldPassword,
+        newPassword: values.newPassword,
+      }),
     });
 
     setLoadingPasswordChange(false);

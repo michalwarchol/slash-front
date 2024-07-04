@@ -4,7 +4,7 @@ import {
   TMostPopularCourse,
   TMostViewedVideo,
 } from "@/types/statistics";
-import { Fetch } from "@/utils/axios";
+import Fetch from "@/utils/requestHandler";
 
 import { TMessages } from "./Statistics.types";
 

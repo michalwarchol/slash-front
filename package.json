@@ -12,7 +12,6 @@
     "@ant-design/icons": "^5.3.1",
     "@ant-design/nextjs-registry": "^1.0.0",
     "antd": "^5.14.2",
-    "axios": "^1.6.7",
     "classnames": "^2.5.1",
     "formik": "^2.4.5",
     "js-cookie": "^3.0.5",

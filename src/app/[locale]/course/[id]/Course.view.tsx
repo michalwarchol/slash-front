@@ -13,7 +13,7 @@ import MaterialCarouselItem from "@/components/MaterialCarouselItem";
 import Modal from "@/components/Modal";
 import VideoCarouselItem from "@/components/VideoCarouselItem";
 import { TCourse } from "@/types/course";
-import axios from "@/utils/axios";
+import Fetch from "@/utils/requestHandler";
 
 import styles from "./Course.module.scss";
 
@@ -47,16 +47,17 @@ export default function CourseView({
   const [uploadMaterialLoading, setUploadMaterialLoading] = useState(false);
 
   const likeOrDislike = async (isLike: boolean) => {
-    await axios.post("/courses/like", {
-      id: course.id,
-      isLike,
+    await Fetch.post("/courses/like", {
+      body: JSON.stringify({
+        id: course.id,
+        isLike,
+      }),
     });
   };
 
   const deleteCourse = async () => {
     setDeleteLoading(true);
-    await axios
-      .delete(`/courses/${course.id}`)
+    await Fetch.delete(`/courses/${course.id}`, {})
       .then(() => {
         setDeleteLoading(false);
         router.push("/");
@@ -69,8 +70,9 @@ export default function CourseView({
 
   const deleteMaterial = async () => {
     setDeleteLoading(true);
-    const { data } = await axios.delete(
-      `/courses/materials/file/${deleteMaterialId}`
+    const data = await Fetch.delete(
+      `/courses/materials/file/${deleteMaterialId}`,
+      {}
     );
 
     setDeleteLoading(false);
@@ -102,14 +104,12 @@ export default function CourseView({
     const formData = new FormData();
     formData.append("file", file);
 
-    const { data } = await axios.post(
+    const data = await Fetch.post(
       `/courses/materials/${course.id}`,
-      formData,
       {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
+        body: formData,
+      },
+      true
     );
 
     messageApi.success(t("Course.materialUploadedSuccessFully"));

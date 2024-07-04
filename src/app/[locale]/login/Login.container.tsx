@@ -4,9 +4,10 @@ import { message } from "antd";
 import Cookies from "js-cookie";
 import { Dispatch, SetStateAction, useState } from "react";
 
-import axios from "@/utils/axios";
+import { useRouter } from "@/app/navigation";
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
 
+import { remindPassword, requestPasswordRemind, signIn } from "./Login.actions";
 import {
   TApiErrorMessages,
   TErrorMessages,
@@ -30,13 +31,11 @@ export default function LoginContainer({
   const [loading, setLoading] = useState(false);
   const [isRemindPassword, setIsRemindPassword] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
+  const router = useRouter();
 
   const onSubmit = async (values: TInitialValues) => {
     setLoading(true);
-    const { data } = await axios.post("users/signin", {
-      email: values.email,
-      password: values.password,
-    });
+    const data = await signIn(values);
 
     setLoading(false);
 
@@ -51,7 +50,7 @@ export default function LoginContainer({
       path: "/",
     });
 
-    window.location.href = "/";
+    router.push("/");
   };
 
   const onRemindPasswordSubmit = async (
@@ -61,34 +60,24 @@ export default function LoginContainer({
   ) => {
     let response;
     if (phase === 1) {
-      response = await axios.post("/users/request-password-remind", {
-        email: values.email,
-      });
-      if (response.data.success) {
+      response = await requestPasswordRemind(values);
+      if (response.success) {
         messageApi.info(messages.remindPasswordSuccessPhaseOne);
         setPhase(2);
       } else {
-        messageApi.error(
-          getApiErrorMessage(response.data.errors, apiErrorMessages)
-        );
+        messageApi.error(getApiErrorMessage(response.errors, apiErrorMessages));
       }
     }
 
     if (phase === 2) {
-      response = await axios.post("/users/remind-password", {
-        email: values.email,
-        password: values.newPassword,
-        code: values.code,
-      });
+      response = await remindPassword(values);
 
-      if (response.data.errors) {
-        messageApi.error(
-          getApiErrorMessage(response.data.errors, apiErrorMessages)
-        );
+      if (response.errors) {
+        messageApi.error(getApiErrorMessage(response.errors, apiErrorMessages));
         return;
       }
 
-      if (response.data.success) {
+      if (response.success) {
         messageApi.success(messages.remindPasswordSuccessPhaseTwo);
         setIsRemindPassword(false);
       }

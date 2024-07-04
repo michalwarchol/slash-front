@@ -1,6 +1,6 @@
 "use server";
 
-import { Fetch } from "@/utils/axios";
+import Fetch from "@/utils/requestHandler";
 
 export async function getStudentStartedCourses(page: number, perPage: number) {
   const { data } = await Fetch.get(
