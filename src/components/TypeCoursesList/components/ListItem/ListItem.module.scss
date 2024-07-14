@@ -1,0 +1,79 @@
+@import "../../../../app/colors.module.scss";
+
+.link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  flex: 1 0 100%;
+  @media screen and (min-width: $phoneHorizontal) {
+    flex: 1 0 40%;
+  }
+
+  @media screen and (min-width: $tablet) {
+    flex: 1 0 30%;
+  }
+
+  @media screen and (min-width: $monitor) {
+    flex: 1 0 30%;
+  }
+
+  .listItem {
+    padding: 12px;
+    border-radius: 8px;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .thumbnail {
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 8px;
+
+      .videoNotFoundImageWrapper {
+        position: relative;
+        width: 100%; /* or any dynamic width */
+        padding-top: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+        .videoNotFoundImage {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: rgba(0, 0, 0, 0.1);
+
+          .playIcon {
+            font-size: 40px;
+          }
+        }
+      }
+    }
+
+    .name {
+      font-weight: 500;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .creator {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+
+      .creatorAvatar {
+        margin-right: 10px;
+      }
+    }
+
+    .videos {
+      font-size: 16px;
+
+      .desktopIcon {
+        margin-left: 8px;
+        margin-right: 18px;
+      }
+    }
+  }
+}
