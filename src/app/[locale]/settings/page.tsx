@@ -15,7 +15,14 @@ import {
   getMessages,
 } from "./Settings.utils";
 
-export default async function Home() {
+type TProps = {
+  searchParams: {
+    search: string;
+    typeName: string;
+  };
+};
+
+export default async function Home({ searchParams }: TProps) {
   const cookieStore = cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
@@ -31,7 +38,7 @@ export default async function Home() {
   return (
     <UserVerifier>
       <div className={styles.wrapper}>
-        <Header />
+        <Header searchParams={searchParams} />
         <Navbar id={user.id} type={user.type} />
         <Container
           avatar={user.avatar}

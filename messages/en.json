@@ -160,7 +160,8 @@
     "title": "S/ash",
     "login": "Sign In",
     "register": "Sign Up",
-    "search": "Search"
+    "search": "Search",
+    "category": "Kategoria"
   },
   "CourseTitle": {
     "author": "Author: {author}",

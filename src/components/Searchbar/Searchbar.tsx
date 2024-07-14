@@ -1,6 +1,5 @@
 "use client";
 import { CloseOutlined, SearchOutlined } from "@ant-design/icons";
-import { Form, Formik } from "formik";
 import { useEffect, useRef, useState } from "react";
 
 import Input from "@/components/Input";
@@ -31,19 +30,13 @@ export default function Searchbar({ searchPlaceholder }: IProps) {
 
   return (
     <div className={styles.searchbar}>
-      <Formik onSubmit={() => {}} initialValues={{ search: "" }}>
-        {() => (
-          <Form className={styles.form}>
-            {searchOpen && (
-              <Input
-                name="search"
-                className={styles.input}
-                placeholder={searchPlaceholder}
-              />
-            )}
-          </Form>
-        )}
-      </Formik>
+      {searchOpen && (
+        <Input
+          name="search"
+          className={styles.input}
+          placeholder={searchPlaceholder}
+        />
+      )}
       <div className={styles.iconWrapper} ref={ref}>
         <div className={styles.icon} onClick={() => setSearchOpen(!searchOpen)}>
           {searchOpen ? <CloseOutlined /> : <SearchOutlined />}

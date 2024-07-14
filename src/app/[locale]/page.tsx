@@ -3,15 +3,36 @@ import { cookies } from "next/headers";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 
-import { getStudentStartedCourses } from "./actions";
+import {
+  getCourseTypes,
+  getStudentStartedCourses,
+  getTypeCourses,
+} from "./actions";
 import styles from "./page.module.scss";
+import { formatCourseTypes, matchCourseTypeWithCourses } from "./page.utils";
 import { TTStudentStartedCourse } from "./types";
 import { View } from "./view";
 
-export default async function Home() {
+type IProps = {
+  searchParams: {
+    search: string;
+    typeName: string;
+  };
+};
+
+export default async function Home({ searchParams }: IProps) {
   const cookieStore = cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
+
+  const courseTypes = await getCourseTypes();
+  const formattedCourseTypes = formatCourseTypes(courseTypes, 10);
+
+  const categories = await Promise.all(
+    formattedCourseTypes.map((type) => {
+      return getTypeCourses(type.name);
+    })
+  );
 
   let userStartedCourses: TTStudentStartedCourse[] = [];
   if (user && user.type === "STUDENT") {
@@ -20,9 +41,16 @@ export default async function Home() {
 
   return (
     <div className={styles.wrapper}>
-      <Header />
+      <Header searchParams ={searchParams} />
       {user && <Navbar id={user.id} type={user.type} />}
-      <View userType={user?.type} studentStartedCourses={userStartedCourses} />
+      <View
+        userType={user?.type}
+        coursesByType={matchCourseTypeWithCourses(
+          formattedCourseTypes,
+          categories
+        )}
+        studentStartedCourses={userStartedCourses}
+      />
     </div>
   );
 }

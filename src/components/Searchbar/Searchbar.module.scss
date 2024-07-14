@@ -9,12 +9,12 @@
   width: 100%;
   max-width: 500px;
 
-  .form {
+  & > div {
     width: 100%;
+  }
 
-    .input {
-      width: 100%;
-    }
+  .input {
+    width: 100%;
   }
 
   .iconWrapper {

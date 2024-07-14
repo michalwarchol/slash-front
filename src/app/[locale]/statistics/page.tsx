@@ -10,7 +10,14 @@ import styles from "./Statistics.module.scss";
 import { fetchStats, getMessages } from "./Statistics.utils";
 import View from "./Statistics.view";
 
-export default async function Statistics() {
+type TProps = {
+  searchParams: {
+    search: string;
+    typeName: string;
+  };
+};
+
+export default async function Statistics({ searchParams }: TProps) {
   const cookieStore = cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
@@ -21,7 +28,7 @@ export default async function Statistics() {
   return (
     <UserVerifier>
       <div className={styles.wrapper}>
-        <Header />
+        <Header searchParams={searchParams} />
         {user && <Navbar id={user.id} type={user.type} />}
         <View
           educatorData={user.type === "EDUCATOR" ? data : defaultEducatorData}

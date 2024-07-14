@@ -1,14 +1,13 @@
 import { TUser } from "./user";
 
-export type TCourseType = {
+type TCourseTypeTranslated = {
   id: string;
   name: string;
   value: string;
-  mainType: {
-    id: string;
-    name: string;
-    value: string;
-  };
+};
+
+export type TCourseType = TCourseTypeTranslated & {
+  mainType: TCourseTypeTranslated;
 };
 
 export type TCourseVideo = {
@@ -68,4 +67,8 @@ export type TCourseFullType = {
   name: string;
   valuePl: string;
   valueEn: string;
+};
+
+export type TCourseMainType = TCourseTypeTranslated & {
+  subTypes: TCourseTypeTranslated[];
 };

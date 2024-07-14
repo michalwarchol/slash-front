@@ -12,7 +12,14 @@ import { getErrorMessages, getMessages } from "./AddCourse.utils";
 import View from "./AddCourse.view";
 import styles from "./page.module.scss";
 
-export default async function Home() {
+type IProps = {
+  searchParams: {
+    search: string;
+    typeName: string;
+  };
+};
+
+export default async function Home({ searchParams }: IProps) {
   const cookieStore = cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
@@ -29,7 +36,7 @@ export default async function Home() {
   return (
     <UserVerifier>
       <div className={styles.wrapper}>
-        <Header />
+        <Header searchParams={searchParams} />
         {user && <Navbar id={user.id} type={user.type} />}
         <View
           initialValues={initialValues}
