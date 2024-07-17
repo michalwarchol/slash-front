@@ -1,6 +1,6 @@
 "use client";
-import { CloseOutlined, SearchOutlined } from "@ant-design/icons";
-import { useEffect, useRef, useState } from "react";
+import { useFormikContext } from "formik";
+import { useRef } from "react";
 
 import Input from "@/components/Input";
 
@@ -11,37 +11,24 @@ interface IProps {
 }
 
 export default function Searchbar({ searchPlaceholder }: IProps) {
-  const [searchOpen, setSearchOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (ref.current) {
-        const elementStyle = window.getComputedStyle(ref.current);
-
-        if (elementStyle.display === "none") {
-          setSearchOpen(true);
-        }
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    handleResize();
-  }, []);
+  const { submitForm } = useFormikContext();
+  const submitTimeout = useRef<NodeJS.Timeout | null>(null);
 
   return (
     <div className={styles.searchbar}>
-      {searchOpen && (
-        <Input
-          name="search"
-          className={styles.input}
-          placeholder={searchPlaceholder}
-        />
-      )}
-      <div className={styles.iconWrapper} ref={ref}>
-        <div className={styles.icon} onClick={() => setSearchOpen(!searchOpen)}>
-          {searchOpen ? <CloseOutlined /> : <SearchOutlined />}
-        </div>
-      </div>
+      <Input
+        name="search"
+        className={styles.input}
+        placeholder={searchPlaceholder}
+        changeCallback={() => {
+          if (submitTimeout.current) {
+            clearTimeout(submitTimeout.current);
+          }
+          submitTimeout.current = setTimeout(() => {
+            submitForm();
+          }, 2000);
+        }}
+      />
     </div>
   );
 }
