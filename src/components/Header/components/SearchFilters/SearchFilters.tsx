@@ -42,7 +42,7 @@ export default function SearchFilters({
       if (values.search !== "") {
         delimiter = "&";
       }
-      searchString += `${delimiter}typeName=${values.type}`;
+      searchString += `${delimiter}typeName=${values.type[1]}`;
     }
 
     router.push("/search?" + searchString);
@@ -77,7 +77,7 @@ export default function SearchFilters({
                   submitForm();
                 }}
                 onChange={(v: (string | number)[]) => {
-                  setFieldValue("type", v[v.length - 1]);
+                  setFieldValue("type", v);
                 }}
                 options={typeOptions}
               />
