@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 
+import Container from "./Search.container";
 import styles from "./Search.module.scss";
 
 type IProps = {
@@ -21,6 +22,7 @@ export default async function Search({ searchParams }: IProps) {
     <div className={styles.wrapper}>
       <Header searchParams={searchParams} />
       {user && <Navbar id={user.id} type={user.type} />}
+      <Container />
     </div>
   );
 }

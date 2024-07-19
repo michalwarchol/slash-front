@@ -38,11 +38,9 @@ export default function SearchFilters({
     }
 
     if (values.type.length !== 0) {
-      let delimiter = "";
-      if (values.search !== "") {
-        delimiter = "&";
-      }
-      searchString += `${delimiter}typeName=${values.type[1]}`;
+      searchString += `&typeName=${values.type[1]}`;
+    } else {
+      searchString += `&typeName=`;
     }
 
     router.push("/search?" + searchString);
