@@ -43,6 +43,8 @@ export default function SearchFilters({
       searchString += `&typeName=`;
     }
 
+    searchString += "&page=1";
+
     router.push("/search?" + searchString);
     setSubmitting(false);
   };
