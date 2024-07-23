@@ -202,5 +202,9 @@
     "encouragement": "Oglądaj dalej",
     "category": "Kategoria: ",
     "video": "Zatrzymano na: {video}"
+  },
+  "SearchResult": {
+    "category": "Kategoria: ",
+    "totalVideos": "Filmy: "
   }
 }

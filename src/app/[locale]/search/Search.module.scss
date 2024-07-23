@@ -2,4 +2,26 @@
 
 .wrapper {
   min-height: 100vh;
+
+  .contentContainer {
+    padding: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .contentContainerInner {
+      width: 100%;
+
+      @media screen and (min-width: $monitor) {
+        max-width: $monitor;
+      }
+    }
+  }
+
+  .loaderWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+  }
 }

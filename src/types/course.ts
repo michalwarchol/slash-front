@@ -72,3 +72,15 @@ export type TCourseFullType = {
 export type TCourseMainType = TCourseTypeTranslated & {
   subTypes: TCourseTypeTranslated[];
 };
+
+export type TSearchResult = {
+  course: {
+    id: string;
+    name: string;
+    description: string;
+    creator: TUser;
+    type: TCourseFullType;
+  };
+  firstVideo: TCourseVideo;
+  totalVideos: number;
+};
