@@ -160,7 +160,8 @@
     "title": "S/ash",
     "login": "Sign In",
     "register": "Sign Up",
-    "search": "Search"
+    "search": "Search",
+    "category": "Category"
   },
   "CourseTitle": {
     "author": "Author: {author}",
@@ -201,5 +202,9 @@
     "encouragement": "Continue watching",
     "category": "Category: ",
     "video": "Stopped on: {video}"
+  },
+  "SearchResult": {
+    "category": "Category: ",
+    "totalVideos": "Videos: "
   }
 }

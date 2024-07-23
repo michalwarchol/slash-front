@@ -5,9 +5,9 @@ import { getTranslations } from "next-intl/server";
 
 import { TTStudentStartedCourse } from "@/app/[locale]/types";
 import { Link } from "@/app/navigation";
+import { getCategoryValue } from "@/utils/getCategoryValue";
 
 import styles from "./CourseQuickAccess.module.scss";
-import { getCategoryValue } from "./CourseQuickAccess.utils";
 
 interface IProps {
   courseProgressData: TTStudentStartedCourse;

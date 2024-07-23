@@ -4,8 +4,8 @@ import { message } from "antd";
 import { useState } from "react";
 
 import { useRouter } from "@/app/navigation";
-import Fetch from "@/utils/requestHandler";
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
+import Fetch from "@/utils/requestHandler";
 
 import { initialValues } from "./CourseUpload.consts";
 import { TErrorMessages, TFormValues, TMessages } from "./CourseUpload.types";

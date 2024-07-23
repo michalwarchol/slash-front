@@ -4,5 +4,6 @@ export type TUser = {
   lastName: string;
   email: string;
   avatar: string | null;
-  type: 'EDUCATOR' | 'STUDENT';
-}
+  type: "EDUCATOR" | "STUDENT";
+  isVerified: boolean;
+};

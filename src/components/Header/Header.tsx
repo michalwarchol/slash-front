@@ -9,12 +9,27 @@ import { getTranslations } from "next-intl/server";
 
 import { Link } from "@/app/navigation";
 import Button from "@/components/Button";
-import Searchbar from "@/components/Searchbar";
 
+import SearchFilters from "./components/SearchFilters";
+import { getCourseTypes } from "./Header.actions";
 import styles from "./Header.module.scss";
+import {
+  convertCourseTypesToCascaderOptions,
+  getInitialValues,
+  getSearchFilterMessages,
+} from "./Header.utils";
 
-export default async function Header() {
-  const t = await getTranslations();
+interface IProps {
+  searchParams: {
+    search: string;
+    typeName: string;
+  };
+}
+
+export default async function Header({
+  searchParams = { search: "", typeName: "" },
+}: IProps) {
+  const t = await getTranslations("header");
   const cookieStore = cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
@@ -22,16 +37,22 @@ export default async function Header() {
   const langCookie = cookieStore.get("NEXT_LOCALE");
   const lang = langCookie?.value;
 
+  const courseTypes = await getCourseTypes();
+
   return (
     <div className={styles.header}>
       <div className={styles.headerInner}>
         <div className={styles.logo}>
           <Link href="/">
-            <span className={styles.link}>{t("header.title")}</span>
+            <span className={styles.link}>{t("title")}</span>
           </Link>
         </div>
         <div className={styles.searchbar}>
-          <Searchbar searchPlaceholder={t("header.search")} />
+          <SearchFilters
+            initialValues={getInitialValues(searchParams, courseTypes)}
+            typeOptions={convertCourseTypesToCascaderOptions(courseTypes)}
+            messages={getSearchFilterMessages(t)}
+          />
         </div>
         {user && (
           <Dropdown
@@ -72,11 +93,11 @@ export default async function Header() {
           <div className={styles.userbuttons}>
             <div className={styles.button}>
               <Link href="/login">
-                <Button>{t("header.login")}</Button>
+                <Button>{t("login")}</Button>
               </Link>
             </div>
             <Link href="/register">
-              <Button>{t("header.register")}</Button>
+              <Button>{t("register")}</Button>
             </Link>
           </div>
         )}
@@ -85,11 +106,11 @@ export default async function Header() {
         <div className={styles.outerUserbuttons}>
           <div className={styles.button}>
             <Link href="/login">
-              <Button>{t("header.login")}</Button>
+              <Button>{t("login")}</Button>
             </Link>
           </div>
           <Link href="/register">
-            <Button>{t("header.register")}</Button>
+            <Button>{t("register")}</Button>
           </Link>
         </div>
       )}

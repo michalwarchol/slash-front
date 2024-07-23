@@ -9,28 +9,11 @@
   width: 100%;
   max-width: 500px;
 
-  .form {
+  & > div {
     width: 100%;
-
-    .input {
-      width: 100%;
-    }
   }
 
-  .iconWrapper {
-    display: block;
-    padding: 6px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.2s ease-in-out;
-    color: white;
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.3);
-    }
-
-    @media screen and (min-width: $phoneHorizontal) {
-      display: none;
-    }
+  .input {
+    width: 100%;
   }
 }

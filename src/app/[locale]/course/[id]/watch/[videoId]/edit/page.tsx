@@ -16,9 +16,13 @@ type TProps = {
     id: string;
     videoId: string;
   };
+  searchParams: {
+    search: string;
+    typeName: string;
+  };
 };
 
-export default async function VideoWatch({ params }: TProps) {
+export default async function VideoWatch({ params, searchParams }: TProps) {
   const cookieStore = cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
@@ -32,7 +36,7 @@ export default async function VideoWatch({ params }: TProps) {
 
   return (
     <div className={styles.wrapper}>
-      <Header />
+      <Header searchParams={searchParams} />
       {user && <Navbar id={user.id} type={user.type} />}
       <Container
         courseId={params.id}
