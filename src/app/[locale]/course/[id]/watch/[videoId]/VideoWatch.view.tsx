@@ -1,6 +1,6 @@
 "use client";
 
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, LeftOutlined } from "@ant-design/icons";
 import { Avatar, Divider, message, Rate, Tooltip, Typography } from "antd";
 import { Form, Formik, FormikHelpers } from "formik";
 import { SyntheticEvent, useState } from "react";
@@ -66,7 +66,7 @@ export default function VideoWatchView({
   defaultTime,
   isAuthor,
 }: IProps) {
-  const t = useTranslations();
+  const t = useTranslations("CourseWatch");
   const [viewIncreased, setViewIncreased] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -82,7 +82,7 @@ export default function VideoWatchView({
       })
       .catch(() => {
         setDeleteLoading(false);
-        messageApi.error(t("CourseWatch.deleteError"));
+        messageApi.error(t("deleteError"));
       });
   };
 
@@ -90,6 +90,10 @@ export default function VideoWatchView({
     <div className={styles.contentContainer}>
       {contextHolder}
       <div className={styles.contentContainerInner}>
+        <Link href={`/course/${data.course.id}`} className={styles.goBack}>
+          <LeftOutlined className={styles.goBackIcon} />
+          <span className={styles.goBackText}>{t("goBack")}</span>
+        </Link>
         <VideoPlayer
           src={data.link}
           thumbnail={data.thumbnailLink}
@@ -111,9 +115,9 @@ export default function VideoWatchView({
         {isAuthor && (
           <div className={styles.authorActions}>
             <Link href={`/course/${data.course.id}/watch/${data.id}/edit`}>
-              <Button type="button">{t("CourseWatch.edit")}</Button>
+              <Button type="button">{t("edit")}</Button>
             </Link>
-            <Tooltip title={t("CourseWatch.delete")}>
+            <Tooltip title={t("delete")}>
               <div className={styles.deleteButton}>
                 <Button onClick={() => setDeleteModalOpen(true)}>
                   <DeleteOutlined />
@@ -136,13 +140,11 @@ export default function VideoWatchView({
               </div>
             </Link>
             <Text className={styles.videoViews}>
-              {t("CourseWatch.views", { views: data.views })}
+              {t("views", { views: data.views })}
             </Text>
             {userType === "STUDENT" && (
               <div className={styles.rate}>
-                <Text className={styles.videoRating}>
-                  {t("CourseWatch.rate")}
-                </Text>
+                <Text className={styles.videoRating}>{t("rate")}</Text>
                 <Rate
                   allowHalf
                   defaultValue={data.myRating ? data.myRating.rating / 2 : 0}
@@ -154,7 +156,7 @@ export default function VideoWatchView({
             )}
             <div className={styles.rate}>
               <Text className={styles.videoRating}>
-                {t("CourseWatch.avgRating", {
+                {t("avgRating", {
                   rating: data.rating.toFixed(2),
                 })}
               </Text>
@@ -163,14 +165,14 @@ export default function VideoWatchView({
         </div>
         <Divider type="horizontal" className={styles.divider} />
         <div className={styles.descriptionWrapper}>
-          <Title level={3}>{t("CourseWatch.description")}</Title>
+          <Title level={3}>{t("description")}</Title>
           <div className={styles.description}>{data.description}</div>
         </div>
         <Divider type="horizontal" className={styles.divider} />
         <div className={styles.commentsWrapper}>
           <div className={styles.commentsHeaders}>
             <Title level={3} className={styles.commentsTitle}>
-              {t("CourseWatch.comments")}
+              {t("comments")}
             </Title>
             <div className={styles.commentsSettings}>
               <Formik
@@ -206,13 +208,13 @@ export default function VideoWatchView({
             <div className={styles.commentAddWrapper}>
               <Formik onSubmit={onAddComment} initialValues={{ text: "" }}>
                 <Form>
-                  <Title level={5}>{t("CourseWatch.addComment")}</Title>
+                  <Title level={5}>{t("addComment")}</Title>
                   <div className={styles.commentAddForm}>
                     <div className={styles.input}>
                       <Input name="text" />
                     </div>
                     <Button loading={addCommentLoading} type="submit">
-                      {t("CourseWatch.comment")}
+                      {t("comment")}
                     </Button>
                   </div>
                 </Form>
@@ -230,7 +232,7 @@ export default function VideoWatchView({
                 commentsPagination.count && (
               <div className={styles.loadMoreComments}>
                 <Button onClick={onFetchMoreComments} loading={loadingComments}>
-                  {t("CourseWatch.loadMoreComments")}
+                  {t("loadMoreComments")}
                 </Button>
               </div>
             )}
@@ -239,7 +241,7 @@ export default function VideoWatchView({
       </div>
       <Modal
         open={deleteModalOpen}
-        title={t("CourseWatch.deleteWarning")}
+        title={t("deleteWarning")}
         onConfirm={deleteVideo}
         onCancel={() => setDeleteModalOpen(false)}
         confirmLoading={deleteLoading}

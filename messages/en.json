@@ -87,6 +87,7 @@
     "cancel": "Cancel"
   },
   "CourseWatch": {
+    "goBack": "Go back to course",
     "edit": "Edit",
     "views": "Views: {views}",
     "description": "Description",

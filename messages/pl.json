@@ -87,6 +87,7 @@
     "cancel": "Anuluj"
   },
   "CourseWatch": {
+    "goBack": "Wróć do kursu",
     "edit": "Edytuj",
     "views": "Wyświetlenia: {views}",
     "description": "Opis",

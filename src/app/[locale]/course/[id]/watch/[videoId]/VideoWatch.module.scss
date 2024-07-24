@@ -15,6 +15,31 @@
       @media screen and (min-width: $monitor) {
         max-width: $monitor;
       }
+
+      .goBack {
+        text-decoration: none;
+        color: black;
+        padding: 8px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .goBackIcon {
+          margin-right: 10px;
+          margin-bottom: 2px;
+        }
+
+        .goBackText {
+          font-size: 18px;
+        }
+      }
     }
 
     .authorActions {
