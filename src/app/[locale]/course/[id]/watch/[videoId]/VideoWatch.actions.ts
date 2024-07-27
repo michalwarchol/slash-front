@@ -50,3 +50,9 @@ export async function getVideo(
 export async function increaseViews({ id }: TIncreaseViewsInput) {
   return Fetch.put(`/video/${id}/views`, {});
 }
+
+export async function getRecommendedCourses() {
+  return Fetch.get('/statistics/recommended?page=1&perPage=10', {
+    cache: 'no-store',
+  });
+}

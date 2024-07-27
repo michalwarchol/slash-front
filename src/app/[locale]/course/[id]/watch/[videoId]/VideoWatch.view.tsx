@@ -12,8 +12,10 @@ import Button from "@/components/Button";
 import Comment from "@/components/Comment";
 import Input from "@/components/Input";
 import Modal from "@/components/Modal";
+import RecommendedCourse from "@/components/RecommendedCourse";
 import Select from "@/components/Select";
 import VideoPlayer from "@/components/VideoPlayer";
+import { TSearchResult } from "@/types/course";
 import { TPagination } from "@/types/pagination";
 import { TComment, TVideoResponse } from "@/types/video";
 import Fetch from "@/utils/requestHandler";
@@ -47,6 +49,7 @@ interface IProps {
   onRate: (rating: number, id?: string) => Promise<void>;
   onAddEditProgress: (watchTime: number) => Promise<void>;
   isAuthor: boolean;
+  recommendedCourses: TSearchResult[];
 }
 
 export default function VideoWatchView({
@@ -65,6 +68,7 @@ export default function VideoWatchView({
   onAddEditProgress,
   defaultTime,
   isAuthor,
+  recommendedCourses,
 }: IProps) {
   const t = useTranslations("CourseWatch");
   const [viewIncreased, setViewIncreased] = useState(false);
@@ -169,73 +173,92 @@ export default function VideoWatchView({
           <div className={styles.description}>{data.description}</div>
         </div>
         <Divider type="horizontal" className={styles.divider} />
-        <div className={styles.commentsWrapper}>
-          <div className={styles.commentsHeaders}>
-            <Title level={3} className={styles.commentsTitle}>
-              {t("comments")}
-            </Title>
-            <div className={styles.commentsSettings}>
-              <Formik
-                onSubmit={() => {}}
-                initialValues={commentsSettingsInitialValues}
-              >
-                <Form>
-                  <div className={styles.settingsWrapper}>
-                    <div className={styles.inputWrapper}>
-                      <Select
-                        name="orderBy"
-                        options={orderByOptions(t)}
-                        changeCallback={(e: string) => {
-                          onSetOrderBy(e);
-                        }}
-                      />
-                    </div>
-                    <div className={styles.inputWrapper}>
-                      <Select
-                        name="order"
-                        options={orderOptions(t)}
-                        changeCallback={(e: "ASC" | "DESC") => {
-                          onSetOrder(e);
-                        }}
-                      />
-                    </div>
-                  </div>
-                </Form>
-              </Formik>
-            </div>
-          </div>
-          {userType === "STUDENT" && (
-            <div className={styles.commentAddWrapper}>
-              <Formik onSubmit={onAddComment} initialValues={{ text: "" }}>
-                <Form>
-                  <Title level={5}>{t("addComment")}</Title>
-                  <div className={styles.commentAddForm}>
-                    <div className={styles.input}>
-                      <Input name="text" />
-                    </div>
-                    <Button loading={addCommentLoading} type="submit">
-                      {t("comment")}
+        <div className={styles.separator}>
+          <div className={styles.sectionsWrapper}>
+            <div className={styles.commentsWrapper}>
+              <div className={styles.commentsHeaders}>
+                <Title level={3} className={styles.commentsTitle}>
+                  {t("comments")}
+                </Title>
+                <div className={styles.commentsSettings}>
+                  <Formik
+                    onSubmit={() => {}}
+                    initialValues={commentsSettingsInitialValues}
+                  >
+                    <Form>
+                      <div className={styles.settingsWrapper}>
+                        <div className={styles.inputWrapper}>
+                          <Select
+                            name="orderBy"
+                            options={orderByOptions(t)}
+                            changeCallback={(e: string) => {
+                              onSetOrderBy(e);
+                            }}
+                          />
+                        </div>
+                        <div className={styles.inputWrapper}>
+                          <Select
+                            name="order"
+                            options={orderOptions(t)}
+                            changeCallback={(e: "ASC" | "DESC") => {
+                              onSetOrder(e);
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </Form>
+                  </Formik>
+                </div>
+              </div>
+              {userType === "STUDENT" && (
+                <div className={styles.commentAddWrapper}>
+                  <Formik onSubmit={onAddComment} initialValues={{ text: "" }}>
+                    <Form>
+                      <Title level={5}>{t("addComment")}</Title>
+                      <div className={styles.commentAddForm}>
+                        <div className={styles.input}>
+                          <Input name="text" />
+                        </div>
+                        <Button loading={addCommentLoading} type="submit">
+                          {t("comment")}
+                        </Button>
+                      </div>
+                    </Form>
+                  </Formik>
+                </div>
+              )}
+              <div className={styles.comments}>
+                <div className={styles.commentList}>
+                  {comments.map((comment) => (
+                    <Comment key={comment.id} comment={comment} />
+                  ))}
+                </div>
+                {commentsPagination.total >
+                  (commentsPagination.page - 1) * commentsPagination.perPage +
+                    commentsPagination.count && (
+                  <div className={styles.loadMoreComments}>
+                    <Button
+                      onClick={onFetchMoreComments}
+                      loading={loadingComments}
+                    >
+                      {t("loadMoreComments")}
                     </Button>
                   </div>
-                </Form>
-              </Formik>
+                )}
+              </div>
             </div>
-          )}
-          <div className={styles.comments}>
-            <div className={styles.commentList}>
-              {comments.map((comment) => (
-                <Comment key={comment.id} comment={comment} />
+          </div>
+          <div className={styles.recommendedWrapper}>
+            <Title level={3}>{t("recommended")}</Title>
+            <div className={styles.recommendedCourses}>
+              {recommendedCourses.map((recommendedCourse) => (
+                <RecommendedCourse
+                  key={recommendedCourse.course.id}
+                  data={recommendedCourse}
+                />
               ))}
             </div>
-            {commentsPagination.total >
-              (commentsPagination.page - 1) * commentsPagination.perPage +
-                commentsPagination.count && (
-              <div className={styles.loadMoreComments}>
-                <Button onClick={onFetchMoreComments} loading={loadingComments}>
-                  {t("loadMoreComments")}
-                </Button>
-              </div>
-            )}
+            <Divider type="horizontal" className={styles.dividerRecommended} />
           </div>
         </div>
       </div>

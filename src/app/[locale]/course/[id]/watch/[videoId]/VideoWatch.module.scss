@@ -51,6 +51,49 @@
       }
     }
 
+    .separator {
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (min-width: $tablet) {
+        flex-direction: row;
+      }
+
+      .sectionsWrapper {
+        width: 100%;
+        order: 2;
+        @media screen and (min-width: $tablet) {
+          order: 1;
+        }
+      }
+
+      .recommendedWrapper {
+        width: 100%;
+        order: 1;
+        @media screen and (min-width: $tablet) {
+          padding-left: 10px;
+          order: 2;
+          width: 30%;
+        }
+
+        .recommendedCourses {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 28px;
+        }
+
+        .dividerRecommended {
+          border-inline-start-width: 2px;
+          background-color: $primary;
+          height: 2px;
+
+          @media screen and (min-width: $tablet) {
+            display: none;
+          }
+        }
+      }
+    }
+
     .videoInfo {
       .videoTitleWrapper {
         margin-top: 10px;
