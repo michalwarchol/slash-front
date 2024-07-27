@@ -26,6 +26,70 @@ import { secondsToTime } from "@/utils/timeUtils";
 import styles from "./VideoPlayer.module.scss";
 import { getProgressSliderBackgroundColor } from "./VideoPlayer.utils";
 
+interface IControlButtonProps {
+  previousVideoId: string | null;
+  nextVideoId: string | null;
+  paused: boolean;
+  currentTime: number;
+  duration: number;
+  play: () => void;
+  pause: () => void;
+  onPreviousVideoClick: () => void;
+  onNextVideoClick: () => void;
+}
+
+function ControlButtons({
+  currentTime,
+  duration,
+  nextVideoId,
+  previousVideoId,
+  paused,
+  play,
+  pause,
+  onNextVideoClick,
+  onPreviousVideoClick,
+}: IControlButtonProps) {
+  return (
+    <>
+      <div
+        className={cls(styles.button, styles.controlButton, {
+          [styles.buttonDisabled]: previousVideoId === null,
+        })}
+        onClick={onPreviousVideoClick}
+      >
+        <StepBackwardOutlined className={styles.icon} />
+      </div>
+      {paused ? (
+        <div
+          className={cls(styles.button, styles.controlButton)}
+          onClick={play}
+        >
+          {currentTime === duration ? (
+            <RedoOutlined className={styles.icon} />
+          ) : (
+            <CaretRightOutlined className={styles.icon} />
+          )}
+        </div>
+      ) : (
+        <div
+          className={cls(styles.button, styles.controlButton)}
+          onClick={pause}
+        >
+          <PauseOutlined className={styles.icon} />
+        </div>
+      )}
+      <div
+        className={cls(styles.button, styles.controlButton, {
+          [styles.buttonDisabled]: nextVideoId === null,
+        })}
+        onClick={onNextVideoClick}
+      >
+        <StepForwardOutlined className={styles.icon} />
+      </div>
+    </>
+  );
+}
+
 interface IProps {
   src: string;
   thumbnail: string;
@@ -201,6 +265,22 @@ function VideoPlayer({
         }}
       />
       <div
+        className={styles.bigButtons}
+        style={{ opacity: controlsVisible ? 1 : 0 }}
+      >
+        <ControlButtons
+          currentTime={currentTime}
+          duration={duration}
+          nextVideoId={nextVideoId}
+          previousVideoId={previousVideoId}
+          pause={pause}
+          play={play}
+          onNextVideoClick={onNextVideoClick}
+          onPreviousVideoClick={onPreviousVideoClick}
+          paused={paused}
+        />
+      </div>
+      <div
         className={styles.controls}
         style={{ opacity: controlsVisible ? 1 : 0 }}
       >
@@ -217,35 +297,17 @@ function VideoPlayer({
           />
         </div>
         <div className={styles.buttons}>
-          <div
-            className={cls(styles.button, {
-              [styles.buttonDisabled]: previousVideoId === null,
-            })}
-            onClick={onPreviousVideoClick}
-          >
-            <StepBackwardOutlined className={styles.icon} />
-          </div>
-          {paused ? (
-            <div className={styles.button} onClick={play}>
-              {currentTime === duration ? (
-                <RedoOutlined className={styles.icon} />
-              ) : (
-                <CaretRightOutlined className={styles.icon} />
-              )}
-            </div>
-          ) : (
-            <div className={styles.button} onClick={pause}>
-              <PauseOutlined className={styles.icon} />
-            </div>
-          )}
-          <div
-            className={cls(styles.button, {
-              [styles.buttonDisabled]: nextVideoId === null,
-            })}
-            onClick={onNextVideoClick}
-          >
-            <StepForwardOutlined className={styles.icon} />
-          </div>
+          <ControlButtons
+            currentTime={currentTime}
+            duration={duration}
+            nextVideoId={nextVideoId}
+            previousVideoId={previousVideoId}
+            pause={pause}
+            play={play}
+            onNextVideoClick={onNextVideoClick}
+            onPreviousVideoClick={onPreviousVideoClick}
+            paused={paused}
+          />
           {muted ? (
             <div className={styles.button} onClick={unmute}>
               <MutedOutlined className={styles.icon} />

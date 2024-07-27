@@ -94,46 +94,65 @@
       }
     }
 
-    .videoInfo {
-      .videoTitleWrapper {
-        margin-top: 10px;
+    .videoTitleWrapper {
+      margin-top: 10px;
+    }
+
+    .videoInfoWrapper {
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (min-width: $phoneHorizontal) {
+        flex-direction: row;
       }
 
-      .authorAndViews {
-        display: flex;
-        align-items: center;
+      .videoInfo {
+        margin-bottom: 10px;
 
-        a {
-          text-decoration: none;
-        }
-
-        .author {
+        .authorAndViews {
           display: flex;
           align-items: center;
-          margin-right: 10px;
-          padding: 6px;
-          border-radius: 10px;
-          cursor: pointer;
 
-          &:hover {
-            background-color: rgba(0, 0, 0, 0.3);
-          }
-
-          .authorName {
-            margin-left: 10px;
-            font-weight: 600;
+          a {
             text-decoration: none;
           }
-        }
 
-        .videoViews {
-          font-size: 14px;
+          .authorLink {
+            cursor: pointer;
+            border-radius: 10px;
+            margin-right: 10px;
+
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.3);
+            }
+            .author {
+              display: flex;
+              align-items: center;
+              padding: 6px;
+
+              .authorName {
+                margin-left: 10px;
+                font-weight: 600;
+                text-decoration: none;
+              }
+            }
+          }
+
+          .videoViews {
+            font-size: 14px;
+            margin-right: 10px;
+          }
         }
+      }
+
+      .rateInfo {
+        display: flex;
+        align-items: center;
 
         .rate {
           display: flex;
           align-items: center;
-          margin-left: 10px;
+          margin-right: 10px;
 
           .videoRating {
             margin-right: 4px;

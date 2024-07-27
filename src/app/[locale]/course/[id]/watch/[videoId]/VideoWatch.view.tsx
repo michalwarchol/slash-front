@@ -130,22 +130,29 @@ export default function VideoWatchView({
             </Tooltip>
           </div>
         )}
-        <div className={styles.videoInfo}>
-          <div className={styles.videoTitleWrapper}>
-            <Title level={2}>{data.name}</Title>
+        <div className={styles.videoTitleWrapper}>
+          <Title level={2}>{data.name}</Title>
+        </div>
+        <div className={styles.videoInfoWrapper}>
+          <div className={styles.videoInfo}>
+            <div className={styles.authorAndViews}>
+              <Link
+                href={`/course-list/${data.course.creator.id}`}
+                className={styles.authorLink}
+              >
+                <div className={styles.author}>
+                  <Avatar src={data.course.creator.avatar} />
+                  <Text
+                    className={styles.authorName}
+                  >{`${data.course.creator.firstName} ${data.course.creator.lastName}`}</Text>
+                </div>
+              </Link>
+              <Text className={styles.videoViews}>
+                {t("views", { views: data.views })}
+              </Text>
+            </div>
           </div>
-          <div className={styles.authorAndViews}>
-            <Link href={`/course-list/${data.course.creator.id}`}>
-              <div className={styles.author}>
-                <Avatar src={data.course.creator.avatar} />
-                <Text
-                  className={styles.authorName}
-                >{`${data.course.creator.firstName} ${data.course.creator.lastName}`}</Text>
-              </div>
-            </Link>
-            <Text className={styles.videoViews}>
-              {t("views", { views: data.views })}
-            </Text>
+          <div className={styles.rateInfo}>
             {userType === "STUDENT" && (
               <div className={styles.rate}>
                 <Text className={styles.videoRating}>{t("rate")}</Text>
