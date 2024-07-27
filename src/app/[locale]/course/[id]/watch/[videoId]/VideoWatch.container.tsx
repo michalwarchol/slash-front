@@ -4,6 +4,7 @@ import { FormikHelpers } from "formik";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { TSearchResult } from "@/types/course";
 import { TPagination } from "@/types/pagination";
 import { TComment, TVideoResponse } from "@/types/video";
 
@@ -23,6 +24,7 @@ interface IProps {
   progress: TProgress | null;
   userType?: "STUDENT" | "EDUCATOR";
   userId?: string;
+  recommendedCourses: TSearchResult[];
 }
 
 export default function VideoWatchContainer({
@@ -31,6 +33,7 @@ export default function VideoWatchContainer({
   video,
   progress,
   userId,
+  recommendedCourses,
 }: IProps) {
   const { back } = useRouter();
   if (video === null) {
@@ -180,6 +183,7 @@ export default function VideoWatchContainer({
       onAddEditProgress={onAddEditProgress}
       defaultTime={progress?.watchTime || 0}
       isAuthor={userId === data.course.creator.id}
+      recommendedCourses={recommendedCourses}
     />
   );
 }

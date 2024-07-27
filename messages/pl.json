@@ -87,6 +87,7 @@
     "cancel": "Anuluj"
   },
   "CourseWatch": {
+    "goBack": "Wróć do kursu",
     "edit": "Edytuj",
     "views": "Wyświetlenia: {views}",
     "description": "Opis",
@@ -101,7 +102,8 @@
     "loadMoreComments": "Załaduj więcej komentarzy",
     "delete": "Usuń film",
     "deleteWarning": "Czy na pewno chcesz usunąć ten film?",
-    "deleteError": "Wystąpił błąd podczas usuwania filmu"
+    "deleteError": "Wystąpił błąd podczas usuwania filmu",
+    "recommended": "Polecane kursy"
   },
   "VideoEdit": {
     "title": "Edycja danych filmu",
