@@ -86,42 +86,52 @@ export default function View({
     <div className={styles.studentContent}>
       <div className={styles.statNode}>
         <div className={styles.statTitle}>{messages.coursesEnded}</div>
-        <div className={styles.statContent}>{studentData.coursesEnded}</div>
+        <div className={styles.statContent}>
+          {studentData.coursesEnded || messages.noData}
+        </div>
       </div>
       <div className={styles.statNode}>
         <div className={styles.statTitle}>{messages.coursesInProgress}</div>
         <div className={styles.statContent}>
-          {studentData.coursesInProgress}
+          {studentData.coursesInProgress || messages.noData}
         </div>
       </div>
       <div className={styles.statNode}>
         <div className={styles.statTitle}>{messages.watchTime}</div>
         <div className={styles.statContent}>
-          {getTimeFromSeconds(studentData.watchTime)}
+          {studentData.watchTime
+            ? getTimeFromSeconds(studentData.watchTime)
+            : messages.noData}
         </div>
       </div>
       <div className={styles.statNode}>
         <div className={styles.statTitle}>{messages.favCategory}</div>
         <div className={styles.statContent}>
-          {studentData.favCategory[locale === "pl" ? "valuePl" : "valueEn"]}
+          {studentData.favCategory
+            ? studentData.favCategory[locale === "pl" ? "valuePl" : "valueEn"]
+            : messages.noData}
         </div>
       </div>
       <div className={styles.statNode}>
         <div className={styles.statTitle}>{messages.favEducator}</div>
-        <div className={styles.statContent}>
-          {studentData.favEducator.avatar ? (
-            <Image
-              src={studentData.favEducator.avatar || ""}
-              className={styles.avatar}
-              preview={false}
-            />
-          ) : (
-            <Avatar icon={<UserOutlined />} className={styles.avatar} />
-          )}
-          <div>
-            {`${studentData.favEducator.firstName} ${studentData.favEducator.lastName}`}
+        {studentData.favEducator ? (
+          <div className={styles.statContent}>
+            {studentData.favEducator.avatar ? (
+              <Image
+                src={studentData.favEducator.avatar || ""}
+                className={styles.avatar}
+                preview={false}
+              />
+            ) : (
+              <Avatar icon={<UserOutlined />} className={styles.avatar} />
+            )}
+            <div>
+              {`${studentData.favEducator.firstName} ${studentData.favEducator.lastName}`}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className={styles.statContent}>{messages.noData}</div>
+        )}
       </div>
     </div>
   );
