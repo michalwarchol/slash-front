@@ -6,8 +6,8 @@ import { useState } from "react";
 
 import { useRouter } from "@/app/navigation";
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
-import Fetch from "@/utils/requestHandler";
 
+import { verify } from "./Verify.actions";
 import {
   TApiErrorMessages,
   TErrorMessages,
@@ -33,11 +33,7 @@ export default function VerifyContainer({
 
   const onSubmit = async (values: TFormValues) => {
     setLoading(true);
-    const data = await Fetch.post("/users/verify-user", {
-      body: JSON.stringify({
-        code: values.code,
-      }),
-    });
+    const data = await verify(values.code);
 
     if (data.errors) {
       messageApi.error(getApiErrorMessage(data.errors, apiErrorMessages));

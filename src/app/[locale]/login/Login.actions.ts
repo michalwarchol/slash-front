@@ -1,5 +1,7 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 import Fetch from "@/utils/requestHandler";
 
 import { TInitialValues, TRemindPasswordValues } from "./Login.types";
@@ -11,6 +13,8 @@ export async function signIn(values: TInitialValues) {
       password: values.password,
     }),
   });
+
+  revalidatePath("/");
 
   return data;
 }
