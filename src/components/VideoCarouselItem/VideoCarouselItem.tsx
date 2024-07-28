@@ -35,13 +35,7 @@ export default function VideoCarouselItem({
           <Link href={`/course/${courseId}/watch/${id}`}>
             <div>
               <div className={styles.thumbnail}>
-                <Image
-                  src={thumbnail}
-                  alt="video"
-                  width="336px"
-                  height="189px"
-                  preview={false}
-                />
+                <Image src={thumbnail} alt="video" preview={false} />
                 {duration !== undefined && (
                   <div className={styles.duration}>
                     {secondsToTime(duration)}

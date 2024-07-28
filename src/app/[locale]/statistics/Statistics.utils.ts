@@ -37,6 +37,7 @@ export const getMessages = (t: (key: string) => string): TMessages => {
 export const getMostLikedCourses = (data: TMostLikedCourse[]) =>
   data.map((item, i) => ({
     index: `#${i + 1}`,
+    key: item.id,
     name: item.name,
     likes: item.likes,
   }));
@@ -65,6 +66,7 @@ export const getMostLikedCoursesColumns = (messages: TMessages) => [
 export const getMostPopularCourses = (data: TMostPopularCourse[]) =>
   data.map((item, i) => ({
     index: `#${i + 1}`,
+    key: item.id,
     name: item.name,
     views: item.views,
   }));
@@ -93,6 +95,7 @@ export const getMostPopularCoursesColumns = (messages: TMessages) => [
 export const getMostViewedVideos = (data: TMostViewedVideo[]) =>
   data.map((item, i) => ({
     index: `#${i + 1}`,
+    key: item.id,
     name: item.name,
     views: item.views,
   }));

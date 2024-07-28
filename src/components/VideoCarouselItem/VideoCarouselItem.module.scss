@@ -1,8 +1,23 @@
 @import "../../app/colors.module.scss";
 
 .videoCarouselItem {
-  width: 350px;
   padding: 6px;
+
+  @media screen and (min-width: $phone) {
+    max-width: 100%;
+  }
+
+  @media screen and (min-width: $phoneHorizontal) {
+    max-width: calc(100% / 2 - 28px);
+  }
+
+  @media screen and (min-width: $tabletVertical) {
+    max-width: calc(100% / 3 - 28px);
+  }
+
+  @media screen and (min-width: $tablet) {
+    max-width: calc(100% / 4 - 28px);
+  }
 
   .itemContent {
     width: 100%;
@@ -22,6 +37,7 @@
       position: relative;
       border-radius: 8px;
       overflow: hidden;
+      width: 100%;
 
       .duration {
         position: absolute;
