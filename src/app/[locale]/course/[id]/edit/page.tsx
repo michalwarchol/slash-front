@@ -5,6 +5,7 @@ import { getErrorMessages } from "@/app/[locale]/add-course/AddCourse.utils";
 import View from "@/app/[locale]/add-course/AddCourse.view";
 import styles from "@/app/[locale]/add-course/page.module.scss";
 import { redirect } from "@/app/navigation";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 
@@ -53,6 +54,7 @@ export default async function Home({ params: { id }, searchParams }: TProps) {
         messages={getMessages(t)}
         errorMessages={getErrorMessages(t)}
       />
+      <Footer />
     </div>
   );
 }

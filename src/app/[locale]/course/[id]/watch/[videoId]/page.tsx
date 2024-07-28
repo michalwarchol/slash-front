@@ -2,10 +2,15 @@
 
 import { cookies } from "next/headers";
 
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 
-import { getRecommendedCourses, getUserCourseProgress, getVideo } from "./VideoWatch.actions";
+import {
+  getRecommendedCourses,
+  getUserCourseProgress,
+  getVideo,
+} from "./VideoWatch.actions";
 import Container from "./VideoWatch.container";
 import styles from "./VideoWatch.module.scss";
 
@@ -50,6 +55,7 @@ export default async function VideoWatch({ params, searchParams }: TProps) {
         videoId={params.videoId}
         recommendedCourses={recommendedCourses}
       />
+      <Footer />
     </div>
   );
 }

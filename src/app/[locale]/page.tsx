@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 
@@ -41,7 +42,7 @@ export default async function Home({ searchParams }: IProps) {
 
   return (
     <div className={styles.wrapper}>
-      <Header searchParams ={searchParams} />
+      <Header searchParams={searchParams} />
       {user && <Navbar id={user.id} type={user.type} />}
       <View
         userType={user?.type}
@@ -51,6 +52,7 @@ export default async function Home({ searchParams }: IProps) {
         )}
         studentStartedCourses={userStartedCourses}
       />
+      <Footer />
     </div>
   );
 }

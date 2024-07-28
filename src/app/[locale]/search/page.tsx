@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 
@@ -23,6 +24,7 @@ export default async function Search({ searchParams }: IProps) {
       <Header searchParams={searchParams} />
       {user && <Navbar id={user.id} type={user.type} />}
       <Container />
+      <Footer />
     </div>
   );
 }

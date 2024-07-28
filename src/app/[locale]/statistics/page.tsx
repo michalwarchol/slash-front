@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { getTranslations } from "next-intl/server";
 
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import UserVerifier from "@/components/UserVerifier";
@@ -36,6 +37,7 @@ export default async function Statistics({ searchParams }: TProps) {
           type={user.type}
           messages={getMessages(t)}
         />
+        <Footer />
       </div>
     </UserVerifier>
   );
