@@ -95,46 +95,55 @@ export default function SettingsView({
                 </div>
                 <div className={styles.inputWrapper}>
                   <div className={styles.label}>
-                    {(avatar || previewImage) && (
-                      <Image
-                        src={previewImage || avatar || ""}
-                        className={styles.avatar}
-                        preview={false}
-                      />
-                    )}
-                    {!avatar && !previewImage && (
-                      <Avatar
-                        icon={
-                          <UserOutlined className={styles.userIcon} size={20} />
-                        }
-                        className={styles.avatar}
-                      />
-                    )}
+                    <div className={styles.center}>
+                      {(avatar || previewImage) && (
+                        <Image
+                          src={previewImage || avatar || ""}
+                          className={styles.avatar}
+                          preview={false}
+                        />
+                      )}
+                      {!avatar && !previewImage && (
+                        <Avatar
+                          icon={
+                            <UserOutlined
+                              className={styles.userIcon}
+                              size={20}
+                            />
+                          }
+                          className={styles.avatar}
+                        />
+                      )}
+                    </div>
                   </div>
                   <div className={styles.input}>
-                    <Upload
-                      name="avatar"
-                      accept="image/jpeg,image/png"
-                      placeholder={messages.uploadProfilePic}
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      handleChange={async (file: UploadFile<any> | null) => {
-                        setFieldValue("avatar", file);
+                    <div className={styles.center}>
+                      <Upload
+                        name="avatar"
+                        accept="image/jpeg,image/png"
+                        placeholder={messages.uploadProfilePic}
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        handleChange={async (file: UploadFile<any> | null) => {
+                          setFieldValue("avatar", file);
 
-                        if (file && !file.url && !file.preview) {
-                          file.preview = await getBase64(
-                            file.originFileObj as FileType
-                          );
-                          setPreviewImage(file.url || (file.preview as string));
-                        }
+                          if (file && !file.url && !file.preview) {
+                            file.preview = await getBase64(
+                              file.originFileObj as FileType
+                            );
+                            setPreviewImage(
+                              file.url || (file.preview as string)
+                            );
+                          }
 
-                        if (!file) {
-                          setPreviewImage("");
-                        }
-                      }}
-                    />
-                    <p className={styles.fileSizeInfo}>
-                      {messages.maxFileSize}
-                    </p>
+                          if (!file) {
+                            setPreviewImage("");
+                          }
+                        }}
+                      />
+                      <p className={styles.fileSizeInfo}>
+                        {messages.maxFileSize}
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div className={styles.buttons}>
