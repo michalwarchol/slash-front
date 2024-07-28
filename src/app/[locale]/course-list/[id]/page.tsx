@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import UserVerifier from "@/components/UserVerifier";
@@ -37,6 +38,7 @@ export default async function Course({ params, searchParams }: TProps) {
           locale={params.locale}
           pageUserName={`${pageUser.firstName} ${pageUser.lastName}`}
         />
+        <Footer />
       </div>
     </UserVerifier>
   );

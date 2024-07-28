@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 import styles from "@/app/[locale]/course/[id]/upload/CourseUpload.module.scss";
 import { redirect } from "@/app/navigation";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 
@@ -46,6 +47,7 @@ export default async function VideoWatch({ params, searchParams }: TProps) {
         errorMessages={getErrorMessages(t)}
         video={video}
       />
+      <Footer />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import UserVerifier from "@/components/UserVerifier";
@@ -40,6 +41,7 @@ export default async function Course({ params, searchParams }: TProps) {
           isAuthor={data.course.creator.id === user?.id}
           isLoggedIn={user?.id}
         />
+        <Footer />
       </div>
     </UserVerifier>
   );

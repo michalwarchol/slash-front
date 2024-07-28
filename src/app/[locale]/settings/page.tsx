@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { getTranslations } from "next-intl/server";
 
 import { redirect } from "@/app/navigation";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import UserVerifier from "@/components/UserVerifier";
@@ -47,6 +48,7 @@ export default async function Home({ searchParams }: TProps) {
           errorMessages={getErrorMessages(t, { passwordMin: 8 })}
           apiErrorMessages={getApiErrorMessages(t)}
         />
+        <Footer />
       </div>
     </UserVerifier>
   );

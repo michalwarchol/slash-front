@@ -208,5 +208,9 @@
   "SearchResult": {
     "category": "Kategoria: ",
     "totalVideos": "Filmy: "
+  },
+  "Footer": {
+    "statementPart1": "Michał Warchoł ",
+    "statementPart2": ". Wszystkie prawa zastrzeżone."
   }
 }
