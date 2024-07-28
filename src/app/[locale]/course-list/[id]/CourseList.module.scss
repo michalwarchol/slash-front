@@ -1,7 +1,8 @@
 @import "../../../colors.module.scss";
 
 .wrapper {
-  min-height: 100vh;
+  @include wrapper;
+
   .contentContainer {
     padding: 12px;
     width: 100%;

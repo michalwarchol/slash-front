@@ -31,3 +31,9 @@ $phone: 500px;
   phoneHorizontal: $phoneHorizontal;
   phone: $phone;
 }
+
+@mixin wrapper {
+  min-height: 100vh;
+  padding-bottom: 38px;
+  position: relative;
+}
