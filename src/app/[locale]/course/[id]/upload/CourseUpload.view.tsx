@@ -63,7 +63,7 @@ export default function CourseUploadView({
                       <div className={styles.input}>
                         <Upload
                           name="thumbnail"
-                          accept="image/jpeg,image/png"
+                          accept="image/jpeg,image/png,image/webp"
                           placeholder={messages.uploadButton}
                           // eslint-disable-next-line @typescript-eslint/no-explicit-any
                           handleChange={(file: UploadFile<any> | null) => {

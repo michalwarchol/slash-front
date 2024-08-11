@@ -120,7 +120,7 @@ export default function SettingsView({
                     <div className={styles.center}>
                       <Upload
                         name="avatar"
-                        accept="image/jpeg,image/png"
+                        accept="image/jpeg,image/png,image/webp"
                         placeholder={messages.uploadProfilePic}
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         handleChange={async (file: UploadFile<any> | null) => {
