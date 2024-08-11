@@ -109,6 +109,10 @@
       .videoInfo {
         margin-bottom: 10px;
 
+        @media screen and (min-width: $phoneHorizontal) {
+          margin-bottom: 0;
+        }
+
         .authorAndViews {
           display: flex;
           align-items: center;
