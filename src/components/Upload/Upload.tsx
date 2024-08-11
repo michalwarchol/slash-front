@@ -12,7 +12,6 @@ interface IProps {
   accept?: string;
   className?: string;
   placeholder?: string;
-  htmlType?: "text" | "password" | "textarea";
   disabled?: boolean;
 }
 
