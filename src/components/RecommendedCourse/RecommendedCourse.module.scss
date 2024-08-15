@@ -58,27 +58,6 @@
         width: 100%;
         height: 72px;
       }
-
-      .videoNotFoundImageWrapper {
-        position: relative;
-        width: 100%; /* or any dynamic width */
-        padding-top: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
-        .videoNotFoundImage {
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: rgba(0, 0, 0, 0.1);
-
-          .playIcon {
-            font-size: 40px;
-          }
-        }
-      }
     }
 
     .info {

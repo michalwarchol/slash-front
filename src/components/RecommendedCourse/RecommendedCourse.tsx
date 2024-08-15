@@ -1,9 +1,7 @@
-import { PlayCircleOutlined } from "@ant-design/icons";
-import { Image } from "antd";
-
 import { Link } from "@/app/navigation";
 import { TSearchResult } from "@/types/course";
 
+import Thumbnail from "../Thumbnail";
 import styles from "./RecommendedCourse.module.scss";
 
 interface IProps {
@@ -17,17 +15,10 @@ export default function RecommendedCourse({ data }: IProps) {
       className={styles.recommendedCourseLink}
     >
       <div className={styles.recommendedCourse}>
-        <div className={styles.thumbnail}>
-          {data.firstVideo ? (
-            <Image preview={false} src={data.firstVideo.thumbnailLink} />
-          ) : (
-            <div className={styles.videoNotFoundImageWrapper}>
-              <div className={styles.videoNotFoundImage}>
-                <PlayCircleOutlined className={styles.playIcon} />
-              </div>
-            </div>
-          )}
-        </div>
+        <Thumbnail
+          src={data.firstVideo ? data.firstVideo.thumbnailLink : null}
+          className={styles.thumbnail}
+        />
         <div className={styles.info}>
           <div className={styles.title}>{data.course.name}</div>
           <div className={styles.author}>

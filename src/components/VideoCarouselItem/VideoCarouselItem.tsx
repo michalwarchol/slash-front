@@ -1,11 +1,11 @@
 "use client";
 
-import { Image, Tooltip, Typography } from "antd";
+import { Tooltip, Typography } from "antd";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/app/navigation";
-import { secondsToTime } from "@/utils/timeUtils";
 
+import Thumbnail from "../Thumbnail";
 import styles from "./VideoCarouselItem.module.scss";
 
 const { Text } = Typography;
@@ -34,14 +34,7 @@ export default function VideoCarouselItem({
         <div className={styles.itemContent}>
           <Link href={`/course/${courseId}/watch/${id}`}>
             <div>
-              <div className={styles.thumbnail}>
-                <Image src={thumbnail} alt="video" preview={false} />
-                {duration !== undefined && (
-                  <div className={styles.duration}>
-                    {secondsToTime(duration)}
-                  </div>
-                )}
-              </div>
+              <Thumbnail src={thumbnail} time={duration} />
               <div className={styles.info}>
                 <div className={styles.videoTitle}>{name}</div>
                 {views !== undefined && (

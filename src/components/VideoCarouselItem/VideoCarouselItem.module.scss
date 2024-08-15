@@ -33,24 +33,6 @@
       color: black;
     }
 
-    .thumbnail {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      width: 100%;
-
-      .duration {
-        position: absolute;
-        bottom: 6px;
-        right: 6px;
-        background-color: rgba(0, 0, 0, 0.3);
-        color: white;
-        font-weight: bold;
-        padding: 2px;
-        border-radius: 4px;
-      }
-    }
-
     .videoTitle {
       margin-top: 4px;
       font-weight: bold;
