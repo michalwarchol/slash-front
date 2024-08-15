@@ -1,12 +1,9 @@
-import {
-  DesktopOutlined,
-  PlayCircleOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { Avatar, Image } from "antd";
+import { DesktopOutlined, UserOutlined } from "@ant-design/icons";
+import { Avatar } from "antd";
 
 import { TCourseTypeResult } from "@/app/[locale]/types";
 import { Link } from "@/app/navigation";
+import Thumbnail from "@/components/Thumbnail";
 
 import styles from "./ListItem.module.scss";
 
@@ -18,21 +15,9 @@ export default async function ListItem({ data }: IProps) {
   return (
     <Link href={`/course/${data.course.id}`} className={styles.link}>
       <div className={styles.listItem}>
-        <div className={styles.thumbnail}>
-          {data.firstVideo ? (
-            <Image
-              src={data.firstVideo.thumbnailLink}
-              alt="video"
-              preview={false}
-            />
-          ) : (
-            <div className={styles.videoNotFoundImageWrapper}>
-              <div className={styles.videoNotFoundImage}>
-                <PlayCircleOutlined className={styles.playIcon} />
-              </div>
-            </div>
-          )}
-        </div>
+        <Thumbnail
+          src={data.firstVideo ? data.firstVideo.thumbnailLink : null}
+        />
         <div className={styles.name}>{data.course.name}</div>
         <div className={styles.creator}>
           <div className={styles.creatorAvatar}>

@@ -1,0 +1,49 @@
+.thumbnail {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  aspect-ratio: 16 / 9;
+  position: relative;
+
+  .thumbnailImg {
+    height: 100%;
+    display: block;
+
+    img {
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .videoNotFoundImageWrapper {
+    position: relative;
+    width: 100%; /* or any dynamic width */
+    padding-top: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+    .videoNotFoundImage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.1);
+
+      .playIcon {
+        font-size: 40px;
+      }
+    }
+  }
+
+  .duration {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-weight: bold;
+    padding: 2px;
+    border-radius: 4px;
+  }
+}

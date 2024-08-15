@@ -1,7 +1,7 @@
 "use client";
 
-import { PlayCircleOutlined, UserOutlined } from "@ant-design/icons";
-import { Avatar, Image } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { Avatar } from "antd";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
@@ -9,6 +9,7 @@ import { Link } from "@/app/navigation";
 import { TSearchResult } from "@/types/course";
 import { getCategoryValue } from "@/utils/getCategoryValue";
 
+import Thumbnail from "../Thumbnail";
 import styles from "./SearchResult.module.scss";
 
 interface IProps {
@@ -22,17 +23,10 @@ export default function SearchResult({ data }: IProps) {
   return (
     <Link className={styles.searchResult} href={`/course/${data.course.id}`}>
       <div className={styles.searchResultInner}>
-        <div className={styles.thumbnail}>
-          {data.firstVideo && data.firstVideo.thumbnailLink ? (
-            <Image src={data.firstVideo.thumbnailLink} preview={false} />
-          ) : (
-            <div className={styles.videoNotFoundImageWrapper}>
-              <div className={styles.videoNotFoundImage}>
-                <PlayCircleOutlined className={styles.playIcon} />
-              </div>
-            </div>
-          )}
-        </div>
+        <Thumbnail
+          src={data.firstVideo ? data.firstVideo.thumbnailLink : null}
+          className={styles.thumbnail}
+        />
         <div className={styles.courseData}>
           <div className={styles.title}>{data.course.name}</div>
           <div className={styles.authorInfo}>
