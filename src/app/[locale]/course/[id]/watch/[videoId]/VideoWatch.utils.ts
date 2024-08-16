@@ -58,3 +58,14 @@ export async function addEditProgress({
     }),
   });
 }
+
+export const getDetaultWatchTime = (
+  watchTime: number | undefined,
+  duration: number
+) => {
+  if (watchTime) {
+    return watchTime === duration ? 0 : watchTime;
+  }
+
+  return 0;
+};

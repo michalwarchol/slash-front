@@ -53,6 +53,7 @@ export default function CourseView({
         isLike,
       }),
     });
+    router.refresh();
   };
 
   const deleteCourse = async () => {

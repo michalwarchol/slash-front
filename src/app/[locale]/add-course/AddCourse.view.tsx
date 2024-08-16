@@ -34,7 +34,7 @@ export default function RegisterView({
   messages,
   errorMessages,
 }: IProps) {
-  const { push, back } = useRouter();
+  const { push, back, refresh } = useRouter();
   const [loading, setLoading] = useState(false);
   const [subTypes, setSubTypes] = useState<
     { id: string; name: string; value: string }[]
@@ -75,6 +75,7 @@ export default function RegisterView({
 
     if (data.success) {
       push(`/course/${data.result.id}`);
+      refresh();
     }
   };
 

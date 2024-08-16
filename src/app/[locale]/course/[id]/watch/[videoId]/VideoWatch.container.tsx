@@ -15,6 +15,7 @@ import {
   addEditProgress,
   addEditRating,
   getComments,
+  getDetaultWatchTime,
 } from "./VideoWatch.utils";
 import View from "./VideoWatch.view";
 
@@ -181,7 +182,7 @@ export default function VideoWatchContainer({
       onIncreaseViews={onIncreaseViews}
       onRate={onRate}
       onAddEditProgress={onAddEditProgress}
-      defaultTime={progress?.watchTime || 0}
+      defaultTime={getDetaultWatchTime(progress?.watchTime, data.duration)}
       isAuthor={userId === data.course.creator.id}
       recommendedCourses={recommendedCourses}
     />
