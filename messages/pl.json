@@ -212,5 +212,10 @@
   "Footer": {
     "statementPart1": "Michał Warchoł ",
     "statementPart2": ". Wszystkie prawa zastrzeżone."
+  },
+  "Navbar": {
+    "addCourse": "Dodaj kurs",
+    "myCourses": "Moje kursy",
+    "statistics": "Statystyki"
   }
 }
