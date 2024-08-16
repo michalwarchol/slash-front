@@ -21,6 +21,8 @@ type IProps = {
   };
 };
 
+export const revalidate = 900;
+
 export default async function Home({ searchParams }: IProps) {
   const cookieStore = cookies();
   const userCookie = cookieStore.get("user");

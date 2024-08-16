@@ -23,7 +23,7 @@ export default function CourseUploadContainer({
   messages,
   errorMessages,
 }: IProps) {
-  const { back, push } = useRouter();
+  const { back, push, refresh } = useRouter();
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -47,6 +47,7 @@ export default function CourseUploadContainer({
       setLoading(false);
       if (data.success) {
         push(`/course/${id}`);
+        refresh();
       } else {
         if (data.errors) {
           messageApi.error(getApiErrorMessage(data.errors, errorMessages));
