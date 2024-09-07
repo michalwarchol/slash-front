@@ -7,15 +7,15 @@ export const listItems = [
   },
   {
     key: "live",
-    text: "Register.live",
+    text: "Register.personalization",
   },
   {
     key: "exams",
-    text: "Register.exams",
+    text: "Register.materials",
   },
   {
     key: "notes",
-    text: "Register.notes",
+    text: "Register.stats",
   },
 ];
 

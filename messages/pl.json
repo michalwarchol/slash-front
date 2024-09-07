@@ -2,9 +2,9 @@
   "Register": {
     "title": "S/ash",
     "videoCourses": "Kursy wideo na życzenie",
-    "live": "Spotkania na żywo z prowadzącymi",
-    "exams": "Egzaminowanie kursów",
-    "notes": "Udostępnianie notatek między studentami",
+    "personalization": "Personalizacja treści",
+    "materials": "Materiały dostępne w kursach",
+    "stats": "Statystyki ukończonych kursów",
     "formTitle": "Utwórz nowe konto",
     "firstName": "Imię",
     "lastName": "Nazwisko",
