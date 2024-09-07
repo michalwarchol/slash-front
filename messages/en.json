@@ -2,9 +2,9 @@
   "Register": {
     "title": "S/ash",
     "videoCourses": "Video courses at will",
-    "live": "Live meetings with tutors",
-    "exams": "Making exams for your courses",
-    "notes": "Sharing notes among students",
+    "personalization": "Personalized content",
+    "materials": "Materials available in  courses",
+    "stats": "Statistics of ended courses",
     "formTitle": "Create a new account",
     "firstName": "First name",
     "lastName": "Last name",
