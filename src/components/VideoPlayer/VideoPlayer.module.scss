@@ -1,4 +1,4 @@
-@import "../../app/colors.module.scss";
+@import "@sass/media.module.scss";
 
 @mixin progressSliderTrack {
   height: 4px;
@@ -62,7 +62,7 @@
     width: 100%;
     transition: opacity 0.2s ease-in-out;
 
-    @media screen and (min-width: $phoneHorizontal) {
+    @include breakpoint("phoneHorizontal") {
       display: none;
     }
 
@@ -73,7 +73,7 @@
     .controlButton {
       display: block;
       box-shadow: 0 0 10px black inset;
-      @media screen and (min-width: $phoneHorizontal) {
+      @include breakpoint("phoneHorizontal") {
         display: none;
       }
     }
@@ -130,13 +130,13 @@
 
       .controlButton {
         display: none;
-        @media screen and (min-width: $phoneHorizontal) {
+        @include breakpoint("phoneHorizontal") {
           display: block;
         }
       }
 
       .buttonDisabled {
-        color: $disabled;
+        color: var(--color-disabled);
         cursor: initial;
         &:hover {
           background-color: transparent;

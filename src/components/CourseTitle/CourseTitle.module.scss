@@ -1,4 +1,4 @@
-@import "../../app/colors.module.scss";
+@import "@sass/media.module.scss";
 
 .courseTitle {
   margin-bottom: 20px;
@@ -6,7 +6,7 @@
   .title {
     font-size: 24px;
 
-    @media screen and (min-width: $monitor) {
+    @include breakpoint("monitor") {
       font-size: 38px;
     }
   }

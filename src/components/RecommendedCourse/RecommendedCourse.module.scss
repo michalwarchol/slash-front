@@ -1,4 +1,4 @@
-@import "../../app/colors.module.scss";
+@import "@sass/media.module.scss";
 
 .recommendedCourseLink {
   text-decoration: none;
@@ -10,19 +10,19 @@
   margin-bottom: 6px;
   max-width: 100%;
 
-  @media screen and (min-width: $phone) {
+  @include breakpoint("phone") {
     max-width: 100%;
   }
 
-  @media screen and (min-width: $phoneHorizontal) {
+  @include breakpoint("phoneHorizontal") {
     max-width: calc(100% / 2 - 28px);
   }
 
-  @media screen and (min-width: $tabletVertical) {
+  @include breakpoint("tabletVertical") {
     max-width: calc(100% / 3 - 28px);
   }
 
-  @media screen and (min-width: $tablet) {
+  @include breakpoint("tablet") {
     max-width: 100%;
   }
 
@@ -33,7 +33,7 @@
   .recommendedCourse {
     display: block;
 
-    @media screen and (min-width: $tablet) {
+    @include breakpoint("tablet") {
       display: flex;
     }
 
@@ -45,7 +45,7 @@
       margin-right: auto;
       margin-bottom: 6px;
 
-      @media screen and (min-width: $tablet) {
+      @include breakpoint("tablet") {
         margin-left: 0;
         margin-right: 6px;
         margin-bottom: 0;
@@ -53,7 +53,7 @@
         width: 100%;
       }
 
-      @media screen and (min-width: $monitor) {
+      @include breakpoint("monitor") {
         max-width: 128px;
         width: 100%;
         height: 72px;
@@ -66,7 +66,7 @@
         margin-bottom: 6px;
       }
       .author {
-        color: $greyText;
+        color: var(--color-greyText);
         margin-bottom: 6px;
       }
     }

@@ -1,4 +1,4 @@
-@import "../../../../app/colors.module.scss";
+@import "@sass/media.module.scss";
 
 .form {
   display: flex;
@@ -16,7 +16,7 @@
       background-color: rgba(0, 0, 0, 0.3);
     }
 
-    @media screen and (min-width: $phoneHorizontal) {
+    @include breakpoint("phoneHorizontal") {
       display: none;
     }
   }

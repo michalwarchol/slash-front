@@ -1,0 +1,72 @@
+@import "@sass/media.module.scss";
+
+.contentContainer {
+  padding: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .contentContainerInner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    @include breakpoint("monitor") {
+      max-width: var(--breakpoint-monitor);
+    }
+
+    .contentWrapper {
+      width: 100%;
+      .titleWrapper {
+        color: var(--color-primary);
+        font-size: 20px;
+        font-weight: 600;
+        font-family: Arial;
+
+        @include breakpoint("monitor") {
+          font-size: 32px;
+        }
+      }
+
+      .form {
+        margin-top: 20px;
+        width: 100%;
+
+        .inputWrapper {
+          margin-bottom: 16px;
+          display: block;
+          width: 100%;
+
+          @include breakpoint("monitor") {
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .label {
+            margin-top: 4px;
+            margin-bottom: 6px;
+          }
+
+          .input {
+            width: 100%;
+
+            @include breakpoint("monitor") {
+              width: 50%;
+            }
+          }
+
+          .inputWide {
+            width: 100%;
+            @include breakpoint("monitor") {
+              width: 50%;
+            }
+          }
+        }
+
+        .cancelButton {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

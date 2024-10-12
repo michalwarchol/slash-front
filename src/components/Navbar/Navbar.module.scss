@@ -1,4 +1,4 @@
-@import "../../app/colors.module.scss";
+@import "@sass/media.module.scss";
 
 .navbar {
   padding: 12px;
@@ -6,8 +6,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 2px solid $secondary;
-  border-bottom: 2px solid $secondary;
+  border-top: 2px solid var(--color-secondary);
+  border-bottom: 2px solid var(--color-secondary);
 
   .navbarInner {
     padding: 4px;
@@ -16,8 +16,8 @@
     display: flex;
     align-items: center;
 
-    @media screen and (min-width: $monitor) {
-      max-width: $monitor;
+    @include breakpoint("monitor") {
+      max-width: var(--breakpoint-monitor);
     }
 
     .buttonContainer {

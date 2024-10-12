@@ -1,0 +1,37 @@
+@import "@sass/media.module.scss";
+
+.contentContainer {
+  padding: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .contentContainerInner {
+    width: 100%;
+
+    @include breakpoint("monitor") {
+      max-width: var(--breakpoint-monitor);
+    }
+
+    .filters {
+      display: flex;
+      .filter {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+
+        .text {
+          margin-right: 4px;
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+
+      .buttonWrapper {
+        margin-right: 10px;
+      }
+    }
+  }
+}

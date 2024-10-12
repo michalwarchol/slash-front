@@ -1,4 +1,4 @@
-@import "../../app/colors.module.scss";
+@import "@sass/media.module.scss";
 
 .header {
   width: 100%;
@@ -16,8 +16,8 @@
     display: flex;
     align-items: center;
 
-    @media screen and (min-width: $monitor) {
-      max-width: $monitor;
+    @include breakpoint("monitor") {
+      max-width: var(--breakpoint-monitor);
     }
 
     .logo {
@@ -26,11 +26,11 @@
       display: flex;
       align-items: center;
 
-      @media screen and (min-width: $phoneHorizontal) {
+      @include breakpoint("phoneHorizontal") {
         font-size: 46px;
       }
 
-      @media screen and (min-width: $monitor) {
+      @include breakpoint("monitor") {
         font-size: 52px;
       }
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
@@ -41,7 +41,7 @@
         white-space: nowrap;
 
         .link {
-          color: $secondary;
+          color: var(--color-secondary);
         }
       }
     }
@@ -90,7 +90,7 @@
       display: none;
       max-width: 30%;
 
-      @media screen and (min-width: $phoneHorizontal) {
+      @include breakpoint("phoneHorizontal") {
         display: flex;
       }
 
@@ -105,7 +105,7 @@
     justify-content: center;
     max-width: 100%;
 
-    @media screen and (min-width: $phoneHorizontal) {
+    @include breakpoint("phoneHorizontal") {
       display: none;
     }
 

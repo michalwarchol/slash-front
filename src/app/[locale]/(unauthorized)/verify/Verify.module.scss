@@ -1,0 +1,78 @@
+@import "@sass/media.module.scss";
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include breakpoint("tabletVertical") {
+    width: 720px;
+    flex-direction: row;
+  }
+
+  @include breakpoint("tablet") {
+    width: 1000px;
+  }
+
+  .divider {
+    height: auto;
+    border-inline-start-width: 2px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    @include breakpoint("tabletVertical") {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .titleContainer {
+    width: 100%;
+    padding: 10px;
+
+    .title {
+      font-size: 52px;
+      color: var(--color-secondary);
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      font-weight: 600;
+
+      .link {
+        color: var(--color-secondary);
+      }
+    }
+
+    .content {
+      margin-top: 8px;
+      color: white;
+    }
+  }
+
+  .formContainer {
+    width: 100%;
+    padding: 10px;
+
+    .formTitle {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--color-secondary);
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .inputWrapper {
+      margin-bottom: 16px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+
+      .submitButton {
+        width: 100%;
+      }
+
+      .logoutButtonWrapper {
+        width: 100%;
+      }
+    }
+  }
+}

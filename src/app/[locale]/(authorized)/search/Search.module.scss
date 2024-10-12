@@ -1,0 +1,23 @@
+@import "@sass/media.module.scss";
+
+.contentContainer {
+  padding: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .contentContainerInner {
+    width: 100%;
+
+    @include breakpoint("monitor") {
+      max-width: var(--breakpoint-monitor);
+    }
+  }
+}
+
+.loaderWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
