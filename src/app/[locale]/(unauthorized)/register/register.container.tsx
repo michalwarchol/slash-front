@@ -1,13 +1,12 @@
 "use client";
 
 import { message } from "antd";
-import Cookies from "js-cookie";
 import { useState } from "react";
 
 import { useRouter } from "@/app/navigation";
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
-import Fetch from "@/utils/requestHandler";
 
+import { signUp } from "./register.actions";
 import {
   TApiErrorMessages,
   TErrorMessages,
@@ -38,17 +37,10 @@ export default function RegisterContainer({
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
   const { push } = useRouter();
+
   const onSubmit = async (values: TInitialValues) => {
     setLoading(true);
-    const data = await Fetch.post("/users/signup", {
-      body: JSON.stringify({
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-        password: values.password,
-        type: values.role,
-      }),
-    });
+    const data = await signUp(values);
 
     setLoading(false);
 
@@ -56,12 +48,6 @@ export default function RegisterContainer({
       messageApi.error(getApiErrorMessage(data.errors, apiErrorMessages));
       return;
     }
-
-    Cookies.set("token", data.result.accessToken, { expires: 1, path: "/" });
-    Cookies.set("user", JSON.stringify(data.result.user), {
-      expires: 1,
-      path: "/",
-    });
 
     push("/verify");
   };

@@ -1,7 +1,6 @@
 "use client";
 
 import { message } from "antd";
-import Cookies from "js-cookie";
 import { useState } from "react";
 
 import { useRouter } from "@/app/navigation";
@@ -40,15 +39,7 @@ export default function VerifyContainer({
       return;
     }
 
-    if (data.result) {
-      Cookies.set("token", data.result.accessToken, { expires: 1, path: "/" });
-      Cookies.set("user", JSON.stringify(data.result.user), {
-        expires: 1,
-        path: "/",
-      });
-
-      router.push("/");
-    }
+    router.push("/");
   };
 
   return (

@@ -1,12 +1,12 @@
 "use client";
 import { message } from "antd";
 import { FormikHelpers } from "formik";
-import Cookies from "js-cookie";
 import { useState } from "react";
 
 import getApiErrorMessage from "@/utils/getApiErrorMessage";
 import Fetch from "@/utils/requestHandler";
 
+import { submit } from "./Settings.actions";
 import {
   TApiErrorMessages,
   TChangePasswordFormValues,
@@ -37,26 +37,12 @@ export default function SettingsContainer({
 
   const onSubmit = async (values: TFormValues) => {
     setLoading(true);
-    const formData = new FormData();
-    if (values.avatar) {
-      formData.append("avatar", values.avatar.originFileObj!);
-    }
-    formData.append("firstName", values.firstName);
-    formData.append("lastName", values.lastName);
 
     try {
-      const response = await Fetch.put(
-        "/users/update",
-        { body: formData },
-        true
-      );
-
+      const response = await submit(values);
       setLoading(false);
+
       if (response && response.success) {
-        Cookies.set("user", JSON.stringify(response.result), {
-          expires: 1,
-          path: "/",
-        });
         messageApi.success(messages.success);
       } else {
         if (!response) {
