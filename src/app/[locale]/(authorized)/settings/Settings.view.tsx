@@ -1,6 +1,7 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Divider, GetProp, Image, UploadFile, UploadProps } from "antd";
+import { Avatar, Divider, GetProp, UploadFile, UploadProps } from "antd";
 import { Form, Formik, FormikHelpers } from "formik";
+import Image from "next/image";
 import { useState } from "react";
 
 import Button from "@/components/Button";
@@ -99,8 +100,10 @@ export default function SettingsView({
                       {(avatar || previewImage) && (
                         <Image
                           src={previewImage || avatar || ""}
+                          alt="preview avatar"
                           className={styles.avatar}
-                          preview={false}
+                          width={120}
+                          height={120}
                         />
                       )}
                       {!avatar && !previewImage && (

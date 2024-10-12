@@ -1,6 +1,7 @@
 import { FileExclamationOutlined, UserOutlined } from "@ant-design/icons";
-import { Avatar, Image, Table as AntdTable } from "antd";
+import { Avatar, Table as AntdTable } from "antd";
 import { cookies } from "next/headers";
+import Image from "next/image";
 
 import { TEducatorStats, TStudentStats } from "@/types/statistics";
 
@@ -119,8 +120,10 @@ export default function View({
             {studentData.favEducator.avatar ? (
               <Image
                 src={studentData.favEducator.avatar || ""}
+                alt="user avatar"
                 className={styles.avatar}
-                preview={false}
+                width={120}
+                height={120}
               />
             ) : (
               <Avatar icon={<UserOutlined />} className={styles.avatar} />
