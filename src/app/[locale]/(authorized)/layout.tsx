@@ -34,8 +34,8 @@ export default function AuthorizedLayout({
         <Header searchParams={searchParams} />
         {user && <Navbar id={user.id} type={user.type} />}
         {children}
+        <Footer />
       </div>
-      <Footer />
     </UserVerifier>
   );
 }
