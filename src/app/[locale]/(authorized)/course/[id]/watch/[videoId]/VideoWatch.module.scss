@@ -1,0 +1,212 @@
+@import "@sass/media.module.scss";
+
+.contentContainer {
+  padding: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .contentContainerInner {
+    width: 100%;
+
+    @include breakpoint("monitor") {
+      max-width: var(--breakpoint-monitor);
+    }
+
+    .goBack {
+      text-decoration: none;
+      color: black;
+      padding: 8px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      width: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+
+      .goBackIcon {
+        margin-right: 10px;
+        margin-bottom: 2px;
+      }
+
+      .goBackText {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .authorActions {
+    margin-top: 10px;
+    display: flex;
+
+    .deleteButton {
+      margin-left: 10px;
+    }
+  }
+
+  .separator {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint("tablet") {
+      flex-direction: row;
+    }
+
+    .sectionsWrapper {
+      width: 100%;
+      order: 2;
+      @include breakpoint("tablet") {
+        order: 1;
+      }
+    }
+
+    .recommendedWrapper {
+      width: 100%;
+      order: 1;
+      @include breakpoint("tablet") {
+        padding-left: 10px;
+        order: 2;
+        width: 30%;
+      }
+
+      .recommendedCourses {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+      }
+
+      .dividerRecommended {
+        border-inline-start-width: 2px;
+        background-color: var(--color-primary);
+        height: 2px;
+
+        @include breakpoint("tablet") {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .videoTitleWrapper {
+    margin-top: 10px;
+  }
+
+  .videoInfoWrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint("phoneHorizontal") {
+      flex-direction: row;
+    }
+
+    .videoInfo {
+      margin-bottom: 10px;
+
+      @include breakpoint("phoneHorizontal") {
+        margin-bottom: 0;
+      }
+
+      .authorAndViews {
+        display: flex;
+        align-items: center;
+
+        a {
+          text-decoration: none;
+        }
+
+        .authorLink {
+          cursor: pointer;
+          border-radius: 10px;
+          margin-right: 10px;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+          }
+          .author {
+            display: flex;
+            align-items: center;
+            padding: 6px;
+
+            .authorName {
+              margin-left: 10px;
+              font-weight: 600;
+              text-decoration: none;
+            }
+          }
+        }
+
+        .videoViews {
+          font-size: 14px;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .rateInfo {
+      display: flex;
+      align-items: center;
+
+      .rate {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+
+        .videoRating {
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+
+  .divider {
+    border-inline-start-width: 2px;
+    background-color: var(--color-primary);
+    height: 2px;
+  }
+
+  .commentsWrapper {
+    .commentsHeaders {
+      display: flex;
+
+      .commentsTitle {
+        margin-right: 20px;
+      }
+
+      .commentsSettings {
+        width: 50%;
+
+        .settingsWrapper {
+          display: flex;
+
+          .inputWrapper {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+
+    .commentAddWrapper {
+      .commentAddForm {
+        display: flex;
+
+        .input {
+          width: 100%;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .comments {
+      .loadMoreComments {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}

@@ -1,5 +1,3 @@
-@import "../../app/colors.module.scss";
-
 .buttonDisabled {
-  background: $disabled !important;
+  background: var(--color-disabled) !important;
 }

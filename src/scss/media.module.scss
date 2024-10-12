@@ -1,0 +1,31 @@
+@mixin breakpoint($breakpoint) {
+  @if ($breakpoint == "phone") {
+    @media screen and (min-width: 500px) {
+      @content;
+    }
+  }
+
+  @if ($breakpoint == "phoneHorizontal") {
+    @media screen and (min-width: 768px) {
+      @content;
+    }
+  }
+
+  @if ($breakpoint == "tabletVertical") {
+    @media screen and (min-width: 992px) {
+      @content;
+    }
+  }
+
+  @if ($breakpoint == "tablet") {
+    @media screen and (min-width: 1200px) {
+      @content;
+    }
+  }
+
+  @if ($breakpoint == "monitor") {
+    @media screen and (min-width: 1400px) {
+      @content;
+    }
+  }
+}

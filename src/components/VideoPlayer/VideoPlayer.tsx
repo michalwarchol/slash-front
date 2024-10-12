@@ -18,8 +18,8 @@ import {
   useState,
 } from "react";
 
-import variables from "@/app/colors.module.scss";
 import { useRouter } from "@/app/navigation";
+import variables from "@/scss/colors.module.scss";
 import durationToPercentage from "@/utils/durationToPercentage";
 import { secondsToTime } from "@/utils/timeUtils";
 

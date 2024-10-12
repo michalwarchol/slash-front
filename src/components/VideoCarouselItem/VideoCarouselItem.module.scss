@@ -1,21 +1,21 @@
-@import "../../app/colors.module.scss";
+@import "@sass/media.module.scss";
 
 .videoCarouselItem {
   padding: 6px;
 
-  @media screen and (min-width: $phone) {
+  @include breakpoint("phone") {
     max-width: 100%;
   }
 
-  @media screen and (min-width: $phoneHorizontal) {
+  @include breakpoint("phoneHorizontal") {
     max-width: calc(100% / 2 - 28px);
   }
 
-  @media screen and (min-width: $tabletVertical) {
+  @include breakpoint("tabletVertical") {
     max-width: calc(100% / 3 - 28px);
   }
 
-  @media screen and (min-width: $tablet) {
+  @include breakpoint("tablet") {
     max-width: calc(100% / 4 - 28px);
   }
 

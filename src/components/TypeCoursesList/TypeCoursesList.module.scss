@@ -1,4 +1,4 @@
-@import "../../app/colors.module.scss";
+@import "@sass/media.module.scss";
 
 .typeCoursesList {
   flex: 1;
@@ -14,30 +14,30 @@
 
     .emptyItem1 {
       flex: 1 0 100%;
-      @media screen and (min-width: $phoneHorizontal) {
+      @include breakpoint("phoneHorizontal") {
         flex: 1 0 40%;
       }
 
-      @media screen and (min-width: $tablet) {
+      @include breakpoint("tablet") {
         flex: 1 0 30%;
       }
 
-      @media screen and (min-width: $monitor) {
+      @include breakpoint("monitor") {
         flex: 1 0 30%;
       }
     }
 
     .emptyItem2 {
       flex: 1 0 100%;
-      @media screen and (min-width: $phoneHorizontal) {
+      @include breakpoint("phoneHorizontal") {
         flex: 1 0 40%;
       }
 
-      @media screen and (min-width: $tablet) {
+      @include breakpoint("tablet") {
         flex: 1 0 30%;
       }
 
-      @media screen and (min-width: $monitor) {
+      @include breakpoint("monitor") {
         flex: 1 0 30%;
       }
     }

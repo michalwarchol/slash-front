@@ -1,7 +1,9 @@
-@import "../../app/colors.module.scss";
+@import "@sass/media.module.scss";
 
 .wrapper {
-  @include wrapper;
+  min-height: 100vh;
+  padding-bottom: 38px;
+  position: relative;
 
   .mainPage {
     width: 100%;
@@ -11,8 +13,8 @@
 
     .mainPageInner {
       width: 100%;
-      @media screen and (min-width: $monitor) {
-        max-width: $monitor;
+      @include breakpoint("monitor") {
+        max-width: var(--breakpoint-monitor);
       }
     }
   }

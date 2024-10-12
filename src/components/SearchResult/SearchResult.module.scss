@@ -1,4 +1,4 @@
-@import "../../app/colors.module.scss";
+@import "@sass/media.module.scss";
 
 .searchResult {
   text-decoration: none;
@@ -14,14 +14,14 @@
       background-color: rgba(0, 0, 0, 0.1);
     }
 
-    @media screen and (min-width: $phoneHorizontal) {
+    @include breakpoint("phoneHorizontal") {
       flex-direction: row;
     }
 
     .thumbnail {
       margin-bottom: 10px;
 
-      @media screen and (min-width: $phoneHorizontal) {
+      @include breakpoint("phoneHorizontal") {
         margin-left: 0;
         margin-right: 10px;
         margin-bottom: 0;
@@ -30,7 +30,7 @@
         height: 180px;
       }
 
-      @media screen and (min-width: $monitor) {
+      @include breakpoint("monitor") {
         max-width: 384px;
         width: 100%;
         height: 216px;
@@ -57,11 +57,11 @@
         .authorName {
           font-size: 18px;
 
-          @media screen and (min-width: $phoneHorizontal) {
+          @include breakpoint("phoneHorizontal") {
             font-size: 14px;
           }
 
-          @media screen and (min-width: $monitor) {
+          @include breakpoint("monitor") {
             font-size: 18px;
           }
         }
@@ -69,7 +69,7 @@
 
       .categoryInfo {
         font-size: 14px;
-        color: $greyText;
+        color: var(--color-greyText);
         margin-bottom: 10px;
       }
 
