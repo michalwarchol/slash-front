@@ -1,6 +1,6 @@
 import { PlayCircleOutlined } from "@ant-design/icons";
-import { Image } from "antd";
 import cls from "classnames";
+import Image from "next/image";
 
 import { secondsToTime } from "@/utils/timeUtils";
 
@@ -16,12 +16,7 @@ export default function Thumbnail({ src, className, time }: IProps) {
   return (
     <div className={cls(styles.thumbnail, className)}>
       {src ? (
-        <Image
-          src={src}
-          alt="video"
-          preview={false}
-          rootClassName={styles.thumbnailImg}
-        />
+        <Image src={src} alt="video" fill style={{ objectFit: "contain" }} />
       ) : (
         <div className={styles.videoNotFoundImageWrapper}>
           <div className={styles.videoNotFoundImage}>

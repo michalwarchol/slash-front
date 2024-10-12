@@ -1,6 +1,7 @@
 import { RightOutlined, UserOutlined } from "@ant-design/icons";
-import { Avatar, Image } from "antd";
+import { Avatar } from "antd";
 import { cookies } from "next/headers";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
 import { TTStudentStartedCourse } from "@/app/[locale]/types";
@@ -33,7 +34,8 @@ export default async function CourseQuickAccess({
             <Image
               src={courseProgressData.courseVideo.thumbnailLink}
               alt="course-video-image"
-              preview={false}
+              fill
+              style={{ objectFit: "contain" }}
             />
           </div>
           <div className={styles.infoWrapper}>

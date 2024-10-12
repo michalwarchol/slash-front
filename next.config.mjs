@@ -8,6 +8,19 @@ const withNextIntl = createNextIntlPlugin();
  
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: 'slash-util-files.s3.amazonaws.com',
+      port: '',
+      pathname: '/**'
+    }, {
+      protocol: 'https',
+      hostname: 'slash-video-files.s3.amazonaws.com',
+      port: '',
+      pathname: '/**'
+    }],
+  },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
