@@ -2,6 +2,7 @@
 
 .videoCarouselItem {
   padding: 6px;
+  flex: 1 0 100%;
 
   @include breakpoint("phone") {
     max-width: 100%;
@@ -9,6 +10,7 @@
 
   @include breakpoint("phoneHorizontal") {
     max-width: calc(100% / 2 - 28px);
+    flex: 1 0 40%;
   }
 
   @include breakpoint("tabletVertical") {
@@ -16,7 +18,12 @@
   }
 
   @include breakpoint("tablet") {
-    max-width: calc(100% / 4 - 28px);
+    max-width: calc(100% / 4);
+    flex: 1 0 30%;
+  }
+
+  @include breakpoint("monitor") {
+    flex: 1 0 40%;
   }
 
   .itemContent {

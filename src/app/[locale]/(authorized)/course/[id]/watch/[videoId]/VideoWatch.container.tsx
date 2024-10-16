@@ -1,7 +1,6 @@
 "use client";
 
 import { FormikHelpers } from "formik";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { TSearchResult } from "@/types/course";
@@ -21,7 +20,7 @@ import View from "./VideoWatch.view";
 
 interface IProps {
   videoId: string;
-  video: TVideoResponse | null;
+  video: TVideoResponse;
   progress: TProgress | null;
   userType?: "STUDENT" | "EDUCATOR";
   userId?: string;
@@ -36,12 +35,6 @@ export default function VideoWatchContainer({
   userId,
   recommendedCourses,
 }: IProps) {
-  const { back } = useRouter();
-  if (video === null) {
-    back();
-    return null;
-  }
-
   const [firstLoad, setFirstLoad] = useState<boolean>(true);
 
   // video state

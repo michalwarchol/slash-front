@@ -1,4 +1,7 @@
 import { cookies } from "next/headers";
+import { RedirectType } from "next/navigation";
+
+import { redirect } from "@/app/navigation";
 
 import {
   getRecommendedCourses,
@@ -32,10 +35,14 @@ export default async function VideoWatch({ params }: TProps) {
     recommendedCourses = recommendedCoursesData.data || [];
   }
 
+  if (data === null) {
+    redirect("../", RedirectType.replace);
+  }
+
   return (
     <Container
       progress={progress}
-      video={data}
+      video={data!}
       userId={user?.id}
       userType={user?.type}
       videoId={params.videoId}
