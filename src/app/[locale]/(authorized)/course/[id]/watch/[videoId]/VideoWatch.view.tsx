@@ -256,7 +256,6 @@ export default function VideoWatchView({
               </div>
             </div>
           </div>
-          {console.log(userType, EUserTypes.STUDENT)}
           {userType === EUserTypes.STUDENT && (
             <div className={styles.recommendedWrapper}>
               <Title level={3}>{t("recommended")}</Title>
