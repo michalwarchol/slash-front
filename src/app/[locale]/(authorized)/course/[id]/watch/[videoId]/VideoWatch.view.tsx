@@ -255,18 +255,23 @@ export default function VideoWatchView({
               </div>
             </div>
           </div>
-          <div className={styles.recommendedWrapper}>
-            <Title level={3}>{t("recommended")}</Title>
-            <div className={styles.recommendedCourses}>
-              {recommendedCourses.map((recommendedCourse) => (
-                <RecommendedCourse
-                  key={recommendedCourse.course.id}
-                  data={recommendedCourse}
-                />
-              ))}
+          {userType === "STUDENT" && (
+            <div className={styles.recommendedWrapper}>
+              <Title level={3}>{t("recommended")}</Title>
+              <div className={styles.recommendedCourses}>
+                {recommendedCourses.map((recommendedCourse) => (
+                  <RecommendedCourse
+                    key={recommendedCourse.course.id}
+                    data={recommendedCourse}
+                  />
+                ))}
+              </div>
+              <Divider
+                type="horizontal"
+                className={styles.dividerRecommended}
+              />
             </div>
-            <Divider type="horizontal" className={styles.dividerRecommended} />
-          </div>
+          )}
         </div>
       </div>
       <Modal
