@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
 
-import { redirect } from "@/app/navigation";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
@@ -21,12 +20,6 @@ export default function AuthorizedLayout({
   const cookieStore = cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
-
-  if (!user) {
-    redirect("/");
-
-    return null;
-  }
 
   return (
     <UserVerifier>

@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 
 import { TEducatorStats, TStudentStats } from "@/types/statistics";
+import { EUserTypes } from "@/types/user";
 
 import styles from "./Statistics.module.scss";
 import { TMessages } from "./Statistics.types";
@@ -20,7 +21,7 @@ import {
 interface IProps {
   educatorData: TEducatorStats;
   studentData: TStudentStats;
-  type: "EDUCATOR" | "STUDENT";
+  type: EUserTypes;
   messages: TMessages;
 }
 
@@ -144,7 +145,7 @@ export default function View({
       <div className={styles.statisticsInner}>
         <div className={styles.titleWrapper}>{messages.title}</div>
         <div className={styles.viewWrapper}>
-          {type === "EDUCATOR" ? educatorContent : studentContent}
+          {type === EUserTypes.EDUCATOR ? educatorContent : studentContent}
         </div>
       </div>
     </div>

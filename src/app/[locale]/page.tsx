@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
+import { EUserTypes } from "@/types/user";
 
 import {
   getCourseTypes,
@@ -38,7 +39,7 @@ export default async function Home({ searchParams }: IProps) {
   );
 
   let userStartedCourses: TTStudentStartedCourse[] = [];
-  if (user && user.type === "STUDENT") {
+  if (user && user.type === EUserTypes.STUDENT) {
     userStartedCourses = await getStudentStartedCourses(1, 10);
   }
 

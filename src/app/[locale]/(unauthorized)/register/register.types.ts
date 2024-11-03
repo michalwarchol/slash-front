@@ -1,3 +1,5 @@
+import { EUserTypes } from "@/types/user";
+
 export type UserRoles = {
   name: string;
   value: string;
@@ -40,5 +42,5 @@ export type TInitialValues = {
   email: string;
   password: string;
   confirmPassword: string;
-  role: "STUDENT" | "EDUCATOR" | null;
+  role: EUserTypes | null;
 };

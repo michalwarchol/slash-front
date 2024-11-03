@@ -17,6 +17,7 @@ import Select from "@/components/Select";
 import VideoPlayer from "@/components/VideoPlayer";
 import { TSearchResult } from "@/types/course";
 import { TPagination } from "@/types/pagination";
+import { EUserTypes } from "@/types/user";
 import { TComment, TVideoResponse } from "@/types/video";
 import Fetch from "@/utils/requestHandler";
 
@@ -32,7 +33,7 @@ const { Title, Text } = Typography;
 
 interface IProps {
   data: TVideoResponse;
-  userType?: "STUDENT" | "EDUCATOR";
+  userType?: EUserTypes;
   comments: TComment[];
   commentsPagination: TPagination;
   addCommentLoading: boolean;
@@ -153,7 +154,7 @@ export default function VideoWatchView({
             </div>
           </div>
           <div className={styles.rateInfo}>
-            {userType === "STUDENT" && (
+            {userType === EUserTypes.STUDENT && (
               <div className={styles.rate}>
                 <Text className={styles.videoRating}>{t("rate")}</Text>
                 <Rate
@@ -217,7 +218,7 @@ export default function VideoWatchView({
                   </Formik>
                 </div>
               </div>
-              {userType === "STUDENT" && (
+              {userType === EUserTypes.STUDENT && (
                 <div className={styles.commentAddWrapper}>
                   <Formik onSubmit={onAddComment} initialValues={{ text: "" }}>
                     <Form>
@@ -255,18 +256,24 @@ export default function VideoWatchView({
               </div>
             </div>
           </div>
-          <div className={styles.recommendedWrapper}>
-            <Title level={3}>{t("recommended")}</Title>
-            <div className={styles.recommendedCourses}>
-              {recommendedCourses.map((recommendedCourse) => (
-                <RecommendedCourse
-                  key={recommendedCourse.course.id}
-                  data={recommendedCourse}
-                />
-              ))}
+          {console.log(userType, EUserTypes.STUDENT)}
+          {userType === EUserTypes.STUDENT && (
+            <div className={styles.recommendedWrapper}>
+              <Title level={3}>{t("recommended")}</Title>
+              <div className={styles.recommendedCourses}>
+                {recommendedCourses.map((recommendedCourse) => (
+                  <RecommendedCourse
+                    key={recommendedCourse.course.id}
+                    data={recommendedCourse}
+                  />
+                ))}
+              </div>
+              <Divider
+                type="horizontal"
+                className={styles.dividerRecommended}
+              />
             </div>
-            <Divider type="horizontal" className={styles.dividerRecommended} />
-          </div>
+          )}
         </div>
       </div>
       <Modal

@@ -1,4 +1,5 @@
 import { TEducatorStats, TStudentStats } from "@/types/statistics";
+import { EUserTypes } from "@/types/user";
 
 export const defaultEducatorData: TEducatorStats = {
   mostLikedCourses: [],
@@ -11,18 +12,19 @@ export const defaultStudentStats: TStudentStats = {
   coursesInProgress: 0,
   watchTime: 0,
   favCategory: {
-    id: '',
-    mainTypeId: '',
-    name: '',
-    valueEn: '',
-    valuePl: ''
+    id: "",
+    mainTypeId: "",
+    name: "",
+    valueEn: "",
+    valuePl: "",
   },
   favEducator: {
-    avatar: '',
-    email: '',
-    firstName: '',
-    id: '',
-    lastName: '',
-    type: "EDUCATOR"
+    avatar: "",
+    email: "",
+    firstName: "",
+    id: "",
+    lastName: "",
+    type: EUserTypes.EDUCATOR,
+    isVerified: true,
   },
 };
