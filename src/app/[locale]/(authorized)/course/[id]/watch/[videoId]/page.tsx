@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { RedirectType } from "next/navigation";
 
 import { redirect } from "@/app/navigation";
+import { EUserTypes } from "@/types/user";
 
 import {
   getRecommendedCourses,
@@ -30,7 +31,7 @@ export default async function VideoWatch({ params }: TProps) {
   }
 
   let recommendedCourses = [];
-  if (user && user.type === "STUDENT") {
+  if (user && user.type === EUserTypes.STUDENT) {
     const recommendedCoursesData = await getRecommendedCourses();
     recommendedCourses = recommendedCoursesData.data || [];
   }

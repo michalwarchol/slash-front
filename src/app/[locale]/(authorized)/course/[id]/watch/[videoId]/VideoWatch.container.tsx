@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import { TSearchResult } from "@/types/course";
 import { TPagination } from "@/types/pagination";
+import { EUserTypes } from "@/types/user";
 import { TComment, TVideoResponse } from "@/types/video";
 
 import { increaseViews } from "./VideoWatch.actions";
@@ -22,7 +23,7 @@ interface IProps {
   videoId: string;
   video: TVideoResponse;
   progress: TProgress | null;
-  userType?: "STUDENT" | "EDUCATOR";
+  userType?: EUserTypes;
   userId?: string;
   recommendedCourses: TSearchResult[];
 }

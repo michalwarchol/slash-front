@@ -1,11 +1,12 @@
 import CourseQuickAccess from "@/components/CourseQuickAccess";
 import TypeCoursesList from "@/components/TypeCoursesList";
+import { EUserTypes } from "@/types/user";
 
 import styles from "./page.module.scss";
 import { TCoursesByType, TTStudentStartedCourse } from "./types";
 
 interface IProps {
-  userType?: "STUDENT" | "EDUCATOR";
+  userType?: EUserTypes;
   studentStartedCourses: TTStudentStartedCourse[];
   coursesByType: TCoursesByType[];
 }
@@ -18,7 +19,7 @@ export function View({
   return (
     <div className={styles.mainPage}>
       <div className={styles.mainPageInner}>
-        {userType === "STUDENT" && studentStartedCourses[0] && (
+        {userType === EUserTypes.STUDENT && studentStartedCourses[0] && (
           <CourseQuickAccess courseProgressData={studentStartedCourses[0]} />
         )}
         {coursesByType.map((courses) => (

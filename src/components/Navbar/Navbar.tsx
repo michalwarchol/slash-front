@@ -2,11 +2,12 @@ import { getTranslations } from "next-intl/server";
 
 import { Link } from "@/app/navigation";
 import Button from "@/components/Button";
+import { EUserTypes } from "@/types/user";
 
 import styles from "./Navbar.module.scss";
 
 interface IProps {
-  type: "EDUCATOR" | "STUDENT";
+  type: EUserTypes;
   id: string;
 }
 
@@ -16,7 +17,7 @@ export default async function Navbar({ type, id }: IProps) {
   return (
     <div className={styles.navbar}>
       <div className={styles.navbarInner}>
-        {type === "EDUCATOR" && (
+        {type === EUserTypes.EDUCATOR && (
           <div className={styles.buttonContainer}>
             <Link href="/add-course">
               <Button className={styles.button}>{t("addCourse")}</Button>
@@ -29,7 +30,7 @@ export default async function Navbar({ type, id }: IProps) {
             </Link>
           </div>
         )}
-        {type === "STUDENT" && (
+        {type === EUserTypes.STUDENT && (
           <div className={styles.buttonContainer}>
             <Link href="/statistics">
               <Button className={styles.button}>{t("statistics")}</Button>
