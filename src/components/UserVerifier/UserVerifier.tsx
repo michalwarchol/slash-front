@@ -9,9 +9,10 @@ interface IProps {
 }
 
 export default async function UserVerifier({ children }: IProps) {
-  const userCookie = cookies().get("user");
+  const cookieStore = await cookies();
+  const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
-  const langCookie = cookies().get("NEXT_LOCALE");
+  const langCookie = cookieStore.get("NEXT_LOCALE");
   const lang = langCookie ? langCookie.value : "en";
 
   if (user && !user.isVerified) {

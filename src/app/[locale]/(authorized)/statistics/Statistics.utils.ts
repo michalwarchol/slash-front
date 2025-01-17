@@ -9,7 +9,7 @@ import Fetch from "@/utils/requestHandler";
 import { TMessages } from "./Statistics.types";
 
 export const fetchStats = async () => {
-  const data = await Fetch.get("/statistics", { cache: "no-store" });
+  const data = await Fetch.get("/statistics");
 
   return data;
 };

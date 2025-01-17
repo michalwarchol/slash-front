@@ -1,4 +1,4 @@
-@import "@sass/media.module.scss";
+@use "@sass/media.module.scss" as media;
 
 @mixin progressSliderTrack {
   height: 4px;
@@ -62,7 +62,7 @@
     width: 100%;
     transition: opacity 0.2s ease-in-out;
 
-    @include breakpoint("phoneHorizontal") {
+    @include media.breakpoint("phoneHorizontal") {
       display: none;
     }
 
@@ -73,7 +73,7 @@
     .controlButton {
       display: block;
       box-shadow: 0 0 10px black inset;
-      @include breakpoint("phoneHorizontal") {
+      @include media.breakpoint("phoneHorizontal") {
         display: none;
       }
     }
@@ -130,7 +130,7 @@
 
       .controlButton {
         display: none;
-        @include breakpoint("phoneHorizontal") {
+        @include media.breakpoint("phoneHorizontal") {
           display: block;
         }
       }

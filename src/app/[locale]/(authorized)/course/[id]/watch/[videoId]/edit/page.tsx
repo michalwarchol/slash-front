@@ -5,23 +5,21 @@ import { redirect } from "@/app/navigation";
 
 import { getVideo } from "./VideoEdit.actions";
 import Container from "./VideoEdit.container";
+import { TParams } from "./VideoEdit.types";
 import { getErrorMessages, getMessages } from "./VideoEdit.utils";
 
 type TProps = {
-  params: {
-    locale: string;
-    id: string;
-    videoId: string;
-  };
+  params: TParams;
 };
 
 export default async function VideoWatch({ params }: TProps) {
-  const cookieStore = cookies();
+  const { id, videoId } = await params;
+  const cookieStore = await cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
 
   const t = await getTranslations();
-  const video = await getVideo(params.videoId);
+  const video = await getVideo(videoId);
   if (video === null || video.creatorId !== user?.id) {
     redirect("/");
     return null;
@@ -29,8 +27,8 @@ export default async function VideoWatch({ params }: TProps) {
 
   return (
     <Container
-      courseId={params.id}
-      id={params.videoId}
+      courseId={id}
+      id={videoId}
       userId={user?.id}
       messages={getMessages(t)}
       errorMessages={getErrorMessages(t)}

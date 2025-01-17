@@ -1,4 +1,4 @@
-@import "@sass/media.module.scss";
+@use "@sass/media.module.scss" as media;
 
 .header {
   width: 100%;
@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
 
-    @include breakpoint("monitor") {
+    @include media.breakpoint("monitor") {
       max-width: var(--breakpoint-monitor);
     }
 
@@ -25,14 +25,6 @@
       font-size: 32px;
       display: flex;
       align-items: center;
-
-      @include breakpoint("phoneHorizontal") {
-        font-size: 46px;
-      }
-
-      @include breakpoint("monitor") {
-        font-size: 52px;
-      }
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
       font-weight: 600;
 
@@ -43,6 +35,14 @@
         .link {
           color: var(--color-secondary);
         }
+      }
+
+      @include media.breakpoint("phoneHorizontal") {
+        font-size: 46px;
+      }
+
+      @include media.breakpoint("monitor") {
+        font-size: 52px;
       }
     }
 
@@ -90,7 +90,7 @@
       display: none;
       max-width: 30%;
 
-      @include breakpoint("phoneHorizontal") {
+      @include media.breakpoint("phoneHorizontal") {
         display: flex;
       }
 
@@ -105,7 +105,7 @@
     justify-content: center;
     max-width: 100%;
 
-    @include breakpoint("phoneHorizontal") {
+    @include media.breakpoint("phoneHorizontal") {
       display: none;
     }
 

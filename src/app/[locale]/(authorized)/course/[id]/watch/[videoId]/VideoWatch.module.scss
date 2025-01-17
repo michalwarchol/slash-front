@@ -1,4 +1,4 @@
-@import "@sass/media.module.scss";
+@use "@sass/media.module.scss" as media;
 
 .contentContainer {
   padding: 12px;
@@ -9,7 +9,7 @@
   .contentContainerInner {
     width: 100%;
 
-    @include breakpoint("monitor") {
+    @include media.breakpoint("monitor") {
       max-width: var(--breakpoint-monitor);
     }
 
@@ -52,14 +52,14 @@
     display: flex;
     flex-direction: column;
 
-    @include breakpoint("tablet") {
+    @include media.breakpoint("tablet") {
       flex-direction: row;
     }
 
     .sectionsWrapper {
       width: 100%;
       order: 2;
-      @include breakpoint("tablet") {
+      @include media.breakpoint("tablet") {
         order: 1;
       }
     }
@@ -67,7 +67,7 @@
     .recommendedWrapper {
       width: 100%;
       order: 1;
-      @include breakpoint("tablet") {
+      @include media.breakpoint("tablet") {
         padding-left: 10px;
         order: 2;
         width: 30%;
@@ -78,7 +78,7 @@
         flex-wrap: wrap;
         gap: 28px;
 
-        @include breakpoint("tablet") {
+        @include media.breakpoint("tablet") {
           gap: 0;
         }
       }
@@ -88,7 +88,7 @@
         background-color: var(--color-primary);
         height: 2px;
 
-        @include breakpoint("tablet") {
+        @include media.breakpoint("tablet") {
           display: none;
         }
       }
@@ -103,14 +103,14 @@
     display: flex;
     flex-direction: column;
 
-    @include breakpoint("phoneHorizontal") {
+    @include media.breakpoint("phoneHorizontal") {
       flex-direction: row;
     }
 
     .videoInfo {
       margin-bottom: 10px;
 
-      @include breakpoint("phoneHorizontal") {
+      @include media.breakpoint("phoneHorizontal") {
         margin-bottom: 0;
       }
 

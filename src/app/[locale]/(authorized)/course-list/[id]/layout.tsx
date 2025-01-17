@@ -3,9 +3,6 @@ import { ReactNode } from "react";
 
 interface IProps {
   children: ReactNode | ReactNode[];
-  params: {
-    locale: string;
-  };
 }
 
 export default function LocaleLayout({ children }: IProps) {

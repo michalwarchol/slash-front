@@ -16,7 +16,14 @@ export default function Thumbnail({ src, className, time }: IProps) {
   return (
     <div className={cls(styles.thumbnail, className)}>
       {src ? (
-        <Image src={src} alt="video" fill style={{ objectFit: "contain" }} />
+        <Image
+          src={src}
+          alt="video"
+          fill
+          style={{ objectFit: "contain" }}
+          sizes="436px"
+          priority
+        />
       ) : (
         <div className={styles.videoNotFoundImageWrapper}>
           <div className={styles.videoNotFoundImage}>

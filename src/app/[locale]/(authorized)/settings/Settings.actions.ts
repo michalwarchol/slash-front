@@ -18,7 +18,8 @@ export async function submit(values: TFormValues) {
   const response = await Fetch.put("/users/update", { body: formData }, true);
 
   if (response && response.success) {
-    cookies().set("user", JSON.stringify(response.result), {
+    const cookiesStore = await cookies();
+    cookiesStore.set("user", JSON.stringify(response.result), {
       expires: Date.now() + getOneDayInMiliseconds(),
       path: "/",
     });

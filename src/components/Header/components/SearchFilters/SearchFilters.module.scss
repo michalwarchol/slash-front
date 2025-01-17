@@ -1,4 +1,4 @@
-@import "@sass/media.module.scss";
+@use "@sass/media.module.scss" as media;
 
 .form {
   display: flex;
@@ -16,7 +16,7 @@
       background-color: rgba(0, 0, 0, 0.3);
     }
 
-    @include breakpoint("phoneHorizontal") {
+    @include media.breakpoint("phoneHorizontal") {
       display: none;
     }
   }

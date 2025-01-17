@@ -8,9 +8,10 @@ import { fetchStats, getMessages } from "./Statistics.utils";
 import View from "./Statistics.view";
 
 export default async function Statistics() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
+  const locale = cookieStore.get("NEXT_LOCALE")?.value;
 
   const data = await fetchStats();
   const t = await getTranslations();
@@ -25,6 +26,7 @@ export default async function Statistics() {
       }
       type={user.type}
       messages={getMessages(t)}
+      locale={locale}
     />
   );
 }

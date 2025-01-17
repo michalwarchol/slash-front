@@ -1,4 +1,4 @@
-@import "@sass/media.module.scss";
+@use "@sass/media.module.scss" as media;
 
 .wrapper {
   min-height: 100vh;
@@ -13,7 +13,7 @@
 
     .mainPageInner {
       width: 100%;
-      @include breakpoint("monitor") {
+      @include media.breakpoint("monitor") {
         max-width: var(--breakpoint-monitor);
       }
     }

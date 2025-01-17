@@ -1,4 +1,4 @@
-@import "@sass/media.module.scss";
+@use "@sass/media.module.scss" as media;
 
 .contentContainer {
   padding: 12px;
@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
 
-    @include breakpoint("monitor") {
+    @include media.breakpoint("monitor") {
       max-width: var(--breakpoint-monitor);
     }
 
@@ -23,7 +23,7 @@
         font-weight: 600;
         font-family: Arial;
 
-        @include breakpoint("monitor") {
+        @include media.breakpoint("monitor") {
           font-size: 32px;
         }
       }
@@ -37,7 +37,7 @@
           display: block;
           width: 100%;
 
-          @include breakpoint("monitor") {
+          @include media.breakpoint("monitor") {
             display: flex;
             justify-content: space-between;
           }
@@ -50,14 +50,14 @@
           .input {
             width: 100%;
 
-            @include breakpoint("monitor") {
+            @include media.breakpoint("monitor") {
               width: 50%;
             }
           }
 
           .inputWide {
             width: 100%;
-            @include breakpoint("monitor") {
+            @include media.breakpoint("monitor") {
               width: 50%;
             }
           }

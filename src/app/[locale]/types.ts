@@ -6,6 +6,12 @@ import {
 } from "@/types/course";
 import { TUser } from "@/types/user";
 
+export type TParams = Promise<{ locale: string }>;
+export type TSearchParams = Promise<{
+  search: string;
+  typeName: string;
+}>;
+
 export type TTStudentStartedCourse = {
   id: string;
   hasEnded: boolean;

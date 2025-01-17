@@ -20,17 +20,15 @@ import {
 } from "./Header.utils";
 
 interface IProps {
-  searchParams: {
+  searchProps: {
     search: string;
     typeName: string;
   };
 }
 
-export default async function Header({
-  searchParams = { search: "", typeName: "" },
-}: IProps) {
+export default async function Header({ searchProps = { search: "", typeName: "" } }: IProps) {
   const t = await getTranslations("header");
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
 
@@ -49,7 +47,7 @@ export default async function Header({
         </div>
         <div className={styles.searchbar}>
           <SearchFilters
-            initialValues={getInitialValues(searchParams, courseTypes)}
+            initialValues={getInitialValues(searchProps, courseTypes)}
             typeOptions={convertCourseTypesToCascaderOptions(courseTypes)}
             messages={getSearchFilterMessages(t)}
           />

@@ -8,6 +8,10 @@ const withNextIntl = createNextIntlPlugin();
  
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  sassOptions: {
+    quietDeps: true,
+    silenceDeprecations: ['legacy-js-api', 'import'],
+  },
   images: {
     remotePatterns: [{
       protocol: 'https',
@@ -20,6 +24,7 @@ const nextConfig = {
       port: '',
       pathname: '/**'
     }],
+    unoptimized: true, // this change is necessary because we don't want to store all images from S3 in our Next server.
   },
   webpack: (config) => {
     config.resolve.alias = {

@@ -44,6 +44,7 @@ function Input({
       placeholder={placeholder}
       disabled={disabled}
       className={className}
+      autoComplete="on"
     />
   );
 }

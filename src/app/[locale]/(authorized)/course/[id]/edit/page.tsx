@@ -7,17 +7,16 @@ import { redirect } from "@/app/navigation";
 
 import { getCourse } from "./CourseEdit.actions";
 import { getCourseTypes } from "./CourseEdit.actions";
+import { TParams } from "./CourseEdit.types";
 import { getMessages } from "./CourseEdit.utils";
 
 type TProps = {
-  params: {
-    locale: string;
-    id: string;
-  };
+  params: TParams;
 };
 
-export default async function Home({ params: { id } }: TProps) {
-  const cookieStore = cookies();
+export default async function Home({ params }: TProps) {
+  const { id } = await params;
+  const cookieStore = await cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
 

@@ -1,3 +1,9 @@
+export type TParams = Promise<{
+  locale: string;
+  id: string;
+  videoId: string;
+}>;
+
 export type TCommentsSettings = {
   orderBy: string;
   order: "ASC" | "DESC";
@@ -34,4 +40,4 @@ export type TProgress = {
   watchTime: number;
   hasEnded: boolean;
   createdAt: Date;
-}
+};

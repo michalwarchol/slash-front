@@ -1,3 +1,8 @@
+export type TParams = Promise<{
+  id: string;
+  videoId: string;
+}>;
+
 export type TFormValues = {
   name: string;
   description: string;
