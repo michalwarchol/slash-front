@@ -11,7 +11,7 @@ export async function getCourse(
     return {};
   }
 
-  const data = await Fetch.get(`/courses/course/${id}`, { cache: "no-store" });
+  const data = await Fetch.get(`/courses/course/${id}`);
   if (data.statusCode === 404) {
     return {
       course: null,
@@ -44,9 +44,7 @@ export async function getCourse(
   };
 
   if (userId) {
-    const statistics = await Fetch.get(`/courses/user_statistics/${id}`, {
-      cache: "no-store",
-    });
+    const statistics = await Fetch.get(`/courses/user_statistics/${id}`);
 
     return {
       course,

@@ -10,7 +10,7 @@ import {
 } from "./Settings.utils";
 
 export default async function Home() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
 

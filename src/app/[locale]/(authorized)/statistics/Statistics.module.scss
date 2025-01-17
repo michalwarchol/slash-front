@@ -1,4 +1,4 @@
-@import "@sass/media.module.scss";
+@use "@sass/media.module.scss" as media;
 
 .statistics {
   width: 100%;
@@ -8,7 +8,7 @@
 
   .statisticsInner {
     width: 100%;
-    @include breakpoint("monitor") {
+    @include media.breakpoint("monitor") {
       max-width: var(--breakpoint-monitor);
     }
   }
@@ -28,7 +28,7 @@
     .educatorContent {
       width: 100%;
       display: block;
-      @include breakpoint("monitor") {
+      @include media.breakpoint("monitor") {
         max-width: var(--breakpoint-monitor);
         display: flex;
         justify-content: space-between;
@@ -38,7 +38,7 @@
       .tableContent {
         margin-bottom: 20px;
         flex: 1;
-        @include breakpoint("monitor") {
+        @include media.breakpoint("monitor") {
           margin-bottom: 0;
         }
 
@@ -48,7 +48,7 @@
           font-family: Arial;
           margin-bottom: 20px;
 
-          @include breakpoint("monitor") {
+          @include media.breakpoint("monitor") {
             font-size: 20px;
           }
         }

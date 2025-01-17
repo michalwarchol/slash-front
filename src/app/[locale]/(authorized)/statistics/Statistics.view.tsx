@@ -1,6 +1,5 @@
 import { FileExclamationOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Table as AntdTable } from "antd";
-import { cookies } from "next/headers";
 import Image from "next/image";
 
 import { TEducatorStats, TStudentStats } from "@/types/statistics";
@@ -23,15 +22,16 @@ interface IProps {
   studentData: TStudentStats;
   type: EUserTypes;
   messages: TMessages;
+  locale?: string;
 }
 
-export default function View({
+export default async function View({
   educatorData,
   studentData,
   messages,
   type,
+  locale,
 }: IProps) {
-  const locale = cookies().get("NEXT_LOCALE")?.value;
   const educatorContent = (
     <div className={styles.educatorContent}>
       <div className={styles.tableContent}>

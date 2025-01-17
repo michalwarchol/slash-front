@@ -1,28 +1,28 @@
-@import "@sass/media.module.scss";
+@use "@sass/media.module.scss" as media;
 
 .videoCarouselItem {
   padding: 6px;
   flex: 1 0 100%;
 
-  @include breakpoint("phone") {
+  @include media.breakpoint("phone") {
     max-width: 100%;
   }
 
-  @include breakpoint("phoneHorizontal") {
+  @include media.breakpoint("phoneHorizontal") {
     max-width: calc(100% / 2 - 28px);
     flex: 1 0 40%;
   }
 
-  @include breakpoint("tabletVertical") {
+  @include media.breakpoint("tabletVertical") {
     max-width: calc(100% / 3 - 28px);
   }
 
-  @include breakpoint("tablet") {
+  @include media.breakpoint("tablet") {
     max-width: calc(100% / 4);
     flex: 1 0 30%;
   }
 
-  @include breakpoint("monitor") {
+  @include media.breakpoint("monitor") {
     flex: 1 0 40%;
   }
 

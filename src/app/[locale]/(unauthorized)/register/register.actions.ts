@@ -25,11 +25,12 @@ export async function signUp(values: TInitialValues) {
   });
 
   if (data.result) {
-    cookies().set("token", data.result.accessToken, {
+    const cookieStore = await cookies();
+    cookieStore.set("token", data.result.accessToken, {
       expires: Date.now() + getOneDayInMiliseconds(),
       path: "/",
     });
-    cookies().set("user", JSON.stringify(data.result.user), {
+    cookieStore.set("user", JSON.stringify(data.result.user), {
       expires: Date.now() + getOneDayInMiliseconds(),
       path: "/",
     });

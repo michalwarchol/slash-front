@@ -7,7 +7,8 @@ async function handleResult(result: Response) {
   if (result.status === 401) {
     if (isServer) {
       const { cookies } = await import("next/headers");
-      const locale = cookies().get("NEXT_LOCALE")?.value;
+      const cookieStore = await cookies();
+      const locale = cookieStore.get("NEXT_LOCALE")?.value;
       redirect(`/${locale}/login`);
     } else {
       const locale = document.cookie.replace(
@@ -33,13 +34,14 @@ async function getDefaultHeaders(isMultipart?: boolean) {
 
   if (isServer) {
     const { cookies } = await import("next/headers");
-    const token = cookies().get("token")?.value;
+    const cookieStore = await cookies();
+    const token = cookieStore.get("token")?.value;
 
     if (token) {
       customHeaders.Authorization = `Bearer ${token}`;
     }
 
-    const locale = cookies().get("NEXT_LOCALE")?.value;
+    const locale = cookieStore.get("NEXT_LOCALE")?.value;
 
     if (locale) {
       customHeaders.lang = locale;

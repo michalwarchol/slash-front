@@ -2,17 +2,16 @@ import { cookies } from "next/headers";
 import { getTranslations } from "next-intl/server";
 
 import Container from "./CourseUpload.container";
+import { TParams } from "./CourseUpload.types";
 import { getErrorMessages, getMessages } from "./CourseUpload.utils";
 
 type TProps = {
-  params: {
-    locale: string;
-    id: string;
-  };
+  params: TParams;
 };
 
 export default async function Course({ params }: TProps) {
-  const cookieStore = cookies();
+  const { id } = await params;
+  const cookieStore = await cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
 
@@ -20,7 +19,7 @@ export default async function Course({ params }: TProps) {
 
   return (
     <Container
-      id={params.id}
+      id={id}
       userId={user?.id}
       messages={getMessages(t)}
       errorMessages={getErrorMessages(t)}

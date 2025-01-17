@@ -18,7 +18,8 @@ export default async function CourseQuickAccess({
   courseProgressData,
 }: IProps) {
   const t = await getTranslations();
-  const locale = cookies().get("NEXT_LOCALE")?.value || "pl";
+  const cookieStore = await cookies();
+  const locale = cookieStore.get("NEXT_LOCALE")?.value || "pl";
 
   return (
     <div className={styles.courseQuickAccess}>

@@ -1,4 +1,4 @@
-@import "@sass/media.module.scss";
+@use "@sass/media.module.scss" as media;
 
 .contentContainer {
   padding: 12px;
@@ -9,7 +9,7 @@
   .contentContainerInner {
     width: 100%;
 
-    @include breakpoint("monitor") {
+    @include media.breakpoint("monitor") {
       max-width: var(--breakpoint-monitor);
     }
   }

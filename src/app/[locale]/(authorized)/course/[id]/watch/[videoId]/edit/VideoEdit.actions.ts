@@ -8,7 +8,7 @@ import Fetch from "@/utils/requestHandler";
 import { TFormValues } from "./VideoEdit.types";
 
 export async function getVideo(id: string): Promise<TVideoEdit | null> {
-  const data = await Fetch.get(`/video/${id}`, { cache: "no-store" });
+  const data = await Fetch.get(`/video/${id}`);
 
   if (!data || data.statusCode === 404) {
     return null;

@@ -12,20 +12,18 @@ import {
 } from "./actions";
 import styles from "./page.module.scss";
 import { formatCourseTypes, matchCourseTypeWithCourses } from "./page.utils";
-import { TTStudentStartedCourse } from "./types";
+import { TSearchParams, TTStudentStartedCourse } from "./types";
 import { View } from "./view";
 
 type IProps = {
-  searchParams: {
-    search: string;
-    typeName: string;
-  };
+  searchParams: TSearchParams;
 };
 
 export const revalidate = 900;
 
 export default async function Home({ searchParams }: IProps) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
+  const searchProps = await searchParams;
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
 
@@ -45,7 +43,7 @@ export default async function Home({ searchParams }: IProps) {
 
   return (
     <div className={styles.wrapper}>
-      <Header searchParams={searchParams} />
+      <Header searchProps={searchProps} />
       {user && <Navbar id={user.id} type={user.type} />}
       <View
         userType={user?.type}

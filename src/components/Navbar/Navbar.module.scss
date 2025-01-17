@@ -1,4 +1,4 @@
-@import "@sass/media.module.scss";
+@use "@sass/media.module.scss" as media;
 
 .navbar {
   padding: 12px;
@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
 
-    @include breakpoint("monitor") {
+    @include media.breakpoint("monitor") {
       max-width: var(--breakpoint-monitor);
     }
 

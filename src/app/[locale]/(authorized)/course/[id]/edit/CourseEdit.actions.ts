@@ -4,7 +4,7 @@ import { TInitialValues } from "@/app/[locale]/(authorized)/add-course/AddCourse
 import Fetch from "@/utils/requestHandler";
 
 export async function getCourseTypes() {
-  const data = await Fetch.get("/courses/types");
+  const data = await Fetch.get("/courses/types", { cache: "force-cache" });
 
   return data;
 }
@@ -19,7 +19,7 @@ export async function getCourse(
     };
   }
 
-  const data = await Fetch.get(`/courses/course/${id}`, { cache: "no-store" });
+  const data = await Fetch.get(`/courses/course/${id}`);
 
   if (!data) {
     return {

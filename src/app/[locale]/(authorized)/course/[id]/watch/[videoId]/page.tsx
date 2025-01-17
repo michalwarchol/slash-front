@@ -10,24 +10,22 @@ import {
   getVideo,
 } from "./VideoWatch.actions";
 import Container from "./VideoWatch.container";
+import { TParams } from "./VideoWatch.types";
 
 type TProps = {
-  params: {
-    locale: string;
-    id: string;
-    videoId: string;
-  };
+  params: TParams;
 };
 
 export default async function VideoWatch({ params }: TProps) {
-  const cookieStore = cookies();
+  const { id, locale, videoId } = await params;
+  const cookieStore = await cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
 
-  const data = await getVideo(params.videoId, params.locale);
+  const data = await getVideo(videoId, locale);
   let progress = null;
   if (user?.id) {
-    progress = await getUserCourseProgress(params.id);
+    progress = await getUserCourseProgress(id);
   }
 
   let recommendedCourses = [];
@@ -46,7 +44,7 @@ export default async function VideoWatch({ params }: TProps) {
       video={data!}
       userId={user?.id}
       userType={user?.type}
-      videoId={params.videoId}
+      videoId={videoId}
       recommendedCourses={recommendedCourses}
     />
   );

@@ -1,20 +1,19 @@
 import { cookies } from "next/headers";
 
 import { getCourse } from "./Course.actions";
+import { TParams } from "./Course.types";
 import View from "./Course.view";
 
 type TProps = {
-  params: {
-    locale: string;
-    id: string;
-  };
+  params: TParams;
 };
 
 export default async function Course({ params }: TProps) {
-  const cookieStore = cookies();
+  const { id, locale } = await params;
+  const cookieStore = await cookies();
   const userCookie = cookieStore.get("user");
   const user = userCookie ? JSON.parse(userCookie.value) : null;
-  const data = await getCourse(params.locale, params.id, user?.id);
+  const data = await getCourse(locale, id, user?.id);
 
   if (!data.course) {
     return null;

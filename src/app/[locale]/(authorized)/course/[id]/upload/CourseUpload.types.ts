@@ -1,5 +1,10 @@
 import { UploadFile } from "antd/es/upload";
 
+export type TParams = Promise<{
+  locale: string;
+  id: string;
+}>;
+
 export type TFormValues = {
   name: string;
   description: string;

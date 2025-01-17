@@ -1,4 +1,4 @@
-@import "@sass/media.module.scss";
+@use "@sass/media.module.scss" as media;
 
 .courseTitle {
   margin-bottom: 20px;
@@ -6,7 +6,7 @@
   .title {
     font-size: 24px;
 
-    @include breakpoint("monitor") {
+    @include media.breakpoint("monitor") {
       font-size: 38px;
     }
   }
